@@ -66,9 +66,9 @@ const en: BaseTranslation = {
 	},
 
 	homepage: {
-		title: 'A Supporter is Worth a Thousand Followers.',
-		subtitle:
-			"Accept donations. Start a membership. Sell anything you like. It's easier than you think."
+		title: 'A production ready starter template for SvelteKit.',
+		subtitle: description,
+		features: 'Features'
 	}
 };
 

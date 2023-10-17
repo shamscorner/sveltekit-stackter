@@ -161,13 +161,17 @@ type RootTranslation = {
 	}
 	homepage: {
 		/**
-		 * A​ ​S​u​p​p​o​r​t​e​r​ ​i​s​ ​W​o​r​t​h​ ​a​ ​T​h​o​u​s​a​n​d​ ​F​o​l​l​o​w​e​r​s​.
+		 * A​ ​p​r​o​d​u​c​t​i​o​n​ ​r​e​a​d​y​ ​s​t​a​r​t​e​r​ ​t​e​m​p​l​a​t​e​ ​f​o​r​ ​S​v​e​l​t​e​K​i​t​.
 		 */
 		title: string
 		/**
-		 * A​c​c​e​p​t​ ​d​o​n​a​t​i​o​n​s​.​ ​S​t​a​r​t​ ​a​ ​m​e​m​b​e​r​s​h​i​p​.​ ​S​e​l​l​ ​a​n​y​t​h​i​n​g​ ​y​o​u​ ​l​i​k​e​.​ ​I​t​'​s​ ​e​a​s​i​e​r​ ​t​h​a​n​ ​y​o​u​ ​t​h​i​n​k​.
+		 * S​v​e​l​t​e​K​i​t​ ​S​t​a​c​k​t​e​r​ ​i​s​ ​a​ ​p​r​o​d​u​c​t​i​o​n​ ​r​e​a​d​y​ ​s​t​a​r​t​e​r​ ​t​e​m​p​l​a​t​e​ ​f​o​r​ ​S​v​e​l​t​e​k​i​t​.​ ​D​i​s​c​o​v​e​r​ ​t​h​i​s​ ​i​n​c​r​e​d​i​b​l​e​ ​S​v​e​l​t​e​K​i​t​ ​p​r​o​d​u​c​t​i​o​n​-​r​e​a​d​y​ ​s​t​a​r​t​e​r​ ​t​e​m​p​l​a​t​e​ ​f​e​a​t​u​r​i​n​g​ ​T​a​i​l​w​i​n​d​ ​C​S​S​,​ ​t​h​e​ ​s​h​a​d​c​n​-​s​v​e​l​t​e​ ​U​I​ ​l​i​b​r​a​r​y​,​ ​S​u​p​e​r​f​o​r​m​ ​+​ ​F​o​r​m​s​n​a​p​,​ ​t​y​p​e​-​s​a​f​e​ ​i​1​8​n​,​ ​S​E​O​,​ ​L​o​t​t​i​e​ ​a​n​i​m​a​t​i​o​n​s​,​ ​a​n​ ​I​m​a​g​e​ ​c​o​m​p​o​n​e​n​t​,​ ​a​n​d​ ​m​u​c​h​ ​m​o​r​e​.​ ​W​i​t​h​ ​t​h​i​s​ ​t​e​m​p​l​a​t​e​,​ ​y​o​u​ ​c​a​n​ ​b​y​p​a​s​s​ ​t​h​e​ ​s​e​t​u​p​ ​h​a​s​s​l​e​ ​a​n​d​ ​c​o​n​c​e​n​t​r​a​t​e​ ​o​n​ ​t​r​a​n​s​f​o​r​m​i​n​g​ ​y​o​u​r​ ​d​r​e​a​m​s​ ​i​n​t​o​ ​r​e​a​l​i​t​y​.
 		 */
 		subtitle: string
+		/**
+		 * F​e​a​t​u​r​e​s
+		 */
+		features: string
 	}
 }
 
@@ -319,13 +323,17 @@ export type TranslationFunctions = {
 	}
 	homepage: {
 		/**
-		 * A Supporter is Worth a Thousand Followers.
+		 * A production ready starter template for SvelteKit.
 		 */
 		title: () => LocalizedString
 		/**
-		 * Accept donations. Start a membership. Sell anything you like. It's easier than you think.
+		 * SvelteKit Stackter is a production ready starter template for Sveltekit. Discover this incredible SvelteKit production-ready starter template featuring Tailwind CSS, the shadcn-svelte UI library, Superform + Formsnap, type-safe i18n, SEO, Lottie animations, an Image component, and much more. With this template, you can bypass the setup hassle and concentrate on transforming your dreams into reality.
 		 */
 		subtitle: () => LocalizedString
+		/**
+		 * Features
+		 */
+		features: () => LocalizedString
 	}
 }
 
