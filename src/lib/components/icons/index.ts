@@ -11,7 +11,8 @@ import {
 	CircleDollarSign,
 	Settings,
 	Menu,
-	ArrowRight
+	ArrowRight,
+	Twitter
 } from 'lucide-svelte';
 
 import Google from './google.svelte';
@@ -31,7 +32,8 @@ export const Icons = {
 	dollarCircle: CircleDollarSign,
 	settings: Settings,
 	menu: Menu,
-	arrowRight: ArrowRight
+	arrowRight: ArrowRight,
+	twitter: Twitter
 };
 
 export type IconType = any;

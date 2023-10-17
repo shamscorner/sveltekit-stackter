@@ -38,9 +38,9 @@
 	</div>
 
 	<div class="flex flex-col gap-8 md:flex-row">
-		<div class="mt-20">
+		<div class="mt-20 space-y-5">
 			<h2 class="text-xl font-bold">{$LL.homepage.features()}:</h2>
-			<ul class="features-list mt-4 list-disc pl-5">
+			<ul class="features-list list-disc pl-5">
 				<li><a href="https://tailwindcss.com/">Tailwind CSS</a></li>
 				<li>
 					<a href="https://www.shadcn-svelte.com/">shadcn-svelte</a> UI library
@@ -98,6 +98,24 @@
 				<li>pnpm by default</li>
 				<li>of course VITE and Typescript</li>
 			</ul>
+
+			<div class="flex items-center gap-2">
+				<Button
+					variant="secondary"
+					href="https://github.com/shamscorner/sveltekit-stackter"
+					target="_blank"
+				>
+					{$LL.homepage.checkGithub()}
+				</Button>
+				<Button
+					href="https://twitter.com/shamscorner"
+					target="_blank"
+					variant="outline"
+					size="icon"
+				>
+					<Icons.twitter class="h-4 w-4" />
+				</Button>
+			</div>
 		</div>
 
 		<div class="flex-1">
@@ -128,9 +146,6 @@
 					loading="eager"
 					class="mx-auto mt-16 w-96"
 				/>
-				<Button variant="outline">
-					{$LL.homepage.checkGithub()}
-				</Button>
 			</div>
 		</div>
 	</div>
