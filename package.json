@@ -1,0 +1,86 @@
+{
+	"name": "sveltekit-stackter",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "npm-run-all --parallel vite:dev typesafe-i18n",
+		"vite:dev": "vite dev --host",
+		"build": "vite build",
+		"start": "node build",
+		"preview": "vite preview",
+		"test": "playwright test",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest",
+		"lint": "prettier . --check . && eslint .",
+		"format": "prettier . --write .",
+		"prepare": "husky install && svelte-kit sync",
+		"configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+		"typesafe-i18n": "typesafe-i18n",
+		"update-deps": "taze major -I"
+	},
+	"devDependencies": {
+		"@csstools/postcss-media-minmax": "^1.1.0",
+		"@fingerprintjs/fingerprintjs": "^4.1.0",
+		"@playwright/test": "^1.39.0",
+		"@rgossiaux/svelte-headlessui": "^2.0.0",
+		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/adapter-vercel": "^3.0.3",
+		"@sveltejs/kit": "^1.25.2",
+		"@tailwindcss/forms": "^0.5.6",
+		"@tailwindcss/typography": "^0.5.10",
+		"@types/gtag.js": "^0.0.16",
+		"@typescript-eslint/eslint-plugin": "^6.8.0",
+		"@typescript-eslint/parser": "^6.8.0",
+		"@zerodevx/svelte-img": "^2.1.0",
+		"autoprefixer": "^10.4.16",
+		"eslint": "^8.51.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"fontaine": "^0.4.1",
+		"husky": "^8.0.3",
+		"lint-staged": "^15.0.1",
+		"lottie-web": "^5.12.2",
+		"npm-run-all": "^4.1.5",
+		"postcss": "^8.4.31",
+		"prettier": "^3.0.3",
+		"prettier-plugin-svelte": "^3.0.3",
+		"prettier-plugin-tailwindcss": "^0.5.6",
+		"svelte": "^4.2.1",
+		"svelte-check": "^3.5.2",
+		"sveltekit-superforms": "^1.8.0",
+		"tailwindcss": "^3.3.3",
+		"taze": "^0.11.4",
+		"tslib": "^2.6.2",
+		"typesafe-i18n": "^5.26.2",
+		"typescript": "^5.2.2",
+		"vite": "^4.4.11",
+		"vitest": "^0.34.6",
+		"zod": "^3.22.4"
+	},
+	"lint-staged": {
+		"**/*.{js,ts,jsx,json,svelte}": [
+			"eslint . --fix",
+			"prettier --write ."
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"dependencies": {
+		"@builder.io/partytown": "^0.8.1",
+		"@emoji-mart/data": "^1.1.2",
+		"bits-ui": "^0.5.7",
+		"clsx": "^2.0.0",
+		"dotenv": "^16.3.1",
+		"emoji-mart": "^5.5.2",
+		"formsnap": "^0.2.0",
+		"lucide-svelte": "^0.287.0",
+		"sharp": "^0.32.6",
+		"tailwind-merge": "^1.14.0",
+		"tailwind-variants": "^0.1.14"
+	}
+}

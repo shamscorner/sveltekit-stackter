@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 8 17% 26%;
+
+		--muted: 210 40% 96.1%;
+		--muted-foreground: 215.4 16.3% 46.9%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 222.2 84% 4.9%;
+
+		--card: 0 0% 100%;
+		--card-foreground: 222.2 84% 4.9%;
+
+		--border: 214.3 31.8% 91.4%;
+		--input: 214.3 31.8% 91.4%;
+
+		--primary: 93 15% 38%;
+		--primary-foreground: 0 0% 100%;
+
+		--secondary: 106 22% 81%;
+		--secondary-foreground: 8 17% 26%;
+		--secondary-light: 106 47% 92%;
+
+		--accent: 106 47% 92%;
+		--accent-foreground: 8 17% 26%;
+
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 210 40% 98%;
+
+		--ring: 106 22% 81%;
+
+		--radius: 0.5rem;
+	}
+
+	.dark {
+		--background: 222.2 84% 4.9%;
+		--foreground: 210 40% 98%;
+
+		--muted: 217.2 32.6% 17.5%;
+		--muted-foreground: 215 20.2% 65.1%;
+
+		--popover: 222.2 84% 4.9%;
+		--popover-foreground: 210 40% 98%;
+
+		--card: 222.2 84% 4.9%;
+		--card-foreground: 210 40% 98%;
+
+		--border: 217.2 32.6% 17.5%;
+		--input: 217.2 32.6% 17.5%;
+
+		--primary: 210 40% 98%;
+		--primary-foreground: 222.2 47.4% 11.2%;
+
+		--secondary: 217.2 32.6% 17.5%;
+		--secondary-foreground: 210 40% 98%;
+		--secondary-light: 106 37% 93%;
+
+		--accent: 217.2 32.6% 17.5%;
+		--accent-foreground: 210 40% 98%;
+
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 210 40% 98%;
+
+		--ring: hsl(212.7, 26.8%, 83.9);
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+@layer utilities {
+	@keyframes animate {
+		0% {
+			transform: translateY(0) rotate(0deg);
+			opacity: 0.8;
+			border-radius: 10%;
+		}
+		100% {
+			transform: translateY(-1000px) rotate(720deg);
+			opacity: 0;
+			border-radius: 50%;
+		}
+	}
+
+	.app-background {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+	.app-background li {
+		position: absolute;
+		display: block;
+		list-style: none;
+		width: 20px;
+		height: 20px;
+		background-color: #eef9eb;
+		animation: animate 19s linear infinite;
+	}
+
+	.app-background li:nth-child(0) {
+		left: 71%;
+		width: 152px;
+		height: 152px;
+		bottom: -152px;
+		animation-delay: 1s;
+	}
+	.app-background li:nth-child(1) {
+		left: 64%;
+		width: 121px;
+		height: 121px;
+		bottom: -121px;
+		animation-delay: 4s;
+	}
+	.app-background li:nth-child(2) {
+		left: 85%;
+		width: 176px;
+		height: 176px;
+		bottom: -176px;
+		animation-delay: 3s;
+	}
+	.app-background li:nth-child(3) {
+		left: 3%;
+		width: 193px;
+		height: 193px;
+		bottom: -193px;
+		animation-delay: 6s;
+	}
+	.app-background li:nth-child(4) {
+		left: 39%;
+		width: 105px;
+		height: 105px;
+		bottom: -105px;
+		animation-delay: 9s;
+	}
+	.app-background li:nth-child(5) {
+		left: 64%;
+		width: 183px;
+		height: 183px;
+		bottom: -183px;
+		animation-delay: 24s;
+	}
+	.app-background li:nth-child(6) {
+		left: 2%;
+		width: 198px;
+		height: 198px;
+		bottom: -198px;
+		animation-delay: 3s;
+	}
+	.app-background li:nth-child(7) {
+		left: 86%;
+		width: 187px;
+		height: 187px;
+		bottom: -187px;
+		animation-delay: 34s;
+	}
+	.app-background li:nth-child(8) {
+		left: 21%;
+		width: 190px;
+		height: 190px;
+		bottom: -190px;
+		animation-delay: 30s;
+	}
+	.app-background li:nth-child(9) {
+		left: 23%;
+		width: 129px;
+		height: 129px;
+		bottom: -129px;
+		animation-delay: 16s;
+	}
+}

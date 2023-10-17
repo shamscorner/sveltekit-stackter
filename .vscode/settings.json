@@ -1,0 +1,28 @@
+{
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[svelte]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"prettier.documentSelectors": ["src/**/*.svelte"],
+	"eslint.validate": ["javascript", "typescript", "svelte"],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"tailwindCSS.files.exclude": [
+		"**/.git/**",
+		"**/node_modules/**",
+		"**/.hg/**",
+		"**/.svn/**",
+		".husky/**",
+		".svelte-kit/**",
+		".vscode/**",
+		"static/**",
+		"tests/**",
+		"src/lib/i18n/**"
+	],
+	"cSpell.words": ["appwrite", "Prefs"]
+}
