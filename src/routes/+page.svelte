@@ -37,56 +37,66 @@
 	<div class="flex flex-col gap-8 md:flex-row">
 		<div class="mt-20 space-y-5">
 			<h2 class="text-xl font-bold">{$LL.homepage.features()}:</h2>
-			<ul class="features-list list-disc pl-5">
-				<li><a href="https://tailwindcss.com/">Tailwind CSS</a></li>
+			<ul class="features-list list-disc pl-5 leading-loose">
 				<li>
-					<a href="https://www.shadcn-svelte.com/">shadcn-svelte</a> UI library
+					<a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>
 				</li>
 				<li>
-					<a href="https://superforms.rocks/">Superforms</a> for auto form validation
-					and SSR submission
+					<a href="https://www.shadcn-svelte.com/" target="_blank">
+						shadcn-svelte
+					</a> UI library
 				</li>
 				<li>
-					<a href="https://www.formsnap.dev/">Formsnap</a> for auto form building
+					<a href="https://superforms.rocks/" target="_blank">Superforms</a> for
+					auto form validation and SSR submission
 				</li>
 				<li>
-					<a href="https://www.npmjs.com/package/lottie-web">lottie-web</a> to show
-					awesome animations
+					<a href="https://www.formsnap.dev/" target="_blank">Formsnap</a> for auto
+					form building
 				</li>
 				<li>
-					<a href="https://lucide.dev/">Lucide Icons</a> an awesome icon pack with
-					ease setup
+					<a href="https://www.npmjs.com/package/lottie-web" target="_blank">
+						lottie-web
+					</a> to show awesome animations
 				</li>
 				<li>
-					<a href="https://github.com/ivanhofer/typesafe-i18n">Typesafe i18n</a>
+					<a href="https://lucide.dev/" target="_blank">Lucide Icons</a> an awesome
+					icon pack with ease setup
+				</li>
+				<li>
+					<a href="https://github.com/ivanhofer/typesafe-i18n" target="_blank">
+						Typesafe i18n
+					</a>
 					for better i18n experience with SSR support
 				</li>
 				<li>
-					<a href="https://www.npmjs.com/package/taze">Taze</a> to update dependencies
-					with one command
+					<a href="https://www.npmjs.com/package/taze" target="_blank">Taze</a> to
+					update dependencies with one command
 				</li>
 				<li>
-					<a href="https://www.npmjs.com/package/husky">Husky</a> + (lint-staged)
-					to improve commits & formatting
+					<a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a
+					> + (lint-staged) to improve commits & formatting
 				</li>
 				<li>
-					<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs"
-						>Fingerprintjs</a
+					<a
+						href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs"
+						target="_blank">Fingerprintjs</a
 					> to generate browser hash
 				</li>
 				<li>
-					<a href="https://svelte-headlessui.goss.io/docs/2.0"
-						>Svelte Headless UI</a
-					>
+					<a href="https://svelte-headlessui.goss.io/docs/2.0" target="_blank">
+						Svelte Headless UI
+					</a>
 				</li>
 				<li>
-					<a href="https://github.com/zerodevx/svelte-img"
-						>React equivalent Image component</a
-					>
+					<a href="https://github.com/zerodevx/svelte-img" target="_blank">
+						React equivalent Image component
+					</a>
 				</li>
 				<li>
-					<a href="https://www.npmjs.com/package/fontaine">Fontaine</a> for better
-					font fallback
+					<a href="https://www.npmjs.com/package/fontaine" target="_blank">
+						Fontaine
+					</a> for better font fallback
 				</li>
 				<li>Awesome Emoji Picker</li>
 				<li>Google Tag support</li>
