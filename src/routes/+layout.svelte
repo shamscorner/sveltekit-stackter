@@ -10,6 +10,7 @@
 	} from '$lib/helpers/localstorage';
 	import type { FpType } from '$lib/types';
 	import Analytics from '$lib/components/common/Analytics.svelte';
+	import Navbar from './components/navbar/Navbar.svelte';
 
 	export let data: LayoutData;
 
@@ -51,5 +52,7 @@
 </script>
 
 <Analytics />
+
+<Navbar />
 
 <slot />
