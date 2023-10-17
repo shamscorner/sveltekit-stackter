@@ -2,6 +2,8 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import Seo from '$lib/components/common/SEO.svelte';
 	import AppBackground from '$lib/components/common/AppBackground.svelte';
+	import Image from '@zerodevx/svelte-img';
+	import LandingImage from '$lib/assets/images/landing-page.png?as=run:0';
 </script>
 
 <Seo
@@ -12,18 +14,30 @@
 
 <AppBackground />
 
-<main
-	class="relative mx-auto grid max-w-5xl grid-cols-1 gap-10 px-5 py-10 sm:px-8 md:grid-cols-2"
->
-	<!-- left container -->
-	<div class="space-y-6 pt-5 md:pt-10">
-		<h1 class="max-w-lg text-2xl font-extrabold md:text-4xl md:leading-[3rem]">
-			{$LL.homepage.title()}
-		</h1>
-		<h2 class="max-w-lg font-medium md:text-lg">
-			{$LL.homepage.subtitle()}
-		</h2>
+<main class="relative mx-auto max-w-5xl px-5 py-10 sm:px-8">
+	<div class="grid grid-cols-1 place-items-center gap-10 md:grid-cols-2">
+		<div class="space-y-6 pt-5 md:pt-10">
+			<h1
+				class="max-w-lg text-2xl font-extrabold md:text-4xl md:leading-[3rem]"
+			>
+				{$LL.homepage.title()}
+			</h1>
+			<h2 class="max-w-lg font-medium md:text-lg">
+				{$LL.homepage.subtitle()}
+			</h2>
+		</div>
 
+		<div class="p-4">
+			<Image
+				src={LandingImage}
+				alt={$LL.appName()}
+				loading="eager"
+				class="w-full"
+			/>
+		</div>
+	</div>
+
+	<div class="mt-20">
 		<h2 class="text-xl font-bold">{$LL.homepage.features()}:</h2>
 
 		<ul class="list-disc pl-5">
@@ -85,9 +99,4 @@
 			<li>of course VITE and Typescript</li>
 		</ul>
 	</div>
-	<!-- end of left container -->
-
-	<!-- right container -->
-	<div />
-	<!-- end of right container -->
 </main>
