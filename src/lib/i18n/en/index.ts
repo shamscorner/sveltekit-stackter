@@ -71,7 +71,9 @@ const en: BaseTranslation = {
 		features: 'Features',
 
 		checkFormSubmission: 'Check form submission demo',
-		goToLogin: 'Go to login page'
+		goToLogin: 'Go to login page',
+
+		emojiPicker: 'Emoji picker'
 	},
 
 	loginPage: {

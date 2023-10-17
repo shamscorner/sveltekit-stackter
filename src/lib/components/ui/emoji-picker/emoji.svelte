@@ -45,13 +45,7 @@
 	}
 </script>
 
-<Popover.Root
-	bind:open={openPopover}
-	{onOpenChange}
-	positioning={{
-		placement: 'bottom-start'
-	}}
->
+<Popover.Root bind:open={openPopover} {onOpenChange}>
 	<Popover.Trigger type="button">
 		<slot name="trigger">
 			<Button

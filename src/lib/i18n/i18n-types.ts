@@ -180,6 +180,10 @@ type RootTranslation = {
 		 * G​o​ ​t​o​ ​l​o​g​i​n​ ​p​a​g​e
 		 */
 		goToLogin: string
+		/**
+		 * E​m​o​j​i​ ​p​i​c​k​e​r
+		 */
+		emojiPicker: string
 	}
 	loginPage: {
 		/**
@@ -404,6 +408,10 @@ export type TranslationFunctions = {
 		 * Go to login page
 		 */
 		goToLogin: () => LocalizedString
+		/**
+		 * Emoji picker
+		 */
+		emojiPicker: () => LocalizedString
 	}
 	loginPage: {
 		/**

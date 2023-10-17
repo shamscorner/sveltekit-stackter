@@ -6,6 +6,9 @@
 	import LandingImage from '$lib/assets/images/landing-page.png?as=run:0';
 	import { Button } from '$lib/components/ui/button';
 	import { Icons } from '$lib/components/icons';
+	import { EmojiPicker } from '$lib/components/ui/emoji-picker';
+
+	let selectedGift = { native: '🍵', type: 'Tea' };
 </script>
 
 <Seo
@@ -16,7 +19,7 @@
 
 <AppBackground />
 
-<main class="relative mx-auto max-w-5xl px-5 py-10 sm:px-8">
+<main class="relative mx-auto max-w-5xl px-5 pb-40 pt-10 sm:px-8">
 	<div class="grid grid-cols-1 place-items-center gap-10 md:grid-cols-2">
 		<div class="space-y-6 pt-5 md:pt-10">
 			<h1
@@ -111,6 +114,16 @@
 					{$LL.homepage.goToLogin()}
 					<Icons.arrowRight class="ml-2 h-4 w-4" />
 				</Button>
+			</div>
+
+			<div class="space-y-5 text-center">
+				<p class="text-lg font-semibold">
+					{$LL.homepage.emojiPicker()}
+				</p>
+				<EmojiPicker
+					selectedEmoji={{ native: selectedGift.native }}
+					on:selected={(event) => (selectedGift.native = event.detail.native)}
+				></EmojiPicker>
 			</div>
 		</div>
 	</div>
