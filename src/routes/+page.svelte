@@ -5,6 +5,7 @@
 	import Image from '@zerodevx/svelte-img';
 	import LandingImage from '$lib/assets/images/landing-page.png?as=run:0';
 	import { Button } from '$lib/components/ui/button';
+	import { Icons } from '$lib/components/icons';
 </script>
 
 <Seo
@@ -108,6 +109,7 @@
 				</p>
 				<Button href="/login">
 					{$LL.homepage.goToLogin()}
+					<Icons.arrowRight class="ml-2 h-4 w-4" />
 				</Button>
 			</div>
 		</div>

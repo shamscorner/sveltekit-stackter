@@ -10,7 +10,8 @@ import {
 	Users2,
 	CircleDollarSign,
 	Settings,
-	Menu
+	Menu,
+	ArrowRight
 } from 'lucide-svelte';
 
 import Google from './google.svelte';
@@ -29,7 +30,8 @@ export const Icons = {
 	users: Users2,
 	dollarCircle: CircleDollarSign,
 	settings: Settings,
-	menu: Menu
+	menu: Menu,
+	arrowRight: ArrowRight
 };
 
 export type IconType = any;
