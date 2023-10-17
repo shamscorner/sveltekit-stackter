@@ -68,7 +68,32 @@ const en: BaseTranslation = {
 	homepage: {
 		title: 'A production ready starter template for SvelteKit.',
 		subtitle: description,
-		features: 'Features'
+		features: 'Features',
+
+		checkFormSubmission: 'Check form submission demo',
+		goToLogin: 'Go to login page'
+	},
+
+	loginPage: {
+		title: 'Welcome back',
+		pageTitle: 'Log in',
+		description:
+			'Login to your account and start accepting donations, memberships, and more.',
+		keywords: 'Login, Sign in, Log in, Sign up, Register',
+
+		form: {
+			email: 'Email',
+			password: 'Password',
+			submit: 'Log in',
+			continueWith: 'Or continue with',
+			dontHaveAccount: "Don't have an account?",
+			signUpButton: 'Sign up',
+			forgotPassword: 'Forgot password?'
+		}
+	},
+
+	errors: {
+		somethingWentWrong: 'Something went wrong'
 	}
 };
 

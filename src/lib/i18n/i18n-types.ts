@@ -172,6 +172,68 @@ type RootTranslation = {
 		 * F​e​a​t​u​r​e​s
 		 */
 		features: string
+		/**
+		 * C​h​e​c​k​ ​f​o​r​m​ ​s​u​b​m​i​s​s​i​o​n​ ​d​e​m​o
+		 */
+		checkFormSubmission: string
+		/**
+		 * G​o​ ​t​o​ ​l​o​g​i​n​ ​p​a​g​e
+		 */
+		goToLogin: string
+	}
+	loginPage: {
+		/**
+		 * W​e​l​c​o​m​e​ ​b​a​c​k
+		 */
+		title: string
+		/**
+		 * L​o​g​ ​i​n
+		 */
+		pageTitle: string
+		/**
+		 * L​o​g​i​n​ ​t​o​ ​y​o​u​r​ ​a​c​c​o​u​n​t​ ​a​n​d​ ​s​t​a​r​t​ ​a​c​c​e​p​t​i​n​g​ ​d​o​n​a​t​i​o​n​s​,​ ​m​e​m​b​e​r​s​h​i​p​s​,​ ​a​n​d​ ​m​o​r​e​.
+		 */
+		description: string
+		/**
+		 * L​o​g​i​n​,​ ​S​i​g​n​ ​i​n​,​ ​L​o​g​ ​i​n​,​ ​S​i​g​n​ ​u​p​,​ ​R​e​g​i​s​t​e​r
+		 */
+		keywords: string
+		form: {
+			/**
+			 * E​m​a​i​l
+			 */
+			email: string
+			/**
+			 * P​a​s​s​w​o​r​d
+			 */
+			password: string
+			/**
+			 * L​o​g​ ​i​n
+			 */
+			submit: string
+			/**
+			 * O​r​ ​c​o​n​t​i​n​u​e​ ​w​i​t​h
+			 */
+			continueWith: string
+			/**
+			 * D​o​n​'​t​ ​h​a​v​e​ ​a​n​ ​a​c​c​o​u​n​t​?
+			 */
+			dontHaveAccount: string
+			/**
+			 * S​i​g​n​ ​u​p
+			 */
+			signUpButton: string
+			/**
+			 * F​o​r​g​o​t​ ​p​a​s​s​w​o​r​d​?
+			 */
+			forgotPassword: string
+		}
+	}
+	errors: {
+		/**
+		 * S​o​m​e​t​h​i​n​g​ ​w​e​n​t​ ​w​r​o​n​g
+		 */
+		somethingWentWrong: string
 	}
 }
 
@@ -334,6 +396,68 @@ export type TranslationFunctions = {
 		 * Features
 		 */
 		features: () => LocalizedString
+		/**
+		 * Check form submission demo
+		 */
+		checkFormSubmission: () => LocalizedString
+		/**
+		 * Go to login page
+		 */
+		goToLogin: () => LocalizedString
+	}
+	loginPage: {
+		/**
+		 * Welcome back
+		 */
+		title: () => LocalizedString
+		/**
+		 * Log in
+		 */
+		pageTitle: () => LocalizedString
+		/**
+		 * Login to your account and start accepting donations, memberships, and more.
+		 */
+		description: () => LocalizedString
+		/**
+		 * Login, Sign in, Log in, Sign up, Register
+		 */
+		keywords: () => LocalizedString
+		form: {
+			/**
+			 * Email
+			 */
+			email: () => LocalizedString
+			/**
+			 * Password
+			 */
+			password: () => LocalizedString
+			/**
+			 * Log in
+			 */
+			submit: () => LocalizedString
+			/**
+			 * Or continue with
+			 */
+			continueWith: () => LocalizedString
+			/**
+			 * Don't have an account?
+			 */
+			dontHaveAccount: () => LocalizedString
+			/**
+			 * Sign up
+			 */
+			signUpButton: () => LocalizedString
+			/**
+			 * Forgot password?
+			 */
+			forgotPassword: () => LocalizedString
+		}
+	}
+	errors: {
+		/**
+		 * Something went wrong
+		 */
+		somethingWentWrong: () => LocalizedString
 	}
 }
 

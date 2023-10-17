@@ -1,12 +1,9 @@
 import type { GlobalResponseType } from '$lib/types';
-import type { AppwriteException } from 'appwrite';
 
 export function parseError<T>(error: any): GlobalResponseType<T> {
-	const errorObj = error as AppwriteException;
-
 	return {
 		successful: false,
-		error: errorObj
+		error
 	};
 }
 
@@ -19,3 +16,5 @@ export function getEmptyErrorResponse(errorMessage: string) {
 		name: 'Unknown'
 	};
 }
+
+export type ErrorResponseType = ReturnType<typeof getEmptyErrorResponse>;
