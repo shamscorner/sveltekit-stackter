@@ -4,7 +4,7 @@
 	import { Button } from '$lib/components/ui/button';
 </script>
 
-<header class="px-4 py-2 text-end">
+<header class="relative px-4 py-2 text-end">
 	<Button
 		href="https://github.com/shamscorner/sveltekit-stackter"
 		target="_blank"

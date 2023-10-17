@@ -13,7 +13,8 @@ import {
 	Menu,
 	ArrowRight,
 	Twitter,
-	Github
+	Github,
+	Linkedin
 } from 'lucide-svelte';
 
 import Google from './google.svelte';
@@ -35,7 +36,8 @@ export const Icons = {
 	menu: Menu,
 	arrowRight: ArrowRight,
 	twitter: Twitter,
-	github: Github
+	github: Github,
+	linkedin: Linkedin
 };
 
 export type IconType = any;

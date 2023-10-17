@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import Seo from '$lib/components/common/SEO.svelte';
-	import AppBackground from '$lib/components/common/AppBackground.svelte';
 	import Image from '@zerodevx/svelte-img';
 	import LandingImage from '$lib/assets/images/landing-page.png?as=run:0';
 	import { Button } from '$lib/components/ui/button';
@@ -18,8 +17,6 @@
 	description={$LL.description()}
 	keywords={$LL.keywords()}
 />
-
-<AppBackground />
 
 <main class="relative mx-auto max-w-5xl px-5 pb-40 sm:px-8">
 	<div class="grid grid-cols-1 place-items-center gap-10 md:grid-cols-2">
