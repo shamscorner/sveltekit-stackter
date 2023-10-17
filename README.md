@@ -26,6 +26,8 @@ Discover this incredible SvelteKit production-ready starter template featuring T
 
 ## Developing
 
+Rename `.env-example` to `.env` or `.env.local`
+
 Install dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
