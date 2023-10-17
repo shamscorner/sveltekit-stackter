@@ -7,6 +7,8 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Icons } from '$lib/components/icons';
 	import { EmojiPicker } from '$lib/components/ui/emoji-picker';
+	import LottieAnimation from '$lib/components/common/LottieAnimation.svelte';
+	import UserHiAnimationAsset from '$lib/assets/animations/user-hi.json';
 
 	let selectedGift = { native: '🍵', type: 'Tea' };
 </script>
@@ -32,14 +34,7 @@
 			</h2>
 		</div>
 
-		<div class="p-4">
-			<Image
-				src={LandingImage}
-				alt={$LL.appName()}
-				loading="eager"
-				class="w-full"
-			/>
-		</div>
+		<LottieAnimation id="butterflies-animation" asset={UserHiAnimationAsset} />
 	</div>
 
 	<div class="flex flex-col gap-8 md:flex-row">
@@ -123,7 +118,19 @@
 				<EmojiPicker
 					selectedEmoji={{ native: selectedGift.native }}
 					on:selected={(event) => (selectedGift.native = event.detail.native)}
-				></EmojiPicker>
+				/>
+			</div>
+
+			<div class="space-y-8 text-center">
+				<Image
+					src={LandingImage}
+					alt={$LL.appName()}
+					loading="eager"
+					class="mx-auto mt-16 w-96"
+				/>
+				<Button variant="outline">
+					{$LL.homepage.checkGithub()}
+				</Button>
 			</div>
 		</div>
 	</div>

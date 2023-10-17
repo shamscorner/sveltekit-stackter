@@ -184,6 +184,10 @@ type RootTranslation = {
 		 * E​m​o​j​i​ ​p​i​c​k​e​r
 		 */
 		emojiPicker: string
+		/**
+		 * C​h​e​c​k​ ​G​i​t​h​u​b​ ​R​e​p​o
+		 */
+		checkGithub: string
 	}
 	loginPage: {
 		/**
@@ -412,6 +416,10 @@ export type TranslationFunctions = {
 		 * Emoji picker
 		 */
 		emojiPicker: () => LocalizedString
+		/**
+		 * Check Github Repo
+		 */
+		checkGithub: () => LocalizedString
 	}
 	loginPage: {
 		/**
