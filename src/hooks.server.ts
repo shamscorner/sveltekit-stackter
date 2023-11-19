@@ -2,12 +2,17 @@ import { redirect } from '@sveltejs/kit';
 import type { Handle } from '@sveltejs/kit';
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
 import { detectLocale } from '$lib/i18n/i18n-util.js';
+import { sequence } from '@sveltejs/kit/hooks';
 
-export const handle = (async ({ event, resolve }) => {
+async function urlRewrite({ event, resolve }) {
 	if (event.url.pathname.match(/[A-Z]/)) {
 		throw redirect(302, event.url.pathname.toLowerCase());
 	}
-	// TODO: get lang from cookie / (user) setting
+
+	return resolve(event);
+}
+
+async function i18n({ event, resolve }) {
 	const acceptLanguageHeaderDetector = initAcceptLanguageHeaderDetector(
 		event.request
 	);
@@ -17,4 +22,6 @@ export const handle = (async ({ event, resolve }) => {
 	return resolve(event, {
 		transformPageChunk: ({ html }) => html.replace('%lang%', locale)
 	});
-}) satisfies Handle;
+}
+
+export const handle = sequence(urlRewrite, i18n) satisfies Handle;
