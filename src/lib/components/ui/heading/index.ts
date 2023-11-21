@@ -1,5 +1,4 @@
 import Root from './heading.svelte';
-import type { HTMLInputAttributes } from 'svelte/elements';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 const headingVariants = tv({
@@ -19,7 +18,7 @@ type Size = VariantProps<typeof headingVariants>['size'];
 
 type Props = {
 	size?: Size;
-	class?: HTMLInputAttributes['class'];
+	element?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 };
 
 export {
