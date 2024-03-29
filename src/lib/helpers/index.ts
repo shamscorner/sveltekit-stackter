@@ -31,9 +31,7 @@ export function getOrigin() {
 	return `${origin}${PUBLIC_LANDING_PAGE}`;
 }
 
-export function getIp(
-	event: RequestEvent<Partial<Record<string, string>>, string | null>
-) {
+export function getIp(event: RequestEvent<Partial<Record<string, string>>, string | null>) {
 	let clientIp = '';
 	try {
 		clientIp = event.getClientAddress();

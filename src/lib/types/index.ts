@@ -7,3 +7,11 @@ export type FpType = {
 	ua: string;
 	rc: string;
 };
+
+export type AnalyticsDto = {
+	browserHash: string;
+	landingPage: string;
+	userAgent: string;
+	isIncognitoMode: boolean;
+	referralSiteUrl?: string | null;
+};

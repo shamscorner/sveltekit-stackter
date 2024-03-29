@@ -30,11 +30,7 @@
 		const getFirst20Characters = (inputString: string) =>
 			inputString.length <= 20 ? inputString : inputString.substring(0, 20);
 
-		saveToLocalStorageWithExpiry(
-			'rc',
-			getFirst20Characters(referralCodeFromUrl),
-			30
-		);
+		saveToLocalStorageWithExpiry('rc', getFirst20Characters(referralCodeFromUrl), 30);
 	}
 
 	function saveFirstPageVisit() {

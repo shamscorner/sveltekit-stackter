@@ -63,8 +63,7 @@ const ar: Translation = {
 		title: '404',
 		subtitle: 'পাওয়া যায়নি',
 		pageTitle: '404',
-		description:
-			'সাহায্য খুঁজছেন? আমাদের সাথে যোগাযোগ করুন support@appdomain.com ঠিকানায়',
+		description: 'সাহায্য খুঁজছেন? আমাদের সাথে যোগাযোগ করুন support@appdomain.com ঠিকানায়',
 		keywords: 'সাহায্য, যোগাযোগ, সাহায্য, 404, পাওয়া যায়নি'
 	},
 

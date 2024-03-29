@@ -13,9 +13,7 @@ async function urlRewrite({ event, resolve }) {
 }
 
 async function i18n({ event, resolve }) {
-	const acceptLanguageHeaderDetector = initAcceptLanguageHeaderDetector(
-		event.request
-	);
+	const acceptLanguageHeaderDetector = initAcceptLanguageHeaderDetector(event.request);
 	const locale = detectLocale(acceptLanguageHeaderDetector);
 	event.locals.locale = locale;
 

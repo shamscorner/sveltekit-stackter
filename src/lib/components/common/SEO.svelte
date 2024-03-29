@@ -48,43 +48,18 @@
 	<meta property="twitter:title" content={title} />
 	<meta property="twitter:description" content={description} />
 
-	<meta
-		data-n-head="1"
-		data-hid="og:type"
-		property="og:type"
-		content="website"
-	/>
+	<meta data-n-head="1" data-hid="og:type" property="og:type" content="website" />
 	<meta
 		data-n-head="1"
 		data-hid="og:url"
 		property="og:url"
 		content={`${PUBLIC_LANDING_PAGE}${pathName}`}
 	/>
-	<meta
-		data-n-head="1"
-		data-hid="og:title"
-		property="og:title"
-		content={title}
-	/>
-	<meta
-		data-n-head="1"
-		data-hid="og:description"
-		property="og:description"
-		content={description}
-	/>
+	<meta data-n-head="1" data-hid="og:title" property="og:title" content={title} />
+	<meta data-n-head="1" data-hid="og:description" property="og:description" content={description} />
 
-	<meta
-		data-n-head="1"
-		data-hid="twitter:url"
-		name="twitter:url"
-		content={PUBLIC_LANDING_PAGE}
-	/>
-	<meta
-		data-n-head="1"
-		data-hid="twitter:title"
-		name="twitter:title"
-		content={title}
-	/>
+	<meta data-n-head="1" data-hid="twitter:url" name="twitter:url" content={PUBLIC_LANDING_PAGE} />
+	<meta data-n-head="1" data-hid="twitter:title" name="twitter:title" content={title} />
 	<meta
 		data-n-head="1"
 		data-hid="twitter:description"

@@ -3,11 +3,7 @@ export type StoredItem = {
 	expiry: number;
 };
 
-export function saveToLocalStorageWithExpiry(
-	key: string,
-	value: any,
-	expiryDays: number
-): void {
+export function saveToLocalStorageWithExpiry(key: string, value: any, expiryDays: number): void {
 	const now = new Date();
 	const expiryDate = new Date(now.getTime() + expiryDays * 24 * 60 * 60 * 1000);
 
