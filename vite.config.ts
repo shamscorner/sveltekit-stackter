@@ -22,13 +22,7 @@ export default defineConfig({
 		sveltekit(),
 
 		FontaineTransform.vite({
-			fallbacks: [
-				'BlinkMacSystemFont',
-				'Segoe UI',
-				'Helvetica Neue',
-				'Arial',
-				'Noto Sans'
-			],
+			fallbacks: ['BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans'],
 			resolvePath: (id) => new URL('.' + id, import.meta.url)
 		}),
 

@@ -81,8 +81,7 @@ const en: BaseTranslation = {
 	loginPage: {
 		title: 'Welcome back',
 		pageTitle: 'Log in',
-		description:
-			'Login to your account and start accepting donations, memberships, and more.',
+		description: 'Login to your account and start accepting donations, memberships, and more.',
 		keywords: 'Login, Sign in, Log in, Sign up, Register',
 
 		form: {

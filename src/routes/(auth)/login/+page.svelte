@@ -8,10 +8,7 @@
 	import { formSchema } from './schema';
 	import type { PageData } from './$types';
 	import type { FormOptions } from 'formsnap';
-	import {
-		getEmptyErrorResponse,
-		type ErrorResponseType
-	} from '$lib/services/error.service';
+	import { getEmptyErrorResponse, type ErrorResponseType } from '$lib/services/error.service';
 
 	export let data: PageData;
 

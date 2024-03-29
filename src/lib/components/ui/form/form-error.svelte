@@ -7,9 +7,6 @@
 	export { className as class };
 </script>
 
-<p
-	class={cn('mx-auto max-w-xs text-center text-sm text-destructive', className)}
-	{...$$restProps}
->
+<p class={cn('mx-auto max-w-xs text-center text-sm text-destructive', className)} {...$$restProps}>
 	<slot />
 </p>

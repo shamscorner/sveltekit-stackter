@@ -3,9 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 </script>
 
-<footer
-	class="relative flex items-center justify-center gap-3 bg-secondary px-4 py-3"
->
+<footer class="relative flex items-center justify-center gap-3 bg-secondary px-4 py-3">
 	<p class="text-center text-sm font-medium">
 		<b>Shamim Hossain</b> - Full-stack developer @secureship
 	</p>

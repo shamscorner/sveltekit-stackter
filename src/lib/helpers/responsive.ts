@@ -30,24 +30,19 @@ export function handleResize() {
 		case screenInfo.width < responsiveSizes.xs:
 			screenInfo.isXs = true;
 			break;
-		case screenInfo.width >= responsiveSizes.sm &&
-			screenInfo.width < responsiveSizes.md:
+		case screenInfo.width >= responsiveSizes.sm && screenInfo.width < responsiveSizes.md:
 			screenInfo.isSm = true;
 			break;
-		case screenInfo.width >= responsiveSizes.md &&
-			screenInfo.width < responsiveSizes.lg:
+		case screenInfo.width >= responsiveSizes.md && screenInfo.width < responsiveSizes.lg:
 			screenInfo.isMd = true;
 			break;
-		case screenInfo.width >= responsiveSizes.lg &&
-			screenInfo.width < responsiveSizes.xl:
+		case screenInfo.width >= responsiveSizes.lg && screenInfo.width < responsiveSizes.xl:
 			screenInfo.isLg = true;
 			break;
-		case screenInfo.width >= responsiveSizes.xl &&
-			screenInfo.width < responsiveSizes['2xl']:
+		case screenInfo.width >= responsiveSizes.xl && screenInfo.width < responsiveSizes['2xl']:
 			screenInfo.isXl = true;
 			break;
-		case screenInfo.width >= responsiveSizes['2xl'] &&
-			screenInfo.width < responsiveSizes['3xl']:
+		case screenInfo.width >= responsiveSizes['2xl'] && screenInfo.width < responsiveSizes['3xl']:
 			screenInfo.is2Xl = true;
 			break;
 		case screenInfo.width >= responsiveSizes['3xl']:
