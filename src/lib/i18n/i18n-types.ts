@@ -235,6 +235,10 @@ type RootTranslation = {
 			 * F​o​r​g​o​t​ ​p​a​s​s​w​o​r​d​?
 			 */
 			forgotPassword: string
+			/**
+			 * R​e​m​e​m​b​e​r​ ​m​e​?
+			 */
+			rememberMe: string
 		}
 	}
 	errors: {
@@ -467,6 +471,10 @@ export type TranslationFunctions = {
 			 * Forgot password?
 			 */
 			forgotPassword: () => LocalizedString
+			/**
+			 * Remember me?
+			 */
+			rememberMe: () => LocalizedString
 		}
 	}
 	errors: {

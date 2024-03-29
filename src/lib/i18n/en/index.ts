@@ -91,7 +91,8 @@ const en: BaseTranslation = {
 			continueWith: 'Or continue with',
 			dontHaveAccount: "Don't have an account?",
 			signUpButton: 'Sign up',
-			forgotPassword: 'Forgot password?'
+			forgotPassword: 'Forgot password?',
+			rememberMe: 'Remember me?'
 		}
 	},
 

@@ -13,12 +13,16 @@
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
+	import { deleteLastLoginEmail, getLastLoginEmail, saveLastLoginEmail } from '../helpers';
+	import { Label } from '$lib/components/ui/label';
+	import { Switch } from '$lib/components/ui/switch';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
 	let isLoadingFormSubmit = false;
 	let isLoadingGoogleAuth = false;
 	let errorResponse: ErrorResponseType | null = null;
+	let rememberEmail = false;
 
 	let analytics: AnalyticsDto = {
 		browserHash: '',
@@ -50,6 +54,8 @@
 				return;
 			}
 
+			performRememberMe();
+
 			console.log('Form data:', formData);
 
 			// TODO: do something after the form submission
@@ -66,17 +72,25 @@
 	}
 
 	onMount(async () => {
-		// const lastLoginEmail = getLastLoginEmail();
+		const lastLoginEmail = getLastLoginEmail();
 
-		// if (lastLoginEmail) {
-		// 	$form.email = lastLoginEmail;
-		// 	rememberEmail = true;
-		// }
+		if (lastLoginEmail) {
+			$formData.email = lastLoginEmail;
+			rememberEmail = true;
+		}
 
 		if (navigator) {
 			analytics = await getSiteAnalytics();
 		}
 	});
+
+	function performRememberMe() {
+		if (rememberEmail) {
+			saveLastLoginEmail($formData.email);
+			return;
+		}
+		deleteLastLoginEmail();
+	}
 </script>
 
 <div class="space-y-8">
@@ -108,6 +122,11 @@
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>
+
+			<div class="flex items-center space-x-4 pb-4">
+				<Switch id="remember-me" bind:checked={rememberEmail} />
+				<Label for="remember-me">{$LL.loginPage.form.rememberMe()}</Label>
+			</div>
 
 			{#if errorResponse && errorResponse.message}
 				<Form.Error>
