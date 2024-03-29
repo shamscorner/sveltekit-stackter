@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Form as FormPrimitive } from 'formsnap';
-	import { cn } from '$lib/utils';
+	import * as FormPrimitive from 'formsnap';
+	import { cn } from '$lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	type $$Props = HTMLAttributes<HTMLSpanElement>;
@@ -8,6 +8,10 @@
 	export { className as class };
 </script>
 
-<FormPrimitive.Description class={cn('text-sm text-muted-foreground', className)} {...$$restProps}>
-	<slot />
+<FormPrimitive.Description
+	class={cn('text-sm text-muted-foreground', className)}
+	{...$$restProps}
+	let:descriptionAttrs
+>
+	<slot {descriptionAttrs} />
 </FormPrimitive.Description>
