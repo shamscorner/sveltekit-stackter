@@ -1,9 +1,3 @@
-<script lang="ts">
-	import type { IconProps } from 'lucide-svelte';
-
-	type $$Props = IconProps;
-</script>
-
 <svg role="img" viewBox="0 0 23 24" fill="none" {...$$restProps}>
 	<path
 		d="M22.7074 12.2531C22.7074 11.4389 22.6436 10.6203 22.5074 9.81934H11.582V14.4315H17.8385C17.5788 15.9191 16.7446 17.235 15.5232 18.0711V21.0638H19.2557C21.4476 18.9777 22.7074 15.8971 22.7074 12.2531Z"
