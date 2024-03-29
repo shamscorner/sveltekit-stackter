@@ -5,11 +5,8 @@
 	import LandingImage from '$lib/assets/images/landing-page.png?as=run:0';
 	import { Button } from '$lib/components/ui/button';
 	import { Icons } from '$lib/components/icons';
-	import { EmojiPicker } from '$lib/components/ui/emoji-picker';
 	import LottieAnimation from '$lib/components/common/LottieAnimation.svelte';
 	import UserHiAnimationAsset from '$lib/assets/animations/user-hi.json';
-
-	let selectedGift = { native: '🍵', type: 'Tea' };
 </script>
 
 <Seo
@@ -84,11 +81,6 @@
 					> to generate browser hash
 				</li>
 				<li>
-					<a href="https://svelte-headlessui.goss.io/docs/2.0" target="_blank">
-						Svelte Headless UI
-					</a>
-				</li>
-				<li>
 					<a href="https://github.com/zerodevx/svelte-img" target="_blank">
 						React equivalent Image component
 					</a>
@@ -140,10 +132,6 @@
 				<p class="text-lg font-semibold">
 					{$LL.homepage.emojiPicker()}
 				</p>
-				<EmojiPicker
-					selectedEmoji={{ native: selectedGift.native }}
-					on:selected={(event) => (selectedGift.native = event.detail.native)}
-				/>
 			</div>
 
 			<div class="space-y-8 text-center">
