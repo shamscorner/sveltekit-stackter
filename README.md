@@ -16,6 +16,7 @@ Discover this incredible SvelteKit production-ready starter template featuring T
 - [Fingerprintjs](https://www.npmjs.com/package/@fingerprintjs/fingerprintjs) to generate browser hash
 - [React equivalent Image component](https://github.com/zerodevx/svelte-img)
 - [Fontaine](https://www.npmjs.com/package/fontaine) for better font fallback
+- [Pocketbase](https://pocketbase.io/) for full user authentication with [Auth.js](https://authjs.dev/) - easily replaceable with other database & functionalities
 - Google Tag support
 - Eslint & Prettier for better code formatting
 - Tailwind CSS auto class sorting with prettier
