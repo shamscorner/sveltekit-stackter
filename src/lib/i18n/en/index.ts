@@ -82,7 +82,8 @@ const en: BaseTranslation = {
 	loginPage: {
 		title: 'Welcome back!',
 		pageTitle: 'Log in',
-		description: 'Login to your account and start accepting donations, memberships, and more.',
+		description:
+			'Login to your account and experience learning that you have never experienced before.',
 		keywords: 'Login, Sign in, Log in, Sign up, Register',
 
 		form: {
@@ -91,9 +92,25 @@ const en: BaseTranslation = {
 			submit: 'Log in',
 			continueWith: 'Or continue with',
 			dontHaveAccount: "Don't have an account?",
-			signUpButton: 'Sign up',
 			forgotPassword: 'Forgot password?',
 			rememberMe: 'Remember me?'
+		}
+	},
+
+	registerPage: {
+		title: "Let's do awesome!",
+		pageTitle: 'Register',
+		description:
+			'Create an account and experience learning that you have never experienced before.',
+		keywords: 'Login, Sign in, Log in, Sign up, Register',
+
+		form: {
+			name: 'Name',
+			email: 'Email',
+			password: 'Password',
+			submit: 'Register',
+			continueWith: 'Or continue with',
+			alreadyHaveAccount: 'Already have an account?'
 		}
 	},
 

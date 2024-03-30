@@ -203,7 +203,7 @@ type RootTranslation = {
 		 */
 		pageTitle: string
 		/**
-		 * L​o​g​i​n​ ​t​o​ ​y​o​u​r​ ​a​c​c​o​u​n​t​ ​a​n​d​ ​s​t​a​r​t​ ​a​c​c​e​p​t​i​n​g​ ​d​o​n​a​t​i​o​n​s​,​ ​m​e​m​b​e​r​s​h​i​p​s​,​ ​a​n​d​ ​m​o​r​e​.
+		 * L​o​g​i​n​ ​t​o​ ​y​o​u​r​ ​a​c​c​o​u​n​t​ ​a​n​d​ ​e​x​p​e​r​i​e​n​c​e​ ​l​e​a​r​n​i​n​g​ ​t​h​a​t​ ​y​o​u​ ​h​a​v​e​ ​n​e​v​e​r​ ​e​x​p​e​r​i​e​n​c​e​d​ ​b​e​f​o​r​e​.
 		 */
 		description: string
 		/**
@@ -232,10 +232,6 @@ type RootTranslation = {
 			 */
 			dontHaveAccount: string
 			/**
-			 * S​i​g​n​ ​u​p
-			 */
-			signUpButton: string
-			/**
 			 * F​o​r​g​o​t​ ​p​a​s​s​w​o​r​d​?
 			 */
 			forgotPassword: string
@@ -243,6 +239,50 @@ type RootTranslation = {
 			 * R​e​m​e​m​b​e​r​ ​m​e​?
 			 */
 			rememberMe: string
+		}
+	}
+	registerPage: {
+		/**
+		 * L​e​t​'​s​ ​d​o​ ​a​w​e​s​o​m​e​!
+		 */
+		title: string
+		/**
+		 * R​e​g​i​s​t​e​r
+		 */
+		pageTitle: string
+		/**
+		 * C​r​e​a​t​e​ ​a​n​ ​a​c​c​o​u​n​t​ ​a​n​d​ ​e​x​p​e​r​i​e​n​c​e​ ​l​e​a​r​n​i​n​g​ ​t​h​a​t​ ​y​o​u​ ​h​a​v​e​ ​n​e​v​e​r​ ​e​x​p​e​r​i​e​n​c​e​d​ ​b​e​f​o​r​e​.
+		 */
+		description: string
+		/**
+		 * L​o​g​i​n​,​ ​S​i​g​n​ ​i​n​,​ ​L​o​g​ ​i​n​,​ ​S​i​g​n​ ​u​p​,​ ​R​e​g​i​s​t​e​r
+		 */
+		keywords: string
+		form: {
+			/**
+			 * N​a​m​e
+			 */
+			name: string
+			/**
+			 * E​m​a​i​l
+			 */
+			email: string
+			/**
+			 * P​a​s​s​w​o​r​d
+			 */
+			password: string
+			/**
+			 * R​e​g​i​s​t​e​r
+			 */
+			submit: string
+			/**
+			 * O​r​ ​c​o​n​t​i​n​u​e​ ​w​i​t​h
+			 */
+			continueWith: string
+			/**
+			 * A​l​r​e​a​d​y​ ​h​a​v​e​ ​a​n​ ​a​c​c​o​u​n​t​?
+			 */
+			alreadyHaveAccount: string
 		}
 	}
 	errors: {
@@ -443,7 +483,7 @@ export type TranslationFunctions = {
 		 */
 		pageTitle: () => LocalizedString
 		/**
-		 * Login to your account and start accepting donations, memberships, and more.
+		 * Login to your account and experience learning that you have never experienced before.
 		 */
 		description: () => LocalizedString
 		/**
@@ -472,10 +512,6 @@ export type TranslationFunctions = {
 			 */
 			dontHaveAccount: () => LocalizedString
 			/**
-			 * Sign up
-			 */
-			signUpButton: () => LocalizedString
-			/**
 			 * Forgot password?
 			 */
 			forgotPassword: () => LocalizedString
@@ -483,6 +519,50 @@ export type TranslationFunctions = {
 			 * Remember me?
 			 */
 			rememberMe: () => LocalizedString
+		}
+	}
+	registerPage: {
+		/**
+		 * Let's do awesome!
+		 */
+		title: () => LocalizedString
+		/**
+		 * Register
+		 */
+		pageTitle: () => LocalizedString
+		/**
+		 * Create an account and experience learning that you have never experienced before.
+		 */
+		description: () => LocalizedString
+		/**
+		 * Login, Sign in, Log in, Sign up, Register
+		 */
+		keywords: () => LocalizedString
+		form: {
+			/**
+			 * Name
+			 */
+			name: () => LocalizedString
+			/**
+			 * Email
+			 */
+			email: () => LocalizedString
+			/**
+			 * Password
+			 */
+			password: () => LocalizedString
+			/**
+			 * Register
+			 */
+			submit: () => LocalizedString
+			/**
+			 * Or continue with
+			 */
+			continueWith: () => LocalizedString
+			/**
+			 * Already have an account?
+			 */
+			alreadyHaveAccount: () => LocalizedString
 		}
 	}
 	errors: {

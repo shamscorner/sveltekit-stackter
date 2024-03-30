@@ -13,9 +13,6 @@
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
-	import { deleteLastLoginEmail, getLastLoginEmail, saveLastLoginEmail } from '../helpers';
-	import { Label } from '$lib/components/ui/label';
-	import { Switch } from '$lib/components/ui/switch';
 	import ContinueWithOptions from '../../components/continue-with-options.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
@@ -23,7 +20,6 @@
 	let isLoadingFormSubmit = false;
 	let isLoadingGoogleAuth = false;
 	let errorResponse: ErrorResponseType | null = null;
-	let rememberEmail = false;
 
 	let analytics: AnalyticsDto = {
 		browserHash: '',
@@ -55,8 +51,6 @@
 				return;
 			}
 
-			performRememberMe();
-
 			console.log('Form data:', formData);
 
 			// TODO: do something after the form submission
@@ -73,39 +67,32 @@
 	}
 
 	onMount(async () => {
-		const lastLoginEmail = getLastLoginEmail();
-
-		if (lastLoginEmail) {
-			$formData.email = lastLoginEmail;
-			rememberEmail = true;
-		}
-
 		if (navigator) {
 			analytics = await getSiteAnalytics();
 		}
 	});
-
-	function performRememberMe() {
-		if (rememberEmail) {
-			saveLastLoginEmail($formData.email);
-			return;
-		}
-		deleteLastLoginEmail();
-	}
 </script>
 
 <div>
 	<Heading class="mx-auto text-center">
-		{$LL.loginPage.title()}
+		{$LL.registerPage.title()}
 	</Heading>
 	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
 		<form method="POST" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
 			<input type="hidden" name="userAgent" bind:value={$formData.userAgent} />
 
+			<Form.Field {form} name="name">
+				<Form.Control let:attrs>
+					<Form.Label>{$LL.registerPage.form.name()}</Form.Label>
+					<Input {...attrs} bind:value={$formData.name} />
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+
 			<Form.Field {form} name="email">
 				<Form.Control let:attrs>
-					<Form.Label>{$LL.loginPage.form.email()}</Form.Label>
+					<Form.Label>{$LL.registerPage.form.email()}</Form.Label>
 					<Input {...attrs} bind:value={$formData.email} />
 				</Form.Control>
 				<Form.FieldErrors />
@@ -113,7 +100,7 @@
 
 			<Form.Field {form} name="password">
 				<Form.Control let:attrs>
-					<Form.Label>{$LL.loginPage.form.password()}</Form.Label>
+					<Form.Label>{$LL.registerPage.form.password()}</Form.Label>
 					<Input
 						{...attrs}
 						type="password"
@@ -124,11 +111,6 @@
 				<Form.FieldErrors />
 			</Form.Field>
 
-			<div class="flex items-center space-x-4">
-				<Switch id="remember-me" bind:checked={rememberEmail} />
-				<Label for="remember-me">{$LL.loginPage.form.rememberMe()}</Label>
-			</div>
-
 			<Form.Error show={!!(errorResponse && errorResponse.message)}>
 				{errorResponse?.message || $LL.errors.somethingWentWrong()}
 			</Form.Error>
@@ -137,18 +119,15 @@
 				{#if isLoadingFormSubmit}
 					<Icons.spinner class="mr-2 h-4 w-4 animate-spin" />
 				{/if}
-				{$LL.loginPage.form.submit()}
+				{$LL.registerPage.form.submit()}
 			</Form.Button>
 		</form>
 
 		<ContinueWithOptions {isLoadingGoogleAuth} {isLoadingFormSubmit} />
 
 		<div class="text-center">
-			<Button href="/register" variant="link">
-				{$LL.loginPage.form.dontHaveAccount()}
-			</Button>
-			<Button href="/forgot-password" variant="link">
-				{$LL.loginPage.form.forgotPassword()}
+			<Button href="/login" variant="link">
+				{$LL.registerPage.form.alreadyHaveAccount()}
 			</Button>
 		</div>
 	</div>
