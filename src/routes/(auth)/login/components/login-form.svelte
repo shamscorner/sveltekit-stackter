@@ -167,6 +167,9 @@
 		</Button>
 
 		<div class="text-center">
+			<Button href="/register" variant="link">
+				{$LL.loginPage.form.dontHaveAccount()}
+			</Button>
 			<Button href="/forgot-password" variant="link">
 				{$LL.loginPage.form.forgotPassword()}
 			</Button>
