@@ -85,7 +85,7 @@
 			<Form.Field {form} name="name">
 				<Form.Control let:attrs>
 					<Form.Label>{$LL.registerPage.form.name()}</Form.Label>
-					<Input {...attrs} bind:value={$formData.name} />
+					<Input {...attrs} bind:value={$formData.name} placeholder="John Doe" />
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>
@@ -93,7 +93,7 @@
 			<Form.Field {form} name="email">
 				<Form.Control let:attrs>
 					<Form.Label>{$LL.registerPage.form.email()}</Form.Label>
-					<Input {...attrs} bind:value={$formData.email} />
+					<Input {...attrs} bind:value={$formData.email} placeholder="john@example.com" />
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>

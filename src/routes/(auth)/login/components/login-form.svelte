@@ -106,7 +106,7 @@
 			<Form.Field {form} name="email">
 				<Form.Control let:attrs>
 					<Form.Label>{$LL.loginPage.form.email()}</Form.Label>
-					<Input {...attrs} bind:value={$formData.email} />
+					<Input {...attrs} bind:value={$formData.email} placeholder="john@example.com" />
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>
