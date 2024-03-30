@@ -11,7 +11,7 @@
 	<li />
 </ul>
 
-<style>
+<style lang="postcss">
 	@keyframes animate {
 		0% {
 			transform: translateY(0) rotate(0deg);
@@ -36,12 +36,13 @@
 		overflow: hidden;
 	}
 	ul li {
+		@apply bg-[#eef9eb] dark:bg-[#0f1219];
+
 		position: absolute;
 		display: block;
 		list-style: none;
 		width: 20px;
 		height: 20px;
-		background-color: #eef9eb;
 		animation: animate 19s linear infinite;
 	}
 

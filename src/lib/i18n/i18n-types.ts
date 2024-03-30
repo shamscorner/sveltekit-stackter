@@ -59,6 +59,10 @@ type RootTranslation = {
 		 * O​r
 		 */
 		or: string
+		/**
+		 * T​o​g​g​l​e​ ​t​h​e​m​e
+		 */
+		toggleTheme: string
 	}
 	appLogo: {
 		/**
@@ -191,7 +195,7 @@ type RootTranslation = {
 	}
 	loginPage: {
 		/**
-		 * W​e​l​c​o​m​e​ ​b​a​c​k
+		 * W​e​l​c​o​m​e​ ​b​a​c​k​!
 		 */
 		title: string
 		/**
@@ -295,6 +299,10 @@ export type TranslationFunctions = {
 		 * Or
 		 */
 		or: () => LocalizedString
+		/**
+		 * Toggle theme
+		 */
+		toggleTheme: () => LocalizedString
 	}
 	appLogo: {
 		/**
@@ -427,7 +435,7 @@ export type TranslationFunctions = {
 	}
 	loginPage: {
 		/**
-		 * Welcome back
+		 * Welcome back!
 		 */
 		title: () => LocalizedString
 		/**

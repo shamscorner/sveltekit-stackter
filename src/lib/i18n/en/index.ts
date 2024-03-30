@@ -10,7 +10,8 @@ const common = {
 	signup: 'Sign up',
 	show: 'Show',
 	hide: 'Hide',
-	or: 'Or'
+	or: 'Or',
+	toggleTheme: 'Toggle theme'
 };
 
 const en: BaseTranslation = {
@@ -79,7 +80,7 @@ const en: BaseTranslation = {
 	},
 
 	loginPage: {
-		title: 'Welcome back',
+		title: 'Welcome back!',
 		pageTitle: 'Log in',
 		description: 'Login to your account and start accepting donations, memberships, and more.',
 		keywords: 'Login, Sign in, Log in, Sign up, Register',

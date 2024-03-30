@@ -13,6 +13,7 @@
 	import Navbar from './components/navbar/Navbar.svelte';
 	import Footer from './components/footer/Footer.svelte';
 	import AppBackground from '$lib/components/common/AppBackground.svelte';
+	import { ModeWatcher } from 'mode-watcher';
 
 	export let data: LayoutData;
 
@@ -48,6 +49,8 @@
 		localStorage.setItem('fp', JSON.stringify(fpObj));
 	}
 </script>
+
+<ModeWatcher />
 
 <Analytics />
 
