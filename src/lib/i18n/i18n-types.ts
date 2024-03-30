@@ -59,6 +59,10 @@ type RootTranslation = {
 		 * O​r
 		 */
 		or: string
+		/**
+		 * T​o​g​g​l​e​ ​t​h​e​m​e
+		 */
+		toggleTheme: string
 	}
 	appLogo: {
 		/**
@@ -295,6 +299,10 @@ export type TranslationFunctions = {
 		 * Or
 		 */
 		or: () => LocalizedString
+		/**
+		 * Toggle theme
+		 */
+		toggleTheme: () => LocalizedString
 	}
 	appLogo: {
 		/**

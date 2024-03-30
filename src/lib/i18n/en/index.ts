@@ -10,7 +10,8 @@ const common = {
 	signup: 'Sign up',
 	show: 'Show',
 	hide: 'Hide',
-	or: 'Or'
+	or: 'Or',
+	toggleTheme: 'Toggle theme'
 };
 
 const en: BaseTranslation = {

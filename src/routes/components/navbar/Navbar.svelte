@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ThemeToggle from '$lib/components/common/ThemeToggle.svelte';
 	import { Icons } from '$lib/components/icons';
 
 	import { Button } from '$lib/components/ui/button';
@@ -14,7 +15,10 @@
 		target="_blank"
 		variant="outline"
 		size="icon"
+		class="ml-auto mr-3"
 	>
 		<Icons.github class="h-4 w-4" />
 	</Button>
+
+	<ThemeToggle />
 </header>
