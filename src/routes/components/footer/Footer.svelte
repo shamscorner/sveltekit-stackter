@@ -10,7 +10,7 @@
 	<Button
 		href="https://github.com/shamscorner"
 		target="_blank"
-		variant="complement"
+		variant="outline"
 		size="icon"
 		class="shrink-0"
 	>
@@ -19,7 +19,7 @@
 	<Button
 		href="https://www.linkedin.com/in/shamscorner/"
 		target="_blank"
-		variant="complement"
+		variant="outline"
 		size="icon"
 		class="shrink-0"
 	>
