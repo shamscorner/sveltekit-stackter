@@ -93,12 +93,12 @@
 	}
 </script>
 
-<div class="space-y-8">
+<div>
 	<Heading class="mx-auto text-center">
 		{$LL.loginPage.title()}
 	</Heading>
-	<div class="grid min-w-[19rem] max-w-md gap-6">
-		<form method="POST" use:enhance class="space-y-5">
+	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
+		<form method="POST" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
 			<input type="hidden" name="userAgent" bind:value={$formData.userAgent} />
 
@@ -123,18 +123,16 @@
 				<Form.FieldErrors />
 			</Form.Field>
 
-			<div class="flex items-center space-x-4 pb-4">
+			<div class="flex items-center space-x-4">
 				<Switch id="remember-me" bind:checked={rememberEmail} />
 				<Label for="remember-me">{$LL.loginPage.form.rememberMe()}</Label>
 			</div>
 
-			{#if errorResponse && errorResponse.message}
-				<Form.Error>
-					{errorResponse?.message || $LL.errors.somethingWentWrong()}
-				</Form.Error>
-			{/if}
+			<Form.Error show={!!(errorResponse && errorResponse.message)}>
+				{errorResponse?.message || $LL.errors.somethingWentWrong()}
+			</Form.Error>
 
-			<Form.Button disabled={isLoadingFormSubmit} class="mt-5 w-full">
+			<Form.Button disabled={isLoadingFormSubmit} class="w-full">
 				{#if isLoadingFormSubmit}
 					<Icons.spinner class="mr-2 h-4 w-4 animate-spin" />
 				{/if}

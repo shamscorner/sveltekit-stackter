@@ -15,7 +15,8 @@ import {
 	Twitter,
 	Github,
 	Linkedin,
-	Home
+	Home,
+	TriangleAlert
 } from 'lucide-svelte';
 
 import Google from './google.svelte';
@@ -39,7 +40,8 @@ export const Icons = {
 	twitter: Twitter,
 	github: Github,
 	linkedin: Linkedin,
-	home: Home
+	home: Home,
+	triangleAlert: TriangleAlert
 };
 
 export type IconType = any;
