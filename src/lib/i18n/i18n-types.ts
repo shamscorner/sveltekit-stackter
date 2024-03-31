@@ -284,6 +284,24 @@ type RootTranslation = {
 			 */
 			alreadyHaveAccount: string
 		}
+		successfulRegistration: {
+			/**
+			 * R​e​g​i​s​t​r​a​t​i​o​n​ ​s​u​c​c​e​s​s​f​u​l​!
+			 */
+			title: string
+			/**
+			 * Y​o​u​ ​h​a​v​e​ ​s​u​c​c​e​s​s​f​u​l​l​y​ ​r​e​g​i​s​t​e​r​e​d​.​ ​P​l​e​a​s​e​ ​c​h​e​c​k​ ​y​o​u​r​ ​e​m​a​i​l​ ​t​o​ ​v​e​r​i​f​y​ ​y​o​u​r​ ​a​c​c​o​u​n​t​.
+			 */
+			description: string
+			/**
+			 * H​a​v​e​n​'​t​ ​r​e​c​e​i​v​e​d​ ​t​h​e​ ​e​m​a​i​l​?​ ​C​l​i​c​k​ ​t​h​e​ ​r​e​s​e​n​d​ ​b​u​t​t​o​n​ ​b​e​l​o​w​.
+			 */
+			haveNotGetEmail: string
+			/**
+			 * R​e​s​e​n​d​ ​e​m​a​i​l
+			 */
+			resendEmail: string
+		}
 	}
 	errors: {
 		/**
@@ -563,6 +581,24 @@ export type TranslationFunctions = {
 			 * Already have an account?
 			 */
 			alreadyHaveAccount: () => LocalizedString
+		}
+		successfulRegistration: {
+			/**
+			 * Registration successful!
+			 */
+			title: () => LocalizedString
+			/**
+			 * You have successfully registered. Please check your email to verify your account.
+			 */
+			description: () => LocalizedString
+			/**
+			 * Haven't received the email? Click the resend button below.
+			 */
+			haveNotGetEmail: () => LocalizedString
+			/**
+			 * Resend email
+			 */
+			resendEmail: () => LocalizedString
 		}
 	}
 	errors: {

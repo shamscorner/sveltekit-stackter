@@ -6,3 +6,8 @@ export const formSchema = authSchema.extend({
 });
 
 export type FormSchema = typeof formSchema;
+
+export const resendEmailFormSchema = z.object({
+	email: z.string().max(100, 'Max 100 characters').email()
+});
+export type ResendEmailFormSchema = typeof resendEmailFormSchema;

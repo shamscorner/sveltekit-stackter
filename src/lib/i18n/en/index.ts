@@ -111,6 +111,14 @@ const en: BaseTranslation = {
 			submit: 'Register',
 			continueWith: 'Or continue with',
 			alreadyHaveAccount: 'Already have an account?'
+		},
+
+		successfulRegistration: {
+			title: 'Registration successful!',
+			description:
+				'You have successfully registered. Please check your email to verify your account.',
+			haveNotGetEmail: "Haven't received the email? Click the resend button below.",
+			resendEmail: 'Resend email'
 		}
 	},
 

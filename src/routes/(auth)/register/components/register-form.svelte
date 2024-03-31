@@ -3,7 +3,7 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { Heading } from '$lib/components/ui/heading';
 	import { Input } from '$lib/components/ui/input';
-	import { formSchema, type FormSchema } from '../schema';
+	import { formSchema, type FormSchema, type ResendEmailFormSchema } from '../schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Button } from '$lib/components/ui/button';
@@ -14,8 +14,10 @@
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
 	import ContinueWithOptions from '../../components/continue-with-options.svelte';
 	import { performFormValidation } from '$lib/services/error.service';
+	import SuccessMessage from './success-message.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
+	export let resendEmailData: SuperValidated<Infer<ResendEmailFormSchema>>;
 
 	let isLoadingFormSubmit = false;
 	let isLoadingGoogleAuth = false;
@@ -27,6 +29,8 @@
 		isIncognitoMode: false,
 		referralSiteUrl: null
 	};
+
+	let isSuccessfulRegistration = false;
 
 	const form = superForm(data, {
 		validators: zodClient(formSchema),
@@ -41,7 +45,12 @@
 				return;
 			}
 
-			// TODO: do something after the form submission
+			if (result.type === 'success' && result.data) {
+				isSuccessfulRegistration = true;
+				const formData = result.data.form.data;
+
+				// TODO: set the email on store
+			}
 
 			isLoadingFormSubmit = false;
 		}
@@ -71,7 +80,7 @@
 		{$LL.registerPage.title()}
 	</Heading>
 	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
-		<form method="POST" use:enhance class="space-y-4">
+		<form method="POST" action="?/register" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
 			<input type="hidden" name="landingPage" bind:value={$formData.landingPage} />
 			<input type="hidden" name="referralSiteUrl" bind:value={$formData.referralSiteUrl} />
@@ -126,4 +135,6 @@
 			</Button>
 		</div>
 	</div>
+
+	<SuccessMessage bind:open={isSuccessfulRegistration} data={resendEmailData} />
 </div>
