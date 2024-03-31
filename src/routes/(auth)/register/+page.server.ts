@@ -3,6 +3,7 @@ import { superValidate } from 'sveltekit-superforms/server';
 import { formSchema } from './schema';
 import { fail } from '@sveltejs/kit';
 import { zod } from 'sveltekit-superforms/adapters';
+import { UserService } from '../services/user.pocketbase.service';
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -20,10 +21,20 @@ export const actions: Actions = {
 			});
 		}
 
-		// Simulate a slow response
-		// Add your logic here
-		await new Promise((resolve) => setTimeout(resolve, 2000));
+		const { name, email, password } = form.data;
 
-		return { form };
+		const userService = new UserService(event.locals.pb);
+
+		const userResponse = await userService.createUser({ name, email, password });
+
+		if (userResponse.code !== 200) {
+			const { code, error } = userResponse;
+			return fail(code, {
+				form,
+				error: error?.message
+			});
+		}
+
+		return { form, user: userResponse.data };
 	}
 };

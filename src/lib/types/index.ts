@@ -15,3 +15,14 @@ export type AnalyticsDto = {
 	isIncognitoMode: boolean;
 	referralSiteUrl?: string | null;
 };
+
+export type ApiResponse<D = null> = {
+	code: number;
+	message?: string;
+	data?: D;
+	error?:
+		| Error
+		| {
+				message: string;
+		  };
+};

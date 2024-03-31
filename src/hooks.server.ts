@@ -46,4 +46,4 @@ async function initPocketbase({ event, resolve }) {
 	return response;
 }
 
-export const handle = sequence(urlRewrite, i18n) satisfies Handle;
+export const handle = sequence(urlRewrite, i18n, initPocketbase) satisfies Handle;

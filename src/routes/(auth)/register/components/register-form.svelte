@@ -8,7 +8,6 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Button } from '$lib/components/ui/button';
 	import { Icons } from '$lib/components/icons';
-	import { getEmptyErrorResponse, type ErrorResponseType } from '$lib/services/error.service';
 	import type { AnalyticsDto } from '$lib/types';
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { onMount } from 'svelte';
@@ -19,7 +18,7 @@
 
 	let isLoadingFormSubmit = false;
 	let isLoadingGoogleAuth = false;
-	let errorResponse: ErrorResponseType | null = null;
+	let errorResponse = '';
 
 	let analytics: AnalyticsDto = {
 		browserHash: '',
@@ -32,14 +31,16 @@
 	const form = superForm(data, {
 		validators: zodClient(formSchema),
 		onSubmit: () => {
-			errorResponse = null;
+			errorResponse = '';
 			isLoadingFormSubmit = true;
 		},
-		onError: () => {
-			isLoadingFormSubmit = false;
-			errorResponse = getEmptyErrorResponse($LL.errors.somethingWentWrong());
-		},
 		onResult: async ({ result }) => {
+			if (result.type === 'failure') {
+				errorResponse = result.data ? result.data.error : '';
+				isLoadingFormSubmit = false;
+				return;
+			}
+
 			if (result.type !== 'success' || !result.data) {
 				isLoadingFormSubmit = false;
 				return;
@@ -111,8 +112,8 @@
 				<Form.FieldErrors />
 			</Form.Field>
 
-			<Form.Error show={!!(errorResponse && errorResponse.message)}>
-				{errorResponse?.message || $LL.errors.somethingWentWrong()}
+			<Form.Error show={!!errorResponse}>
+				{errorResponse || $LL.errors.somethingWentWrong()}
 			</Form.Error>
 
 			<Form.Button disabled={isLoadingFormSubmit} class="w-full">
