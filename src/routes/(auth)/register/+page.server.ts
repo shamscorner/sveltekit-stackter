@@ -35,6 +35,8 @@ export const actions: Actions = {
 			});
 		}
 
+		await userService.requestEmailVerification(email);
+
 		return { form, user: userResponse.data };
 	}
 };

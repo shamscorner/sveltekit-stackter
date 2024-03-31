@@ -37,6 +37,18 @@ export class UserService extends AuthService {
 		}
 	}
 
+	async requestEmailVerification(email: string): Promise<ApiResponse<boolean>> {
+		try {
+			await this.pb.collection('users').requestVerification(email);
+			return {
+				code: 200,
+				data: true
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
+	}
+
 	parseErrorFromErrorObject(error) {
 		const errorObj = error as ClientResponseError;
 
