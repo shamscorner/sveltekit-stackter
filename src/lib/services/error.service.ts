@@ -1,5 +1,6 @@
 import { capitalizeFirstLetter } from '$lib/helpers';
 import LL from '$lib/i18n/i18n-svelte';
+import type { ActionResult } from '@sveltejs/kit';
 import type { ClientResponseError } from 'pocketbase';
 import { get } from 'svelte/store';
 
@@ -53,4 +54,19 @@ export function parseErrorFromErrorObject(error) {
 			message: nestedMessage || get(LL).errors.somethingWentWrong()
 		}
 	};
+}
+
+export function performFormValidation(result: ActionResult) {
+	if (result.type === 'failure') {
+		return result.data ? result.data.error : '';
+	}
+
+	if (result.type !== 'success' || !result.data) {
+		return '';
+	}
+
+	const formData = result.data.form;
+	if (!formData.valid) {
+		return '';
+	}
 }

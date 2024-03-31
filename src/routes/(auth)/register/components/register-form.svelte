@@ -13,6 +13,7 @@
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
 	import ContinueWithOptions from '../../components/continue-with-options.svelte';
+	import { performFormValidation } from '$lib/services/error.service';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -35,24 +36,11 @@
 			isLoadingFormSubmit = true;
 		},
 		onResult: async ({ result }) => {
-			if (result.type === 'failure') {
-				errorResponse = result.data ? result.data.error : '';
+			const errorMessage = performFormValidation(result);
+			if (errorMessage) {
 				isLoadingFormSubmit = false;
 				return;
 			}
-
-			if (result.type !== 'success' || !result.data) {
-				isLoadingFormSubmit = false;
-				return;
-			}
-
-			const formData = result.data.form;
-			if (!formData.valid) {
-				isLoadingFormSubmit = false;
-				return;
-			}
-
-			console.log('Form data:', formData);
 
 			// TODO: do something after the form submission
 
