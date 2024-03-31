@@ -1,8 +1,10 @@
-import Pocketbase from 'pocketbase';
+import Pocketbase, { ClientResponseError } from 'pocketbase';
 import { AuthService } from './base';
 import type { ApiResponse } from '$lib/types';
 import { UserRole, type User, type UserDto } from '$lib/types/user.type';
-import { parseErrorFromErrorObject } from '$lib/services/error.service';
+import { capitalizeFirstLetter } from '$lib/helpers';
+import { get } from 'svelte/store';
+import LL from '$lib/i18n/i18n-svelte';
 
 export class UserService extends AuthService {
 	private pb: Pocketbase;
@@ -31,7 +33,30 @@ export class UserService extends AuthService {
 				data: user
 			};
 		} catch (error) {
-			return parseErrorFromErrorObject(error);
+			return this.parseErrorFromErrorObject(error);
 		}
+	}
+
+	parseErrorFromErrorObject(error) {
+		const errorObj = error as ClientResponseError;
+
+		console.error('API service errorObj: ', errorObj);
+
+		const { response } = errorObj || {};
+		const { code, message, data } = response || {};
+		let nestedMessage = message as string;
+
+		for (const key in data) {
+			if (Object.prototype.hasOwnProperty.call(data, key)) {
+				nestedMessage = capitalizeFirstLetter(`${key}: ${data[key].message}`);
+			}
+		}
+
+		return {
+			code: (code as number) || 500,
+			error: {
+				message: nestedMessage || get(LL).errors.somethingWentWrong()
+			}
+		};
 	}
 }
