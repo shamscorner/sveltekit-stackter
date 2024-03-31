@@ -106,6 +106,9 @@ devDependencies:
   npm-run-all:
     specifier: ^4.1.5
     version: 4.1.5
+  pocketbase:
+    specifier: ^0.21.1
+    version: 0.21.1
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -4588,6 +4591,10 @@ packages:
       playwright-core: 1.42.1
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /pocketbase@0.21.1:
+    resolution: {integrity: sha512-0PvCP4pKtxsV9kwldEGyibEvhwOcx9jSCrz3WN5CgPILJfM0z76f1op9WE8/8UgikDsMdRsc5iBLfKintrJS1g==}
     dev: true
 
   /possible-typed-array-names@1.0.0:
