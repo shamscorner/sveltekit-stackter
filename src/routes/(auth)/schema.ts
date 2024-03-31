@@ -8,9 +8,10 @@ export const authSchema = z.object({
 			message: 'Max 50 characters'
 		})
 		.min(1, 'Required'),
-	userAgent: z.string().optional(),
 	browserHash: z.string().optional(),
-	isIncognitoMode: z.boolean().optional().default(false)
+	isIncognitoMode: z.boolean().optional().default(false),
+	landingPage: z.string().optional(),
+	referralSiteUrl: z.string().optional()
 });
 
 export type AuthSchema = typeof authSchema;

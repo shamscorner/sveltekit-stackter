@@ -11,7 +11,7 @@ export type FpType = {
 export type AnalyticsDto = {
 	browserHash: string;
 	landingPage: string;
-	userAgent: string;
+	userAgent?: string;
 	isIncognitoMode: boolean;
 	referralSiteUrl?: string | null;
 };

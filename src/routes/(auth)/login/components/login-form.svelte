@@ -29,7 +29,6 @@
 		browserHash: '',
 		landingPage: PUBLIC_LANDING_PAGE,
 		isIncognitoMode: false,
-		userAgent: '',
 		referralSiteUrl: undefined
 	};
 
@@ -68,8 +67,11 @@
 	const { form: formData, enhance } = form;
 
 	$: {
-		$formData.browserHash = analytics.browserHash;
-		$formData.userAgent = analytics.userAgent;
+		formData.update((d) => ({
+			...d,
+			browserHash: analytics.browserHash,
+			isIncognitoMode: analytics.isIncognitoMode
+		}));
 	}
 
 	onMount(async () => {
@@ -101,7 +103,7 @@
 	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
 		<form method="POST" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
-			<input type="hidden" name="userAgent" bind:value={$formData.userAgent} />
+			<input type="hidden" name="isIncognitoMode" bind:value={$formData.isIncognitoMode} />
 
 			<Form.Field {form} name="email">
 				<Form.Control let:attrs>

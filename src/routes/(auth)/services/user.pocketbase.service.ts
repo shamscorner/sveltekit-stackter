@@ -17,7 +17,16 @@ export class UserService extends AuthService {
 	findExistingUserByEmail(email: string): Promise<ApiResponse<User>> {
 		throw new Error('Method not implemented.');
 	}
-	async createUser({ name, email, password }: UserDto): Promise<ApiResponse<User>> {
+	async createUser({
+		name,
+		email,
+		password,
+		browserHash,
+		landingPage,
+		isIncognitoMode,
+		referralSiteUrl,
+		userAgent
+	}: UserDto): Promise<ApiResponse<User>> {
 		try {
 			const user = await this.pb.collection('users').create<User>({
 				email,
@@ -25,7 +34,12 @@ export class UserService extends AuthService {
 				password,
 				passwordConfirm: password,
 				name,
-				role: UserRole.user
+				role: UserRole.user,
+				browserHash,
+				landingPage,
+				referralSiteUrl,
+				isIncognitoMode,
+				userAgent
 			});
 
 			return {

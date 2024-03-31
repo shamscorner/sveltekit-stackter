@@ -25,8 +25,7 @@
 		browserHash: '',
 		landingPage: PUBLIC_LANDING_PAGE,
 		isIncognitoMode: false,
-		userAgent: '',
-		referralSiteUrl: undefined
+		referralSiteUrl: null
 	};
 
 	const form = superForm(data, {
@@ -51,8 +50,13 @@
 	const { form: formData, enhance } = form;
 
 	$: {
-		$formData.browserHash = analytics.browserHash;
-		$formData.userAgent = analytics.userAgent;
+		formData.update((d) => ({
+			...d,
+			browserHash: analytics.browserHash,
+			landingPage: analytics.landingPage || PUBLIC_LANDING_PAGE,
+			referralSiteUrl: analytics.referralSiteUrl || '',
+			isIncognitoMode: analytics.isIncognitoMode
+		}));
 	}
 
 	onMount(async () => {
@@ -69,7 +73,9 @@
 	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
 		<form method="POST" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
-			<input type="hidden" name="userAgent" bind:value={$formData.userAgent} />
+			<input type="hidden" name="landingPage" bind:value={$formData.landingPage} />
+			<input type="hidden" name="referralSiteUrl" bind:value={$formData.referralSiteUrl} />
+			<input type="hidden" name="isIncognitoMode" bind:value={$formData.isIncognitoMode} />
 
 			<Form.Field {form} name="name">
 				<Form.Control let:attrs>
