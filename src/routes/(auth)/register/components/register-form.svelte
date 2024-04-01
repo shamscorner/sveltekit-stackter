@@ -15,7 +15,7 @@
 	import ContinueWithOptions from '../../components/continue-with-options.svelte';
 	import { performFormValidation } from '$lib/services/error.service';
 	import SuccessMessage from './success-message.svelte';
-	import { userEmail } from '../store';
+	import { REGISTER_EMAIL_KEY } from '../../constants';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 	export let resendEmailData: SuperValidated<Infer<ResendEmailFormSchema>>;
@@ -35,6 +35,7 @@
 
 	const form = superForm(data, {
 		validators: zodClient(formSchema),
+		invalidateAll: false,
 		onSubmit: () => {
 			errorResponse = '';
 			isLoadingFormSubmit = true;
@@ -48,9 +49,9 @@
 
 			if (result.type === 'success' && result.data) {
 				isSuccessfulRegistration = true;
-				const formData = result.data.form.data;
 
-				$userEmail = formData.email;
+				const resultFormData = result.data.form.data;
+				saveUserEmail(resultFormData.email);
 			}
 
 			isLoadingFormSubmit = false;
@@ -74,6 +75,10 @@
 			analytics = await getSiteAnalytics();
 		}
 	});
+
+	function saveUserEmail(email) {
+		localStorage.setItem(REGISTER_EMAIL_KEY, email);
+	}
 </script>
 
 <div>

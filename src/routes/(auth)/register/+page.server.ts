@@ -18,7 +18,7 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
 	register: async (event) => {
-		const form = await superValidate(event, zod(formSchema));
+		const form = await superValidate(event.request, zod(formSchema));
 
 		if (!form.valid) {
 			return fail(400, {
@@ -56,7 +56,7 @@ export const actions: Actions = {
 	},
 
 	resendEmail: async (event) => {
-		const form = await superValidate(event, zod(resendEmailFormSchema));
+		const form = await superValidate(event.request, zod(resendEmailFormSchema));
 
 		if (!form.valid) {
 			return fail(400, {

@@ -53,8 +53,7 @@ export class UserService extends AuthService {
 
 	async requestEmailVerification(email: string): Promise<ApiResponse<boolean>> {
 		try {
-			const output = await this.pb.collection('users').requestVerification(email);
-			console.log('output: ', output);
+			await this.pb.collection('users').requestVerification(email);
 			return {
 				code: 200,
 				data: true

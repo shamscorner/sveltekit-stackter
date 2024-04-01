@@ -301,6 +301,10 @@ type RootTranslation = {
 			 * R​e​s​e​n​d​ ​e​m​a​i​l
 			 */
 			resendEmail: string
+			/**
+			 * E​m​a​i​l​ ​r​e​s​e​n​t​ ​s​u​c​c​e​s​s​f​u​l​l​y​!
+			 */
+			emailResentSuccessfully: string
 		}
 	}
 	errors: {
@@ -599,6 +603,10 @@ export type TranslationFunctions = {
 			 * Resend email
 			 */
 			resendEmail: () => LocalizedString
+			/**
+			 * Email resent successfully!
+			 */
+			emailResentSuccessfully: () => LocalizedString
 		}
 	}
 	errors: {

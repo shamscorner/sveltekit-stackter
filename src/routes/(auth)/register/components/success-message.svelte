@@ -9,7 +9,9 @@
 	import { performFormValidation } from '$lib/services/error.service';
 	import { Icons } from '$lib/components/icons';
 	import { FormButton } from '$lib/components/ui/form';
-	import { userEmail } from '../store';
+	import { toast } from 'svelte-sonner';
+	import { onMount } from 'svelte';
+	import { REGISTER_EMAIL_KEY } from '../../constants';
 
 	export let data: SuperValidated<Infer<ResendEmailFormSchema>>;
 	export let open = false;
@@ -25,15 +27,13 @@
 		onResult: async ({ result }) => {
 			const errorMessage = performFormValidation(result);
 			if (errorMessage) {
-				// TODO: show a toast message error
-				console.log('error', errorMessage);
+				toast.error(errorMessage);
 				isLoadingFormSubmit = false;
 				return;
 			}
 
 			if (result.type === 'success' && result.data) {
-				// TODO: show a toast message success
-				console.log('success', result.data);
+				toast.success($LL.registerPage.successfulRegistration.emailResentSuccessfully());
 			}
 
 			isLoadingFormSubmit = false;
@@ -42,14 +42,20 @@
 
 	const { form: formData, enhance } = form;
 
-	$: $formData.email = $userEmail;
+	onMount(() => {
+		setExistingUserEmail();
+	});
+
+	function setExistingUserEmail() {
+		$formData.email = localStorage.getItem(REGISTER_EMAIL_KEY) || '';
+	}
 
 	function navigateToLogin() {
 		goto('/login');
 	}
 </script>
 
-<Sheet.Root bind:open>
+<Sheet.Root bind:open closeOnOutsideClick={false}>
 	<Sheet.Content side="top">
 		<div class="mx-auto mt-10 max-w-2xl text-center">
 			<Sheet.Header>

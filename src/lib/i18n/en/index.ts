@@ -118,7 +118,8 @@ const en: BaseTranslation = {
 			description:
 				'You have successfully registered. Please check your email to verify your account.',
 			haveNotGetEmail: "Haven't received the email? Click the resend button below.",
-			resendEmail: 'Resend email'
+			resendEmail: 'Resend email',
+			emailResentSuccessfully: 'Email resent successfully!'
 		}
 	},
 

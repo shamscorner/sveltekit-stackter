@@ -14,6 +14,7 @@
 	import Footer from './components/footer/Footer.svelte';
 	import AppBackground from '$lib/components/common/AppBackground.svelte';
 	import { ModeWatcher } from 'mode-watcher';
+	import { Toaster } from '$lib/components/ui/sonner';
 
 	export let data: LayoutData;
 
@@ -51,6 +52,8 @@
 </script>
 
 <ModeWatcher />
+
+<Toaster richColors />
 
 <Analytics />
 
