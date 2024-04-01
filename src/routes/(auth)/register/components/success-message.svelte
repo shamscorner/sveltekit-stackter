@@ -9,12 +9,12 @@
 	import { performFormValidation } from '$lib/services/error.service';
 	import { Icons } from '$lib/components/icons';
 	import { FormButton } from '$lib/components/ui/form';
+	import { userEmail } from '../store';
 
 	export let data: SuperValidated<Infer<ResendEmailFormSchema>>;
 	export let open = false;
 
 	let isLoadingFormSubmit = false;
-	let userEmail = ''; // TODO: get the email from the store
 
 	const form = superForm(data, {
 		validators: zodClient(resendEmailFormSchema),
@@ -40,7 +40,9 @@
 		}
 	});
 
-	const { enhance } = form;
+	const { form: formData, enhance } = form;
+
+	$: $formData.email = $userEmail;
 
 	function navigateToLogin() {
 		goto('/login');
@@ -63,7 +65,7 @@
 			</p>
 			<Sheet.Footer class="mx-auto mt-16 max-w-lg">
 				<form method="POST" action="?/resendEmail" use:enhance class="mr-auto">
-					<input type="hidden" name="email" value={userEmail} />
+					<input type="hidden" name="email" bind:value={$formData.email} />
 					<FormButton disabled={isLoadingFormSubmit} variant="secondary" class="w-full">
 						{#if isLoadingFormSubmit}
 							<Icons.spinner class="mr-2 h-4 w-4 animate-spin" />

@@ -15,6 +15,7 @@
 	import ContinueWithOptions from '../../components/continue-with-options.svelte';
 	import { performFormValidation } from '$lib/services/error.service';
 	import SuccessMessage from './success-message.svelte';
+	import { userEmail } from '../store';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 	export let resendEmailData: SuperValidated<Infer<ResendEmailFormSchema>>;
@@ -49,7 +50,7 @@
 				isSuccessfulRegistration = true;
 				const formData = result.data.form.data;
 
-				// TODO: set the email on store
+				$userEmail = formData.email;
 			}
 
 			isLoadingFormSubmit = false;

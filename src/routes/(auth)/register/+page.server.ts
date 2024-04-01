@@ -66,8 +66,6 @@ export const actions: Actions = {
 
 		const { email } = form.data;
 
-		console.log(email);
-
 		const userService = new UserService(event.locals.pb);
 
 		await userService.requestEmailVerification(email);
