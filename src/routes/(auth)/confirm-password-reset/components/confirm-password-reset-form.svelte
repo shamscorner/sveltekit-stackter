@@ -130,5 +130,9 @@
 		</div>
 	</div>
 
-	<SuccessMessage bind:open={isSuccessful} />
+	<SuccessMessage
+		bind:open={isSuccessful}
+		title={$LL.confirmPasswordResetPage.successfulPasswordReset.title()}
+		description={$LL.confirmPasswordResetPage.successfulPasswordReset.description()}
+	/>
 </div>

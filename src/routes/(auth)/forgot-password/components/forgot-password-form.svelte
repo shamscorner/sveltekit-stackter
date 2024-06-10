@@ -13,7 +13,7 @@
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
 	import { performFormValidation } from '$lib/services/error.service';
-	import SuccessMessage from './success-message.svelte';
+	import SuccessMessage from '$routes/components/success-message.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -111,5 +111,9 @@
 		</div>
 	</div>
 
-	<SuccessMessage bind:open={isSuccessful} />
+	<SuccessMessage
+		bind:open={isSuccessful}
+		title={$LL.forgotPasswordPage.successfulPasswordResetSent.title()}
+		description={$LL.forgotPasswordPage.successfulPasswordResetSent.description()}
+	/>
 </div>
