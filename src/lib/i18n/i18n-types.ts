@@ -357,6 +357,56 @@ type RootTranslation = {
 			description: string
 		}
 	}
+	confirmPasswordResetPage: {
+		/**
+		 * C​o​n​f​i​r​m​ ​P​a​s​s​w​o​r​d​ ​R​e​s​e​t​!
+		 */
+		title: string
+		/**
+		 * C​o​n​f​i​r​m​ ​P​a​s​s​w​o​r​d​ ​R​e​s​e​t
+		 */
+		pageTitle: string
+		/**
+		 * E​n​t​e​r​ ​y​o​u​r​ ​n​e​w​ ​p​a​s​s​w​o​r​d​ ​a​n​d​ ​c​o​n​f​i​r​m​ ​i​t​ ​t​o​ ​r​e​s​e​t​ ​y​o​u​r​ ​p​a​s​s​w​o​r​d​.​ ​P​l​e​a​s​e​ ​c​h​e​c​k​ ​y​o​u​r​ ​e​m​a​i​l​ ​f​o​r​ ​t​h​e​ ​p​a​s​s​w​o​r​d​ ​r​e​s​e​t​ ​l​i​n​k​.
+		 */
+		description: string
+		/**
+		 * C​o​n​f​i​r​m​ ​p​a​s​s​w​o​r​d​ ​r​e​s​e​t​,​ ​R​e​s​e​t​ ​p​a​s​s​w​o​r​d​,​ ​P​a​s​s​w​o​r​d​ ​r​e​c​o​v​e​r​y
+		 */
+		keywords: string
+		form: {
+			/**
+			 * P​a​s​s​w​o​r​d
+			 */
+			password: string
+			/**
+			 * C​o​n​f​i​r​m​ ​P​a​s​s​w​o​r​d
+			 */
+			confirmPassword: string
+			/**
+			 * R​e​s​e​t​ ​P​a​s​s​w​o​r​d
+			 */
+			submit: string
+			/**
+			 * D​o​n​'​t​ ​h​a​v​e​ ​a​n​ ​a​c​c​o​u​n​t​?
+			 */
+			dontHaveAccount: string
+			/**
+			 * A​l​r​e​a​d​y​ ​h​a​v​e​ ​a​n​ ​a​c​c​o​u​n​t​?
+			 */
+			alreadyHaveAccount: string
+		}
+		successfulPasswordReset: {
+			/**
+			 * P​a​s​s​w​o​r​d​ ​r​e​s​e​t​ ​s​u​c​c​e​s​s​f​u​l​!
+			 */
+			title: string
+			/**
+			 * Y​o​u​r​ ​p​a​s​s​w​o​r​d​ ​h​a​s​ ​b​e​e​n​ ​r​e​s​e​t​ ​s​u​c​c​e​s​s​f​u​l​l​y​.​ ​Y​o​u​ ​c​a​n​ ​n​o​w​ ​l​o​g​i​n​ ​w​i​t​h​ ​y​o​u​r​ ​n​e​w​ ​p​a​s​s​w​o​r​d​.
+			 */
+			description: string
+		}
+	}
 	errors: {
 		/**
 		 * S​o​m​e​t​h​i​n​g​ ​w​e​n​t​ ​w​r​o​n​g
@@ -705,6 +755,56 @@ export type TranslationFunctions = {
 			title: () => LocalizedString
 			/**
 			 * An email has been sent to your email address. Please check your email to reset your password.
+			 */
+			description: () => LocalizedString
+		}
+	}
+	confirmPasswordResetPage: {
+		/**
+		 * Confirm Password Reset!
+		 */
+		title: () => LocalizedString
+		/**
+		 * Confirm Password Reset
+		 */
+		pageTitle: () => LocalizedString
+		/**
+		 * Enter your new password and confirm it to reset your password. Please check your email for the password reset link.
+		 */
+		description: () => LocalizedString
+		/**
+		 * Confirm password reset, Reset password, Password recovery
+		 */
+		keywords: () => LocalizedString
+		form: {
+			/**
+			 * Password
+			 */
+			password: () => LocalizedString
+			/**
+			 * Confirm Password
+			 */
+			confirmPassword: () => LocalizedString
+			/**
+			 * Reset Password
+			 */
+			submit: () => LocalizedString
+			/**
+			 * Don't have an account?
+			 */
+			dontHaveAccount: () => LocalizedString
+			/**
+			 * Already have an account?
+			 */
+			alreadyHaveAccount: () => LocalizedString
+		}
+		successfulPasswordReset: {
+			/**
+			 * Password reset successful!
+			 */
+			title: () => LocalizedString
+			/**
+			 * Your password has been reset successfully. You can now login with your new password.
 			 */
 			description: () => LocalizedString
 		}

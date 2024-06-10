@@ -3,7 +3,7 @@ import { superValidate } from 'sveltekit-superforms/server';
 import { formSchema } from './schema';
 import { fail } from '@sveltejs/kit';
 import { zod } from 'sveltekit-superforms/adapters';
-import { UserService } from '../services/user.pocketbase.service';
+import { UserService } from '$routes/(auth)/services/user.pocketbase.service';
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -21,19 +21,23 @@ export const actions: Actions = {
 			});
 		}
 
-		const { email } = form.data;
+		const { token } = event.params;
 
-		const userService = new UserService(event.locals.pb);
+		const { password, confirmPassword } = form.data;
+		console.log('form.data', form.data);
+		console.log('token', token);
 
-		const response = await userService.requestPasswordReset(email);
+		// const userService = new UserService(event.locals.pb);
 
-		if (response.code !== 200) {
-			const { code, error } = response;
-			return fail(code, {
-				form,
-				error: error?.message
-			});
-		}
+		// const response = await userService.confirmPasswordReset(token, password, confirmPassword);
+
+		// if (response.code !== 200) {
+		// 	const { code, error } = response;
+		// 	return fail(code, {
+		// 		form,
+		// 		error: error?.message
+		// 	});
+		// }
 
 		return { form };
 	}

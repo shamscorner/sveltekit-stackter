@@ -3,7 +3,7 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { Heading } from '$lib/components/ui/heading';
 	import { Input } from '$lib/components/ui/input';
-	import { formSchema, type FormSchema } from '../schema';
+	import { formSchema, type FormSchema } from '../[token]/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Button } from '$lib/components/ui/button';
@@ -13,7 +13,8 @@
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
 	import { performFormValidation } from '$lib/services/error.service';
-	import SuccessMessage from './success-message.svelte';
+	import SuccessMessage from '$routes/components/success-message.svelte';
+	import { goto } from '$app/navigation';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -72,7 +73,7 @@
 
 <div>
 	<Heading class="mx-auto text-center">
-		{$LL.forgotPasswordPage.title()}
+		{$LL.confirmPasswordResetPage.title()}
 	</Heading>
 	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
 		<form method="POST" use:enhance class="space-y-4">
@@ -81,10 +82,28 @@
 			<input type="hidden" name="referralSiteUrl" bind:value={$formData.referralSiteUrl} />
 			<input type="hidden" name="isIncognitoMode" bind:value={$formData.isIncognitoMode} />
 
-			<Form.Field {form} name="email">
+			<Form.Field {form} name="password">
 				<Form.Control let:attrs>
-					<Form.Label>{$LL.forgotPasswordPage.form.email()}</Form.Label>
-					<Input {...attrs} bind:value={$formData.email} placeholder="john@example.com" />
+					<Form.Label>{$LL.confirmPasswordResetPage.form.password()}</Form.Label>
+					<Input
+						{...attrs}
+						type="password"
+						placeholder="********"
+						bind:value={$formData.password}
+					/>
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+
+			<Form.Field {form} name="confirmPassword">
+				<Form.Control let:attrs>
+					<Form.Label>{$LL.confirmPasswordResetPage.form.confirmPassword()}</Form.Label>
+					<Input
+						{...attrs}
+						type="password"
+						placeholder="********"
+						bind:value={$formData.confirmPassword}
+					/>
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>
@@ -97,16 +116,16 @@
 				{#if isLoadingFormSubmit}
 					<Icons.spinner class="mr-2 h-4 w-4 animate-spin" />
 				{/if}
-				{$LL.forgotPasswordPage.form.submit()}
+				{$LL.confirmPasswordResetPage.form.submit()}
 			</Form.Button>
 		</form>
 
 		<div class="text-center">
 			<Button href="/login" variant="link">
-				{$LL.forgotPasswordPage.form.alreadyHaveAccount()}
+				{$LL.confirmPasswordResetPage.form.alreadyHaveAccount()}
 			</Button>
 			<Button href="/register" variant="link">
-				{$LL.forgotPasswordPage.form.dontHaveAccount()}
+				{$LL.confirmPasswordResetPage.form.dontHaveAccount()}
 			</Button>
 		</div>
 	</div>

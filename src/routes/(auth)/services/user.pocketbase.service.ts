@@ -63,6 +63,35 @@ export class UserService extends AuthService {
 		}
 	}
 
+	async requestPasswordReset(email: string): Promise<ApiResponse<boolean>> {
+		try {
+			await this.pb.collection('users').requestPasswordReset(email);
+			return {
+				code: 200,
+				data: true
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
+	}
+
+	async confirmPasswordReset(
+		token: string,
+		password: string,
+		confirmPassword: string
+	): Promise<ApiResponse<boolean>> {
+		try {
+			await this.pb.collection('users').confirmPasswordReset(token, password, confirmPassword);
+
+			return {
+				code: 200,
+				data: true
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
+	}
+
 	parseErrorFromErrorObject(error) {
 		const errorObj = error as ClientResponseError;
 

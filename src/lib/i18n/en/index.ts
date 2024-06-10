@@ -145,6 +145,28 @@ const en: BaseTranslation = {
 		}
 	},
 
+	confirmPasswordResetPage: {
+		title: 'Confirm Password Reset!',
+		pageTitle: 'Confirm Password Reset',
+		description:
+			'Enter your new password and confirm it to reset your password. Please check your email for the password reset link.',
+		keywords: 'Confirm password reset, Reset password, Password recovery',
+
+		form: {
+			password: 'Password',
+			confirmPassword: 'Confirm Password',
+			submit: 'Reset Password',
+			dontHaveAccount: "Don't have an account?",
+			alreadyHaveAccount: 'Already have an account?'
+		},
+
+		successfulPasswordReset: {
+			title: 'Password reset successful!',
+			description:
+				'Your password has been reset successfully. You can now login with your new password.'
+		}
+	},
+
 	errors: {
 		somethingWentWrong: 'Something went wrong'
 	}
