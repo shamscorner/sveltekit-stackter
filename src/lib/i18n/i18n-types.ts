@@ -307,6 +307,42 @@ type RootTranslation = {
 			emailResentSuccessfully: string
 		}
 	}
+	forgotPasswordPage: {
+		/**
+		 * F​o​r​g​o​t​ ​P​a​s​s​w​o​r​d​!
+		 */
+		title: string
+		/**
+		 * F​o​r​g​o​t​ ​P​a​s​s​w​o​r​d
+		 */
+		pageTitle: string
+		/**
+		 * F​o​r​g​o​t​ ​y​o​u​r​ ​p​a​s​s​w​o​r​d​?​ ​N​o​ ​w​o​r​r​i​e​s​!​ ​E​n​t​e​r​ ​y​o​u​r​ ​e​m​a​i​l​ ​a​d​d​r​e​s​s​ ​a​n​d​ ​w​e​ ​w​i​l​l​ ​s​e​n​d​ ​y​o​u​ ​a​ ​l​i​n​k​ ​t​o​ ​r​e​s​e​t​ ​y​o​u​r​ ​p​a​s​s​w​o​r​d​.
+		 */
+		description: string
+		/**
+		 * F​o​r​g​o​t​ ​p​a​s​s​w​o​r​d​,​ ​R​e​s​e​t​ ​p​a​s​s​w​o​r​d​,​ ​P​a​s​s​w​o​r​d​ ​r​e​c​o​v​e​r​y
+		 */
+		keywords: string
+		form: {
+			/**
+			 * E​m​a​i​l
+			 */
+			email: string
+			/**
+			 * S​u​b​m​i​t
+			 */
+			submit: string
+			/**
+			 * D​o​n​'​t​ ​h​a​v​e​ ​a​n​ ​a​c​c​o​u​n​t​?
+			 */
+			dontHaveAccount: string
+			/**
+			 * A​l​r​e​a​d​y​ ​h​a​v​e​ ​a​n​ ​a​c​c​o​u​n​t​?
+			 */
+			alreadyHaveAccount: string
+		}
+	}
 	errors: {
 		/**
 		 * S​o​m​e​t​h​i​n​g​ ​w​e​n​t​ ​w​r​o​n​g
@@ -607,6 +643,42 @@ export type TranslationFunctions = {
 			 * Email resent successfully!
 			 */
 			emailResentSuccessfully: () => LocalizedString
+		}
+	}
+	forgotPasswordPage: {
+		/**
+		 * Forgot Password!
+		 */
+		title: () => LocalizedString
+		/**
+		 * Forgot Password
+		 */
+		pageTitle: () => LocalizedString
+		/**
+		 * Forgot your password? No worries! Enter your email address and we will send you a link to reset your password.
+		 */
+		description: () => LocalizedString
+		/**
+		 * Forgot password, Reset password, Password recovery
+		 */
+		keywords: () => LocalizedString
+		form: {
+			/**
+			 * Email
+			 */
+			email: () => LocalizedString
+			/**
+			 * Submit
+			 */
+			submit: () => LocalizedString
+			/**
+			 * Don't have an account?
+			 */
+			dontHaveAccount: () => LocalizedString
+			/**
+			 * Already have an account?
+			 */
+			alreadyHaveAccount: () => LocalizedString
 		}
 	}
 	errors: {

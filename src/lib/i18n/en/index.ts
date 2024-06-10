@@ -123,6 +123,21 @@ const en: BaseTranslation = {
 		}
 	},
 
+	forgotPasswordPage: {
+		title: 'Forgot Password!',
+		pageTitle: 'Forgot Password',
+		description:
+			'Forgot your password? No worries! Enter your email address and we will send you a link to reset your password.',
+		keywords: 'Forgot password, Reset password, Password recovery',
+
+		form: {
+			email: 'Email',
+			submit: 'Submit',
+			dontHaveAccount: "Don't have an account?",
+			alreadyHaveAccount: 'Already have an account?'
+		}
+	},
+
 	errors: {
 		somethingWentWrong: 'Something went wrong'
 	}
