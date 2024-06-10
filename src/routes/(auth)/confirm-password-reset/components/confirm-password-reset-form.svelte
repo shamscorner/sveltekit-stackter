@@ -135,5 +135,6 @@
 		bind:open={isSuccessful}
 		title={$LL.confirmPasswordResetPage.successfulPasswordReset.title()}
 		description={$LL.confirmPasswordResetPage.successfulPasswordReset.description()}
+		on:close={() => goto('/login')}
 	/>
 </div>
