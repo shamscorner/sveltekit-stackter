@@ -11,7 +11,8 @@ const common = {
 	show: 'Show',
 	hide: 'Hide',
 	or: 'Or',
-	toggleTheme: 'Toggle theme'
+	toggleTheme: 'Toggle theme',
+	close: 'Close'
 };
 
 const en: BaseTranslation = {
@@ -135,6 +136,12 @@ const en: BaseTranslation = {
 			submit: 'Submit',
 			dontHaveAccount: "Don't have an account?",
 			alreadyHaveAccount: 'Already have an account?'
+		},
+
+		successfulPasswordResetSent: {
+			title: 'Password reset email sent!',
+			description:
+				'An email has been sent to your email address. Please check your email to reset your password.'
 		}
 	},
 

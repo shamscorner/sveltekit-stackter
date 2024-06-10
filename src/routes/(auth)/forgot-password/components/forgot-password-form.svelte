@@ -13,8 +13,7 @@
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
 	import { performFormValidation } from '$lib/services/error.service';
-	// import SuccessMessage from './success-message.svelte';
-	import { REGISTER_EMAIL_KEY } from '../../constants';
+	import SuccessMessage from './success-message.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -112,5 +111,5 @@
 		</div>
 	</div>
 
-	<!-- <SuccessMessage bind:open={isSuccessful} data={resendEmailData} /> -->
+	<SuccessMessage bind:open={isSuccessful} />
 </div>

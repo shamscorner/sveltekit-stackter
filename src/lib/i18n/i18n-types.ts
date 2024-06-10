@@ -63,6 +63,10 @@ type RootTranslation = {
 		 * T​o​g​g​l​e​ ​t​h​e​m​e
 		 */
 		toggleTheme: string
+		/**
+		 * C​l​o​s​e
+		 */
+		close: string
 	}
 	appLogo: {
 		/**
@@ -342,6 +346,16 @@ type RootTranslation = {
 			 */
 			alreadyHaveAccount: string
 		}
+		successfulPasswordResetSent: {
+			/**
+			 * P​a​s​s​w​o​r​d​ ​r​e​s​e​t​ ​e​m​a​i​l​ ​s​e​n​t​!
+			 */
+			title: string
+			/**
+			 * A​n​ ​e​m​a​i​l​ ​h​a​s​ ​b​e​e​n​ ​s​e​n​t​ ​t​o​ ​y​o​u​r​ ​e​m​a​i​l​ ​a​d​d​r​e​s​s​.​ ​P​l​e​a​s​e​ ​c​h​e​c​k​ ​y​o​u​r​ ​e​m​a​i​l​ ​t​o​ ​r​e​s​e​t​ ​y​o​u​r​ ​p​a​s​s​w​o​r​d​.
+			 */
+			description: string
+		}
 	}
 	errors: {
 		/**
@@ -401,6 +415,10 @@ export type TranslationFunctions = {
 		 * Toggle theme
 		 */
 		toggleTheme: () => LocalizedString
+		/**
+		 * Close
+		 */
+		close: () => LocalizedString
 	}
 	appLogo: {
 		/**
@@ -679,6 +697,16 @@ export type TranslationFunctions = {
 			 * Already have an account?
 			 */
 			alreadyHaveAccount: () => LocalizedString
+		}
+		successfulPasswordResetSent: {
+			/**
+			 * Password reset email sent!
+			 */
+			title: () => LocalizedString
+			/**
+			 * An email has been sent to your email address. Please check your email to reset your password.
+			 */
+			description: () => LocalizedString
 		}
 	}
 	errors: {
