@@ -24,20 +24,18 @@ export const actions: Actions = {
 		const { token } = event.params;
 
 		const { password, confirmPassword } = form.data;
-		console.log('form.data', form.data);
-		console.log('token', token);
 
-		// const userService = new UserService(event.locals.pb);
+		const userService = new UserService(event.locals.pb);
 
-		// const response = await userService.confirmPasswordReset(token, password, confirmPassword);
+		const response = await userService.confirmPasswordReset(token, password, confirmPassword);
 
-		// if (response.code !== 200) {
-		// 	const { code, error } = response;
-		// 	return fail(code, {
-		// 		form,
-		// 		error: error?.message
-		// 	});
-		// }
+		if (response.code !== 200) {
+			const { code, error } = response;
+			return fail(code, {
+				form,
+				error: error?.message
+			});
+		}
 
 		return { form };
 	}

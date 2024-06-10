@@ -43,6 +43,7 @@
 		onResult: async ({ result }) => {
 			const errorMessage = performFormValidation(result);
 			if (errorMessage) {
+				errorResponse = errorMessage;
 				isLoadingFormSubmit = false;
 				return;
 			}

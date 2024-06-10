@@ -34,8 +34,12 @@ export function parseErrorFromResponse(result: {
 
 export function performFormValidation(result: ActionResult) {
 	console.log(result);
+
 	if (result.type === 'failure' && result.data) {
-		const formData = result.data.form;
+		const { error, form: formData } = result.data;
+
+		if (error) return error;
+
 		const errors = formData.errors;
 		let nestedMessage = '';
 
