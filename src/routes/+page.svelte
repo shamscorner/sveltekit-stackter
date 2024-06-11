@@ -7,6 +7,8 @@
 	import { Icons } from '$lib/components/icons';
 	import LottieAnimation from '$lib/components/common/LottieAnimation.svelte';
 	import UserHiAnimationAsset from '$lib/assets/animations/user-hi.json';
+	import LoginButton from './auth/components/login-button.svelte';
+	import { Heading } from '$lib/components/ui/heading';
 </script>
 
 <Seo title={$LL.title()} description={$LL.description()} keywords={$LL.keywords()} />
@@ -108,7 +110,7 @@
 				<p class="text-lg font-semibold">
 					{$LL.homepage.checkFormSubmission()}
 				</p>
-				<Button href="/login">
+				<Button href="/auth/login">
 					{$LL.homepage.goToLogin()}
 					<Icons.arrowRight class="ml-2 h-4 w-4" />
 				</Button>
@@ -122,6 +124,16 @@
 
 			<div class="space-y-8 text-center">
 				<Image src={LandingImage} alt={$LL.appName()} loading="eager" class="mx-auto mt-16 w-96" />
+			</div>
+
+			<div class="mt-16 space-y-5 text-center">
+				<Heading element="h2" class="mx-auto text-center">
+					{$LL.homepage.nextAuth5()}
+				</Heading>
+
+				<LoginButton>
+					{$LL.common.login()}
+				</LoginButton>
 			</div>
 		</div>
 	</div>

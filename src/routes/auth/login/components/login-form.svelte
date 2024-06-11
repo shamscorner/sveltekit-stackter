@@ -146,10 +146,10 @@
 		<ContinueWithOptions {isLoadingGoogleAuth} {isLoadingFormSubmit} />
 
 		<div class="text-center">
-			<Button href="/register" variant="link">
+			<Button href="/auth/register" variant="link">
 				{$LL.loginPage.form.dontHaveAccount()}
 			</Button>
-			<Button href="/forgot-password" variant="link">
+			<Button href="/auth/forgot-password" variant="link">
 				{$LL.loginPage.form.forgotPassword()}
 			</Button>
 		</div>

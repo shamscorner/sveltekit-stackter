@@ -122,10 +122,10 @@
 		</form>
 
 		<div class="text-center">
-			<Button href="/login" variant="link">
+			<Button href="/auth/login" variant="link">
 				{$LL.confirmPasswordResetPage.form.alreadyHaveAccount()}
 			</Button>
-			<Button href="/register" variant="link">
+			<Button href="/auth/register" variant="link">
 				{$LL.confirmPasswordResetPage.form.dontHaveAccount()}
 			</Button>
 		</div>
@@ -135,6 +135,6 @@
 		bind:open={isSuccessful}
 		title={$LL.confirmPasswordResetPage.successfulPasswordReset.title()}
 		description={$LL.confirmPasswordResetPage.successfulPasswordReset.description()}
-		on:close={() => goto('/login')}
+		on:close={() => goto('/auth/login')}
 	/>
 </div>

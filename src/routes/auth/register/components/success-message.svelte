@@ -51,7 +51,7 @@
 	}
 
 	function navigateToLogin() {
-		goto('/login');
+		goto('/auth/login');
 	}
 </script>
 

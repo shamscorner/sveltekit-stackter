@@ -196,6 +196,10 @@ type RootTranslation = {
 		 * C​h​e​c​k​ ​G​i​t​h​u​b​ ​R​e​p​o
 		 */
 		checkGithub: string
+		/**
+		 * N​e​x​t​A​u​t​h​ ​5
+		 */
+		nextAuth5: string
 	}
 	loginPage: {
 		/**
@@ -598,6 +602,10 @@ export type TranslationFunctions = {
 		 * Check Github Repo
 		 */
 		checkGithub: () => LocalizedString
+		/**
+		 * NextAuth 5
+		 */
+		nextAuth5: () => LocalizedString
 	}
 	loginPage: {
 		/**

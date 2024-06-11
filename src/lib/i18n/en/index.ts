@@ -77,7 +77,9 @@ const en: BaseTranslation = {
 
 		emojiPicker: 'Emoji picker',
 
-		checkGithub: 'Check Github Repo'
+		checkGithub: 'Check Github Repo',
+
+		nextAuth5: 'NextAuth 5'
 	},
 
 	loginPage: {

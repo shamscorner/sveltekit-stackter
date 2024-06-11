@@ -3,7 +3,7 @@ import { superValidate } from 'sveltekit-superforms/server';
 import { formSchema } from './schema';
 import { fail } from '@sveltejs/kit';
 import { zod } from 'sveltekit-superforms/adapters';
-import { UserService } from '$routes/(auth)/services/user.pocketbase.service';
+import { UserService } from '$routes/auth/services/user.pocketbase.service';
 
 export const load: PageServerLoad = async () => {
 	return {
