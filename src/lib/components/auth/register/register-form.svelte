@@ -5,7 +5,6 @@
 	import { formSchema, type FormSchema, type ResendEmailFormSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { Button } from '$lib/components/ui/button';
 	import { Icons } from '$lib/components/icons';
 	import type { AnalyticsDto } from '$lib/types';
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
@@ -20,7 +19,6 @@
 	export let resendEmailData: SuperValidated<Infer<ResendEmailFormSchema>>;
 
 	let isLoadingFormSubmit = false;
-	let isLoadingGoogleAuth = false;
 	let errorResponse = '';
 
 	let analytics: AnalyticsDto = {
