@@ -109,9 +109,9 @@
 				<Form.FieldErrors />
 			</Form.Field>
 
-			<Form.Error show={!!errorResponse}>
+			<Form.Message show={!!errorResponse}>
 				{errorResponse || $LL.errors.somethingWentWrong()}
-			</Form.Error>
+			</Form.Message>
 
 			<Form.Button disabled={isLoadingFormSubmit} class="w-full">
 				{#if isLoadingFormSubmit}
