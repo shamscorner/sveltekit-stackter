@@ -122,7 +122,7 @@
 				<Label for="remember-me">{$LL.loginPage.form.rememberMe()}</Label>
 			</div>
 
-			<Form.Message show={!!errorResponse}>
+			<Form.Message show={!!errorResponse} type="error">
 				{errorResponse || $LL.errors.somethingWentWrong()}
 			</Form.Message>
 

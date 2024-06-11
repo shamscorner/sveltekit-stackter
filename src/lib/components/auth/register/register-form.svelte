@@ -121,7 +121,7 @@
 				<Form.FieldErrors />
 			</Form.Field>
 
-			<Form.Message show={!!errorResponse}>
+			<Form.Message show={!!errorResponse} type="error">
 				{errorResponse || $LL.errors.somethingWentWrong()}
 			</Form.Message>
 
