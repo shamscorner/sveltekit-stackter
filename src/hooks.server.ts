@@ -5,6 +5,7 @@ import { detectLocale } from '$lib/i18n/i18n-util.js';
 import { sequence } from '@sveltejs/kit/hooks';
 import PocketBase from 'pocketbase';
 import { POCKETBASE_URL } from '$env/static/private';
+import { handle as authHandle } from './auth';
 
 async function urlRewrite({ event, resolve }) {
 	if (event.url.pathname.match(/[A-Z]/)) {
@@ -46,4 +47,4 @@ async function initPocketbase({ event, resolve }) {
 	return response;
 }
 
-export const handle = sequence(urlRewrite, i18n, initPocketbase) satisfies Handle;
+export const handle = sequence(urlRewrite, i18n, initPocketbase, authHandle) satisfies Handle;

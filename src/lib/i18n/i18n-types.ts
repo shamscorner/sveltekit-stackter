@@ -251,7 +251,7 @@ type RootTranslation = {
 	}
 	registerPage: {
 		/**
-		 * L​e​t​'​s​ ​d​o​ ​a​w​e​s​o​m​e​!
+		 * L​e​t​'​s​ ​g​e​t​ ​y​o​u​ ​o​n​b​o​a​r​d​!
 		 */
 		title: string
 		/**
@@ -280,7 +280,7 @@ type RootTranslation = {
 			 */
 			password: string
 			/**
-			 * R​e​g​i​s​t​e​r
+			 * C​r​e​a​t​e​ ​a​n​ ​a​c​c​o​u​n​t
 			 */
 			submit: string
 			/**
@@ -657,7 +657,7 @@ export type TranslationFunctions = {
 	}
 	registerPage: {
 		/**
-		 * Let's do awesome!
+		 * Let's get you onboard!
 		 */
 		title: () => LocalizedString
 		/**
@@ -686,7 +686,7 @@ export type TranslationFunctions = {
 			 */
 			password: () => LocalizedString
 			/**
-			 * Register
+			 * Create an account
 			 */
 			submit: () => LocalizedString
 			/**

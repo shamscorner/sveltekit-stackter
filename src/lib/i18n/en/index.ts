@@ -101,7 +101,7 @@ const en: BaseTranslation = {
 	},
 
 	registerPage: {
-		title: "Let's do awesome!",
+		title: "Let's get you onboard!",
 		pageTitle: 'Register',
 		description:
 			'Create an account and experience learning that you have never experienced before.',
@@ -111,7 +111,7 @@ const en: BaseTranslation = {
 			name: 'Name',
 			email: 'Email',
 			password: 'Password',
-			submit: 'Register',
+			submit: 'Create an account',
 			continueWith: 'Or continue with',
 			alreadyHaveAccount: 'Already have an account?'
 		},
