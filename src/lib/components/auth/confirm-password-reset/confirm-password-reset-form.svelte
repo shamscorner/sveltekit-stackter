@@ -13,7 +13,7 @@
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
 	import { performFormValidation } from '$lib/services/error.service';
-	import SuccessMessage from '$routes/components/success-message.svelte';
+	import SuccessMessage from '$lib/components/auth/success-message.svelte';
 	import { goto } from '$app/navigation';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
