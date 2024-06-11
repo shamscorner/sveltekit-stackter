@@ -5,13 +5,13 @@
 	import { goto } from '$app/navigation';
 	import { superForm, type SuperValidated } from 'sveltekit-superforms';
 	import { zodClient, type Infer } from 'sveltekit-superforms/adapters';
-	import { resendEmailFormSchema, type ResendEmailFormSchema } from '../schema';
+	import { resendEmailFormSchema, type ResendEmailFormSchema } from './schema';
 	import { performFormValidation } from '$lib/services/error.service';
 	import { Icons } from '$lib/components/icons';
 	import { FormButton } from '$lib/components/ui/form';
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
-	import { REGISTER_EMAIL_KEY } from '../../constants';
+	import { REGISTER_EMAIL_KEY } from '../constants';
 
 	export let data: SuperValidated<Infer<ResendEmailFormSchema>>;
 	export let open = false;

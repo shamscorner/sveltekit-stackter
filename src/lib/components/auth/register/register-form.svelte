@@ -16,6 +16,7 @@
 	import { performFormValidation } from '$lib/services/error.service';
 	import SuccessMessage from './success-message.svelte';
 	import { REGISTER_EMAIL_KEY } from '$lib/components/auth/constants';
+	import CardWrapper from '../card-wrapper.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 	export let resendEmailData: SuperValidated<Infer<ResendEmailFormSchema>>;
@@ -82,11 +83,13 @@
 	}
 </script>
 
-<div>
-	<Heading class="mx-auto text-center">
-		{$LL.registerPage.title()}
-	</Heading>
-	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
+<CardWrapper
+	headerLabel={$LL.registerPage.title()}
+	backButtonLabel={$LL.registerPage.form.alreadyHaveAccount()}
+	backButtonHref="/auth/login"
+	showSocial
+>
+	<div class="grid gap-6">
 		<form method="POST" action="?/register" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
 			<input type="hidden" name="landingPage" bind:value={$formData.landingPage} />
@@ -133,15 +136,7 @@
 				{$LL.registerPage.form.submit()}
 			</Form.Button>
 		</form>
-
-		<ContinueWithOptions {isLoadingGoogleAuth} {isLoadingFormSubmit} />
-
-		<div class="text-center">
-			<Button href="/auth/login" variant="link">
-				{$LL.registerPage.form.alreadyHaveAccount()}
-			</Button>
-		</div>
 	</div>
 
 	<SuccessMessage bind:open={isSuccessfulRegistration} data={resendEmailData} />
-</div>
+</CardWrapper>
