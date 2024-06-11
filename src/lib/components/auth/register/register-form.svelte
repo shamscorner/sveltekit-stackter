@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form';
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import { Heading } from '$lib/components/ui/heading';
 	import { Input } from '$lib/components/ui/input';
 	import { formSchema, type FormSchema, type ResendEmailFormSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
@@ -12,7 +11,6 @@
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
-	import ContinueWithOptions from '../continue-with-options.svelte';
 	import { performFormValidation } from '$lib/services/error.service';
 	import SuccessMessage from './success-message.svelte';
 	import { REGISTER_EMAIL_KEY } from '$lib/components/auth/constants';
