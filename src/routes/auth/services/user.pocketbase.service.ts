@@ -1,5 +1,5 @@
 import Pocketbase, { ClientResponseError } from 'pocketbase';
-import { AuthService } from './base';
+import { AuthService } from '$lib/components/auth/services';
 import type { ApiResponse } from '$lib/types';
 import { UserRole, type User, type UserDto } from '$lib/types/user.type';
 import { capitalizeFirstLetter } from '$lib/helpers';
