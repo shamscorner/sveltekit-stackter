@@ -2,7 +2,7 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import Seo from '$lib/components/common/SEO.svelte';
 	import type { PageData } from './$types';
-	import RegisterForm from './components/register-form.svelte';
+	import RegisterForm from '$lib/components/auth/register/register-form.svelte';
 
 	export let data: PageData;
 </script>
@@ -13,8 +13,4 @@
 	keywords={$LL.registerPage.keywords()}
 />
 
-<main class="relative min-h-screen p-5 py-6 sm:px-8">
-	<div class="mx-auto my-12 grid max-w-5xl place-items-center">
-		<RegisterForm data={data.registerForm} resendEmailData={data.resendEmailForm} />
-	</div>
-</main>
+<RegisterForm data={data.registerForm} resendEmailData={data.resendEmailForm} />

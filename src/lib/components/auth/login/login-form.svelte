@@ -3,57 +3,62 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { Heading } from '$lib/components/ui/heading';
 	import { Input } from '$lib/components/ui/input';
-	import { formSchema, type FormSchema, type ResendEmailFormSchema } from '../schema';
+	import { formSchema, type FormSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Button } from '$lib/components/ui/button';
 	import { Icons } from '$lib/components/icons';
+	import { getEmptyErrorResponse, type ErrorResponseType } from '$lib/services/error.service';
 	import type { AnalyticsDto } from '$lib/types';
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
-	import ContinueWithOptions from '../../components/continue-with-options.svelte';
-	import { performFormValidation } from '$lib/services/error.service';
-	import SuccessMessage from './success-message.svelte';
-	import { REGISTER_EMAIL_KEY } from '../../constants';
+	import { deleteLastLoginEmail, getLastLoginEmail, saveLastLoginEmail } from './utils';
+	import { Label } from '$lib/components/ui/label';
+	import { Switch } from '$lib/components/ui/switch';
+	import ContinueWithOptions from '../continue-with-options.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
-	export let resendEmailData: SuperValidated<Infer<ResendEmailFormSchema>>;
 
 	let isLoadingFormSubmit = false;
 	let isLoadingGoogleAuth = false;
-	let errorResponse = '';
+	let errorResponse: ErrorResponseType | null = null;
+	let rememberEmail = false;
 
 	let analytics: AnalyticsDto = {
 		browserHash: '',
 		landingPage: PUBLIC_LANDING_PAGE,
 		isIncognitoMode: false,
-		referralSiteUrl: null
+		referralSiteUrl: undefined
 	};
-
-	let isSuccessfulRegistration = false;
 
 	const form = superForm(data, {
 		validators: zodClient(formSchema),
-		invalidateAll: false,
 		onSubmit: () => {
-			errorResponse = '';
+			errorResponse = null;
 			isLoadingFormSubmit = true;
 		},
+		onError: () => {
+			isLoadingFormSubmit = false;
+			errorResponse = getEmptyErrorResponse($LL.errors.somethingWentWrong());
+		},
 		onResult: async ({ result }) => {
-			const errorMessage = performFormValidation(result);
-			if (errorMessage) {
-				errorResponse = errorMessage;
+			if (result.type !== 'success' || !result.data) {
 				isLoadingFormSubmit = false;
 				return;
 			}
 
-			if (result.type === 'success' && result.data) {
-				isSuccessfulRegistration = true;
-
-				const resultFormData = result.data.form.data;
-				saveUserEmail(resultFormData.email);
+			const formData = result.data.form;
+			if (!formData.valid) {
+				isLoadingFormSubmit = false;
+				return;
 			}
+
+			performRememberMe();
+
+			console.log('Form data:', formData);
+
+			// TODO: do something after the form submission
 
 			isLoadingFormSubmit = false;
 		}
@@ -65,45 +70,44 @@
 		formData.update((d) => ({
 			...d,
 			browserHash: analytics.browserHash,
-			landingPage: analytics.landingPage || PUBLIC_LANDING_PAGE,
-			referralSiteUrl: analytics.referralSiteUrl || '',
 			isIncognitoMode: analytics.isIncognitoMode
 		}));
 	}
 
 	onMount(async () => {
+		const lastLoginEmail = getLastLoginEmail();
+
+		if (lastLoginEmail) {
+			$formData.email = lastLoginEmail;
+			rememberEmail = true;
+		}
+
 		if (navigator) {
 			analytics = await getSiteAnalytics();
 		}
 	});
 
-	function saveUserEmail(email) {
-		localStorage.setItem(REGISTER_EMAIL_KEY, email);
+	function performRememberMe() {
+		if (rememberEmail) {
+			saveLastLoginEmail($formData.email);
+			return;
+		}
+		deleteLastLoginEmail();
 	}
 </script>
 
 <div>
 	<Heading class="mx-auto text-center">
-		{$LL.registerPage.title()}
+		{$LL.loginPage.title()}
 	</Heading>
 	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
-		<form method="POST" action="?/register" use:enhance class="space-y-4">
+		<form method="POST" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
-			<input type="hidden" name="landingPage" bind:value={$formData.landingPage} />
-			<input type="hidden" name="referralSiteUrl" bind:value={$formData.referralSiteUrl} />
 			<input type="hidden" name="isIncognitoMode" bind:value={$formData.isIncognitoMode} />
-
-			<Form.Field {form} name="name">
-				<Form.Control let:attrs>
-					<Form.Label>{$LL.registerPage.form.name()}</Form.Label>
-					<Input {...attrs} bind:value={$formData.name} placeholder="John Doe" />
-				</Form.Control>
-				<Form.FieldErrors />
-			</Form.Field>
 
 			<Form.Field {form} name="email">
 				<Form.Control let:attrs>
-					<Form.Label>{$LL.registerPage.form.email()}</Form.Label>
+					<Form.Label>{$LL.loginPage.form.email()}</Form.Label>
 					<Input {...attrs} bind:value={$formData.email} placeholder="john@example.com" />
 				</Form.Control>
 				<Form.FieldErrors />
@@ -111,7 +115,7 @@
 
 			<Form.Field {form} name="password">
 				<Form.Control let:attrs>
-					<Form.Label>{$LL.registerPage.form.password()}</Form.Label>
+					<Form.Label>{$LL.loginPage.form.password()}</Form.Label>
 					<Input
 						{...attrs}
 						type="password"
@@ -122,26 +126,32 @@
 				<Form.FieldErrors />
 			</Form.Field>
 
-			<Form.Error show={!!errorResponse}>
-				{errorResponse || $LL.errors.somethingWentWrong()}
+			<div class="flex items-center space-x-4">
+				<Switch id="remember-me" bind:checked={rememberEmail} />
+				<Label for="remember-me">{$LL.loginPage.form.rememberMe()}</Label>
+			</div>
+
+			<Form.Error show={!!(errorResponse && errorResponse.message)}>
+				{errorResponse?.message || $LL.errors.somethingWentWrong()}
 			</Form.Error>
 
 			<Form.Button disabled={isLoadingFormSubmit} class="w-full">
 				{#if isLoadingFormSubmit}
 					<Icons.spinner class="mr-2 h-4 w-4 animate-spin" />
 				{/if}
-				{$LL.registerPage.form.submit()}
+				{$LL.loginPage.form.submit()}
 			</Form.Button>
 		</form>
 
 		<ContinueWithOptions {isLoadingGoogleAuth} {isLoadingFormSubmit} />
 
 		<div class="text-center">
-			<Button href="/auth/login" variant="link">
-				{$LL.registerPage.form.alreadyHaveAccount()}
+			<Button href="/auth/register" variant="link">
+				{$LL.loginPage.form.dontHaveAccount()}
+			</Button>
+			<Button href="/auth/forgot-password" variant="link">
+				{$LL.loginPage.form.forgotPassword()}
 			</Button>
 		</div>
 	</div>
-
-	<SuccessMessage bind:open={isSuccessfulRegistration} data={resendEmailData} />
 </div>

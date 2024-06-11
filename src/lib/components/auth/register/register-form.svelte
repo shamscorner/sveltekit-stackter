@@ -3,7 +3,7 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { Heading } from '$lib/components/ui/heading';
 	import { Input } from '$lib/components/ui/input';
-	import { formSchema, type FormSchema } from '../[token]/schema';
+	import { formSchema, type FormSchema, type ResendEmailFormSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Button } from '$lib/components/ui/button';
@@ -12,13 +12,16 @@
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
+	import ContinueWithOptions from '../continue-with-options.svelte';
 	import { performFormValidation } from '$lib/services/error.service';
-	import SuccessMessage from '$routes/components/success-message.svelte';
-	import { goto } from '$app/navigation';
+	import SuccessMessage from './success-message.svelte';
+	import { REGISTER_EMAIL_KEY } from '$lib/components/auth/constants';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
+	export let resendEmailData: SuperValidated<Infer<ResendEmailFormSchema>>;
 
 	let isLoadingFormSubmit = false;
+	let isLoadingGoogleAuth = false;
 	let errorResponse = '';
 
 	let analytics: AnalyticsDto = {
@@ -28,7 +31,7 @@
 		referralSiteUrl: null
 	};
 
-	let isSuccessful = false;
+	let isSuccessfulRegistration = false;
 
 	const form = superForm(data, {
 		validators: zodClient(formSchema),
@@ -46,7 +49,10 @@
 			}
 
 			if (result.type === 'success' && result.data) {
-				isSuccessful = true;
+				isSuccessfulRegistration = true;
+
+				const resultFormData = result.data.form.data;
+				saveUserEmail(resultFormData.email);
 			}
 
 			isLoadingFormSubmit = false;
@@ -70,40 +76,47 @@
 			analytics = await getSiteAnalytics();
 		}
 	});
+
+	function saveUserEmail(email) {
+		localStorage.setItem(REGISTER_EMAIL_KEY, email);
+	}
 </script>
 
 <div>
 	<Heading class="mx-auto text-center">
-		{$LL.confirmPasswordResetPage.title()}
+		{$LL.registerPage.title()}
 	</Heading>
 	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
-		<form method="POST" use:enhance class="space-y-4">
+		<form method="POST" action="?/register" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
 			<input type="hidden" name="landingPage" bind:value={$formData.landingPage} />
 			<input type="hidden" name="referralSiteUrl" bind:value={$formData.referralSiteUrl} />
 			<input type="hidden" name="isIncognitoMode" bind:value={$formData.isIncognitoMode} />
 
+			<Form.Field {form} name="name">
+				<Form.Control let:attrs>
+					<Form.Label>{$LL.registerPage.form.name()}</Form.Label>
+					<Input {...attrs} bind:value={$formData.name} placeholder="John Doe" />
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+
+			<Form.Field {form} name="email">
+				<Form.Control let:attrs>
+					<Form.Label>{$LL.registerPage.form.email()}</Form.Label>
+					<Input {...attrs} bind:value={$formData.email} placeholder="john@example.com" />
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+
 			<Form.Field {form} name="password">
 				<Form.Control let:attrs>
-					<Form.Label>{$LL.confirmPasswordResetPage.form.password()}</Form.Label>
+					<Form.Label>{$LL.registerPage.form.password()}</Form.Label>
 					<Input
 						{...attrs}
 						type="password"
 						placeholder="********"
 						bind:value={$formData.password}
-					/>
-				</Form.Control>
-				<Form.FieldErrors />
-			</Form.Field>
-
-			<Form.Field {form} name="confirmPassword">
-				<Form.Control let:attrs>
-					<Form.Label>{$LL.confirmPasswordResetPage.form.confirmPassword()}</Form.Label>
-					<Input
-						{...attrs}
-						type="password"
-						placeholder="********"
-						bind:value={$formData.confirmPassword}
 					/>
 				</Form.Control>
 				<Form.FieldErrors />
@@ -117,24 +130,18 @@
 				{#if isLoadingFormSubmit}
 					<Icons.spinner class="mr-2 h-4 w-4 animate-spin" />
 				{/if}
-				{$LL.confirmPasswordResetPage.form.submit()}
+				{$LL.registerPage.form.submit()}
 			</Form.Button>
 		</form>
 
+		<ContinueWithOptions {isLoadingGoogleAuth} {isLoadingFormSubmit} />
+
 		<div class="text-center">
 			<Button href="/auth/login" variant="link">
-				{$LL.confirmPasswordResetPage.form.alreadyHaveAccount()}
-			</Button>
-			<Button href="/auth/register" variant="link">
-				{$LL.confirmPasswordResetPage.form.dontHaveAccount()}
+				{$LL.registerPage.form.alreadyHaveAccount()}
 			</Button>
 		</div>
 	</div>
 
-	<SuccessMessage
-		bind:open={isSuccessful}
-		title={$LL.confirmPasswordResetPage.successfulPasswordReset.title()}
-		description={$LL.confirmPasswordResetPage.successfulPasswordReset.description()}
-		on:close={() => goto('/auth/login')}
-	/>
+	<SuccessMessage bind:open={isSuccessfulRegistration} data={resendEmailData} />
 </div>

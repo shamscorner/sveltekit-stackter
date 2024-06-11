@@ -3,7 +3,7 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { Heading } from '$lib/components/ui/heading';
 	import { Input } from '$lib/components/ui/input';
-	import { formSchema, type FormSchema } from '../schema';
+	import { formSchema, type FormSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Button } from '$lib/components/ui/button';

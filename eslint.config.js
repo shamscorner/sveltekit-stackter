@@ -36,6 +36,7 @@ export default [
 			'dist/',
 			'.DS_Store',
 			'src/lib/components/common/Analytics.svelte',
+			'src/lib/i18n/',
 			'pocketbase/'
 		]
 	},

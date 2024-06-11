@@ -1,4 +1,4 @@
-import { authSchema } from '$routes/auth/schema';
+import { authSchema } from '$lib/components/auth/schema';
 import { z } from 'zod';
 
 export const formSchema = authSchema

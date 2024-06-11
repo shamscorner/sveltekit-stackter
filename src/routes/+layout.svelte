@@ -12,7 +12,6 @@
 	import Analytics from '$lib/components/common/Analytics.svelte';
 	import Navbar from './components/navbar/Navbar.svelte';
 	import Footer from './components/footer/Footer.svelte';
-	import AppBackground from '$lib/components/common/AppBackground.svelte';
 	import { ModeWatcher } from 'mode-watcher';
 	import { Toaster } from '$lib/components/ui/sonner';
 
@@ -56,8 +55,6 @@
 <Toaster richColors />
 
 <Analytics />
-
-<AppBackground />
 
 <Navbar />
 
