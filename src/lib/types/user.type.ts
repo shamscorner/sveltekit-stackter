@@ -1,3 +1,5 @@
+import type { AdminModel } from 'pocketbase';
+
 export enum UserRole {
 	super = 'super',
 	admin = 'admin',
@@ -15,16 +17,11 @@ export type UserDto = {
 	userAgent: string;
 };
 
-export type User = {
+export type User = AdminModel & {
 	username?: string;
-	email: string;
 	emailVisibility: boolean;
-	name: string;
 	role: keyof typeof UserRole;
 	verified: boolean;
-	created: string;
-	updated: string;
-	avatar?: string;
 	isIncognitoMode?: boolean;
 	browserHash?: string;
 	landingPage?: string;
