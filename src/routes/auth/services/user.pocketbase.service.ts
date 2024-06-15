@@ -14,8 +14,19 @@ export class UserService extends AuthService {
 		this.pb = pb;
 	}
 
-	findExistingUserByEmail(email: string): Promise<ApiResponse<User>> {
-		throw new Error('Method not implemented.');
+	async findExistingUserByEmail(email: string): Promise<ApiResponse<User>> {
+		try {
+			const user = await this.pb
+				.collection('users')
+				.getFirstListItem<User>(this.pb.filter('email ~ {:email}', { email }));
+
+			return {
+				code: 200,
+				data: user
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
 	}
 	async createUser({
 		name,
