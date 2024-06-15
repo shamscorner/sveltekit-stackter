@@ -4,6 +4,7 @@ import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
 import { detectLocale } from '$lib/i18n/i18n-util.js';
 import { sequence } from '@sveltejs/kit/hooks';
 import PocketBase from 'pocketbase';
+import { lucia } from '$lib/auth';
 import { POCKETBASE_URL } from '$env/static/private';
 
 async function urlRewrite({ event, resolve }) {
@@ -46,4 +47,38 @@ async function initPocketbase({ event, resolve }) {
 	return response;
 }
 
-export const handle = sequence(urlRewrite, i18n, initPocketbase) satisfies Handle;
+async function initLuciaAuth({ event, resolve }) {
+	const sessionId = event.cookies.get(lucia.sessionCookieName);
+
+	if (!sessionId) {
+		event.locals.user = null;
+		event.locals.session = null;
+		return resolve(event);
+	}
+
+	const { session, user } = await lucia.validateSession(sessionId);
+
+	if (session && session.fresh) {
+		const sessionCookie = lucia.createSessionCookie(session.id);
+		// sveltekit types deviates from the de-facto standard
+		// you can use 'as any' too
+		event.cookies.set(sessionCookie.name, sessionCookie.value, {
+			path: '.',
+			...sessionCookie.attributes
+		});
+	}
+
+	if (!session) {
+		const sessionCookie = lucia.createBlankSessionCookie();
+		event.cookies.set(sessionCookie.name, sessionCookie.value, {
+			path: '.',
+			...sessionCookie.attributes
+		});
+	}
+
+	event.locals.user = user;
+	event.locals.session = session;
+	return resolve(event);
+}
+
+export const handle = sequence(urlRewrite, i18n, initPocketbase, initLuciaAuth) satisfies Handle;

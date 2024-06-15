@@ -9,6 +9,8 @@ declare global {
 		interface Locals {
 			locale: import('$lib/i18n/i18n-types.ts').Locales;
 			pb: PocketBase;
+			user: import('lucia').User | null;
+			session: import('lucia').Session | null;
 		}
 		// interface PageData {}
 		// interface Platform {}
