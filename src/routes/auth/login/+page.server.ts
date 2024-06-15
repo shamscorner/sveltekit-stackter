@@ -45,6 +45,6 @@ export const actions: Actions = {
 			});
 		}
 
-		return { form, user: authResponse.data?.record };
+		return { form, user: authResponse.data?.user };
 	}
 };

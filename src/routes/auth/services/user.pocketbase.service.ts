@@ -68,16 +68,21 @@ export class UserService extends AuthService {
 		password,
 		browserHash,
 		landingPage,
-		isIncognitoMode,
 		referralSiteUrl,
+		isIncognitoMode,
 		userAgent
-	}: Omit<UserDto, 'name'>): Promise<ApiResponse<RecordAuthResponse<User>>> {
+	}: Omit<UserDto, 'name'>): Promise<ApiResponse<{ user: User; token: string }>> {
 		try {
-			const authData = await this.pb.collection('users').authWithPassword<User>(email, password);
+			const { record, token } = await this.pb
+				.collection('users')
+				.authWithPassword<User>(email, password);
 
 			return {
 				code: 200,
-				data: authData
+				data: {
+					user: record,
+					token
+				}
 			};
 		} catch (error) {
 			return this.parseErrorFromErrorObject(error);

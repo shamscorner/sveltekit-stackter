@@ -6,4 +6,13 @@ export abstract class AuthService {
 	abstract createUser({ name, email, password }: UserDto): Promise<ApiResponse<User>>;
 	abstract parseErrorFromErrorObject(error: unknown): ApiResponse<User>;
 	abstract requestEmailVerification(email: string): Promise<ApiResponse<boolean>>;
+	abstract authenticateUser({
+		email,
+		password,
+		browserHash,
+		landingPage,
+		referralSiteUrl,
+		isIncognitoMode,
+		userAgent
+	}: Omit<UserDto, 'name'>): Promise<ApiResponse<{ user: User; token: string }>>;
 }
