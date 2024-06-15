@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading } from '../ui/heading';
+	import { Heading } from '$lib/components/ui/heading';
 
 	export let label: string;
 </script>

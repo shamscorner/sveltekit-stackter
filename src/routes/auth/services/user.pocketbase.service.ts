@@ -1,7 +1,7 @@
 import Pocketbase, { ClientResponseError, type RecordAuthResponse } from 'pocketbase';
-import { AuthService } from '$lib/components/auth/services';
+import { AuthService } from '$lib/auth/services';
 import type { ApiResponse } from '$lib/types';
-import { UserRole, type User, type UserDto } from '$lib/types/user.type';
+import { UserRole, type User, type UserDto } from '$lib/auth/types';
 import { capitalizeFirstLetter } from '$lib/helpers';
 import { get } from 'svelte/store';
 import LL from '$lib/i18n/i18n-svelte';

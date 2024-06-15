@@ -1,6 +1,6 @@
 import type { Actions, PageServerLoad } from './$types';
 import { superValidate } from 'sveltekit-superforms/server';
-import { formSchema } from '$lib/components/auth/forgot-password/schema';
+import { formSchema } from '$lib/auth/forgot-password/schema';
 import { fail } from '@sveltejs/kit';
 import { zod } from 'sveltekit-superforms/adapters';
 import { UserService } from '../services/user.pocketbase.service';

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { authSchema } from '$lib/components/auth/schema';
+import { authSchema } from '$lib/auth/schema';
 
 export const formSchema = authSchema.extend({
 	name: z.string().max(150, 'Max 150 characters').min(1, 'Required')

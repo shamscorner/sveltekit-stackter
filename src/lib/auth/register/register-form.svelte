@@ -12,7 +12,7 @@
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
 	import { performFormValidation } from '$lib/services/error.service';
 	import SuccessMessage from './success-message.svelte';
-	import { REGISTER_EMAIL_KEY } from '$lib/components/auth/constants';
+	import { REGISTER_EMAIL_KEY } from '$lib/auth/constants';
 	import CardWrapper from '../card-wrapper.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;

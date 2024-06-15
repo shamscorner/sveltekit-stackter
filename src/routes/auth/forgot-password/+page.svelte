@@ -2,7 +2,7 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import Seo from '$lib/components/common/SEO.svelte';
 	import type { PageData } from './$types';
-	import ForgotPasswordForm from '$lib/components/auth/forgot-password/forgot-password-form.svelte';
+	import ForgotPasswordForm from '$lib/auth/forgot-password/forgot-password-form.svelte';
 
 	export let data: PageData;
 </script>

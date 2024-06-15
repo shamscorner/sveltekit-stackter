@@ -1,5 +1,5 @@
 import type { ApiResponse } from '$lib/types';
-import type { User, UserDto } from '$lib/types/user.type';
+import type { User, UserDto } from '../types';
 
 export abstract class AuthService {
 	abstract findExistingUserByEmail(email: string): Promise<ApiResponse<User>>;

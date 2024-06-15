@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { Icons } from '../icons';
-	import { Button } from '../ui/button';
+	import { Icons } from '$lib/components/icons';
+	import { Button } from '$lib/components/ui/button';
 </script>
 
 <div class={cn('flex w-full items-center gap-x-2', $$restProps.class)}>

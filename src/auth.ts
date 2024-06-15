@@ -9,11 +9,11 @@ import {
 	PB_PASSWORD,
 	POCKETBASE_URL
 } from '$env/static/private';
-import { PocketBaseAdapter } from '$lib/auth-adapters/pocketbase';
+import { PocketBaseAdapter } from '$lib/auth/adapters/pocketbase';
 import credentials from '@auth/sveltekit/providers/credentials';
-import { authSchema } from '$lib/components/auth/schema';
+import { authSchema } from '$lib/auth/schema';
 import { ZodError } from 'zod';
-import type { User } from '$lib/types/user.type';
+import type { User } from '$lib/auth/types';
 
 const pocketbase = new PocketBase(POCKETBASE_URL);
 

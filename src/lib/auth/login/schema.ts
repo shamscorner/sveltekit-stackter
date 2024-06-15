@@ -1,4 +1,4 @@
-import { authSchema } from '$lib/components/auth/schema';
+import { authSchema } from '$lib/auth/schema';
 
 export const formSchema = authSchema;
 
