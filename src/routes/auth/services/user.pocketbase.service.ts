@@ -1,4 +1,4 @@
-import Pocketbase, { ClientResponseError } from 'pocketbase';
+import Pocketbase, { ClientResponseError, type RecordAuthResponse } from 'pocketbase';
 import { AuthService } from '$lib/components/auth/services';
 import type { ApiResponse } from '$lib/types';
 import { UserRole, type User, type UserDto } from '$lib/types/user.type';
@@ -28,6 +28,7 @@ export class UserService extends AuthService {
 			return this.parseErrorFromErrorObject(error);
 		}
 	}
+
 	async createUser({
 		name,
 		email,
@@ -56,6 +57,27 @@ export class UserService extends AuthService {
 			return {
 				code: 200,
 				data: user
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
+	}
+
+	async authenticateUser({
+		email,
+		password,
+		browserHash,
+		landingPage,
+		isIncognitoMode,
+		referralSiteUrl,
+		userAgent
+	}: Omit<UserDto, 'name'>): Promise<ApiResponse<RecordAuthResponse<User>>> {
+		try {
+			const authData = await this.pb.collection('users').authWithPassword<User>(email, password);
+
+			return {
+				code: 200,
+				data: authData
 			};
 		} catch (error) {
 			return this.parseErrorFromErrorObject(error);
