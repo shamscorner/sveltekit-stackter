@@ -29,7 +29,7 @@
 		"@csstools/postcss-media-minmax": "^1.1.6",
 		"@fingerprintjs/fingerprintjs": "^4.4.1",
 		"@playwright/test": "^1.44.1",
-		"@shamscorner/lucia-pocketbase": "^0.0.2",
+		"@shamscorner/lucia-pocketbase": "^0.0.3",
 		"@sveltejs/adapter-auto": "^3.2.1",
 		"@sveltejs/adapter-vercel": "^5.3.1",
 		"@sveltejs/kit": "^2.5.10",
