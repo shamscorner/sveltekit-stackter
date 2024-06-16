@@ -6,7 +6,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import PocketBase from 'pocketbase';
 import { lucia } from '$lib/auth';
 import { POCKETBASE_URL } from '$env/static/private';
-import { PUBLIC_DEFAULT_LOGIN_ROUTE } from '$env/static/public';
+import { appHomeRoute, authRoutes, loginRoute } from '$lib/auth/routes';
 
 async function urlRewrite({ event, resolve }) {
 	if (event.url.pathname.match(/[A-Z]/)) {
@@ -83,12 +83,18 @@ async function initLuciaAuth({ event, resolve }) {
 }
 
 async function protectRoutes({ event, resolve }) {
-	const shouldProtectRoute = (routeId: string) => {
-		return routeId && routeId.startsWith('/(protected)/');
-	};
+	const currentRouteId = event.route.id;
+	const shouldProtectRoute = currentRouteId && currentRouteId.startsWith('/(protected)/');
+	const isLoggedIn = !!event.locals.user;
 
-	if (shouldProtectRoute(event.route.id) && !event.locals.user) {
-		throw redirect(302, PUBLIC_DEFAULT_LOGIN_ROUTE);
+	if (shouldProtectRoute && !isLoggedIn) {
+		throw redirect(302, loginRoute);
+	}
+
+	const isAuthRoute = authRoutes.includes(currentRouteId);
+
+	if (isAuthRoute && isLoggedIn) {
+		throw redirect(302, appHomeRoute);
 	}
 
 	return resolve(event);
