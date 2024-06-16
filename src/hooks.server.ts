@@ -4,9 +4,8 @@ import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
 import { detectLocale } from '$lib/i18n/i18n-util.js';
 import { sequence } from '@sveltejs/kit/hooks';
 import PocketBase from 'pocketbase';
-import { lucia } from '$lib/auth';
 import { POCKETBASE_URL } from '$env/static/private';
-import { appHomeRoute, authRoutes, loginRoute } from '$lib/auth/routes';
+import { initLuciaAuth, protectRoutes } from '$lib/auth/middlewares';
 
 async function urlRewrite({ event, resolve }) {
 	if (event.url.pathname.match(/[A-Z]/)) {
@@ -46,58 +45,6 @@ async function initPocketbase({ event, resolve }) {
 	response.headers.append('set-cookie', event.locals.pb.authStore.exportToCookie());
 
 	return response;
-}
-
-async function initLuciaAuth({ event, resolve }) {
-	const sessionId = event.cookies.get(lucia.sessionCookieName);
-
-	if (!sessionId) {
-		event.locals.user = null;
-		event.locals.session = null;
-		return resolve(event);
-	}
-
-	const { session, user } = await lucia.validateSession(sessionId);
-
-	if (session && session.fresh) {
-		const sessionCookie = lucia.createSessionCookie(session.id);
-		// sveltekit types deviates from the de-facto standard
-		// you can use 'as any' too
-		event.cookies.set(sessionCookie.name, sessionCookie.value, {
-			path: '.',
-			...sessionCookie.attributes
-		});
-	}
-
-	if (!session) {
-		const sessionCookie = lucia.createBlankSessionCookie();
-		event.cookies.set(sessionCookie.name, sessionCookie.value, {
-			path: '.',
-			...sessionCookie.attributes
-		});
-	}
-
-	event.locals.user = user;
-	event.locals.session = session;
-	return resolve(event);
-}
-
-async function protectRoutes({ event, resolve }) {
-	const currentRouteId = event.route.id;
-	const shouldProtectRoute = currentRouteId && currentRouteId.startsWith('/(protected)/');
-	const isLoggedIn = !!event.locals.user;
-
-	if (shouldProtectRoute && !isLoggedIn) {
-		throw redirect(302, loginRoute);
-	}
-
-	const isAuthRoute = authRoutes.includes(currentRouteId);
-
-	if (isAuthRoute && isLoggedIn) {
-		throw redirect(302, appHomeRoute);
-	}
-
-	return resolve(event);
 }
 
 export const handle = sequence(
