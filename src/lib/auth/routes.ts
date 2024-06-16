@@ -1,5 +1,6 @@
 export const loginRoute = '/auth/login';
 export const registerRoute = '/auth/register';
+export const logoutRoute = '/auth/logout';
 
 /**
  * An array of routes that are used for authentication

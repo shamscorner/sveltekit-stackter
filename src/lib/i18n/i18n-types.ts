@@ -315,6 +315,24 @@ type RootTranslation = {
 			emailResentSuccessfully: string
 		}
 	}
+	logoutPage: {
+		/**
+		 * L​o​g​g​e​d​ ​o​u​t​!
+		 */
+		title: string
+		/**
+		 * L​o​g​g​e​d​ ​o​u​t
+		 */
+		pageTitle: string
+		/**
+		 * Y​o​u​ ​h​a​v​e​ ​b​e​e​n​ ​s​u​c​c​e​s​s​f​u​l​l​y​ ​l​o​g​g​e​d​ ​o​u​t​.
+		 */
+		description: string
+		/**
+		 * L​o​g​o​u​t​,​ ​S​i​g​n​ ​o​u​t​,​ ​L​o​g​ ​o​u​t
+		 */
+		keywords: string
+	}
 	forgotPasswordPage: {
 		/**
 		 * F​o​r​g​o​t​ ​P​a​s​s​w​o​r​d​!
@@ -410,6 +428,24 @@ type RootTranslation = {
 			 */
 			description: string
 		}
+	}
+	dashboardPage: {
+		/**
+		 * D​a​s​h​b​o​a​r​d
+		 */
+		title: string
+		/**
+		 * D​a​s​h​b​o​a​r​d
+		 */
+		pageTitle: string
+		/**
+		 * W​e​l​c​o​m​e​ ​t​o​ ​y​o​u​r​ ​d​a​s​h​b​o​a​r​d​.
+		 */
+		description: string
+		/**
+		 * D​a​s​h​b​o​a​r​d​,​ ​H​o​m​e​,​ ​W​e​l​c​o​m​e
+		 */
+		keywords: string
 	}
 	errors: {
 		/**
@@ -721,6 +757,24 @@ export type TranslationFunctions = {
 			emailResentSuccessfully: () => LocalizedString
 		}
 	}
+	logoutPage: {
+		/**
+		 * Logged out!
+		 */
+		title: () => LocalizedString
+		/**
+		 * Logged out
+		 */
+		pageTitle: () => LocalizedString
+		/**
+		 * You have been successfully logged out.
+		 */
+		description: () => LocalizedString
+		/**
+		 * Logout, Sign out, Log out
+		 */
+		keywords: () => LocalizedString
+	}
 	forgotPasswordPage: {
 		/**
 		 * Forgot Password!
@@ -816,6 +870,24 @@ export type TranslationFunctions = {
 			 */
 			description: () => LocalizedString
 		}
+	}
+	dashboardPage: {
+		/**
+		 * Dashboard
+		 */
+		title: () => LocalizedString
+		/**
+		 * Dashboard
+		 */
+		pageTitle: () => LocalizedString
+		/**
+		 * Welcome to your dashboard.
+		 */
+		description: () => LocalizedString
+		/**
+		 * Dashboard, Home, Welcome
+		 */
+		keywords: () => LocalizedString
 	}
 	errors: {
 		/**

@@ -126,6 +126,13 @@ const en: BaseTranslation = {
 		}
 	},
 
+	logoutPage: {
+		title: 'Logged out!',
+		pageTitle: 'Logged out',
+		description: 'You have been successfully logged out.',
+		keywords: 'Logout, Sign out, Log out'
+	},
+
 	forgotPasswordPage: {
 		title: 'Forgot Password!',
 		pageTitle: 'Forgot Password',
@@ -167,6 +174,13 @@ const en: BaseTranslation = {
 			description:
 				'Your password has been reset successfully. You can now login with your new password.'
 		}
+	},
+
+	dashboardPage: {
+		title: 'Dashboard',
+		pageTitle: 'Dashboard',
+		description: 'Welcome to your dashboard.',
+		keywords: 'Dashboard, Home, Welcome'
 	},
 
 	errors: {
