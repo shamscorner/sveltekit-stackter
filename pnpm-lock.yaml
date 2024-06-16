@@ -11,6 +11,9 @@ importers:
       '@builder.io/partytown':
         specifier: ^0.10.2
         version: 0.10.2
+      arctic:
+        specifier: ^1.9.1
+        version: 1.9.1
       bits-ui:
         specifier: ^0.21.10
         version: 0.21.10(svelte@4.2.18)
@@ -1287,6 +1290,9 @@ packages:
 
   aproba@2.0.0:
     resolution: {integrity: sha512-lYe4Gx7QT+MKGbDsA+Z+he/Wtef0BiwDOlK/XkBrdfsh9J/jPPXbX0tE9x9cl27Tmu5gg3QUbUrQYa/y+KOHPQ==}
+
+  arctic@1.9.1:
+    resolution: {integrity: sha512-ZHSeTdB+W2uvIAqH5yaBjepct0NrutQehe+nRJa5n4ONGEULUyCehf2m53W/0hyrs4nidqKhVUerrS8MuvUmPg==}
 
   are-we-there-yet@2.0.0:
     resolution: {integrity: sha512-Ci/qENmwHnsYo9xKIcUJN5LeDKdJ6R1Z1j9V/J5wyq8nh/mYPEpIKJbBZXtZjG04HiK7zV/p6Vs9952MrMeUIw==}
@@ -4559,6 +4565,10 @@ snapshots:
       picomatch: 2.3.1
 
   aproba@2.0.0: {}
+
+  arctic@1.9.1:
+    dependencies:
+      oslo: 1.2.0
 
   are-we-there-yet@2.0.0:
     dependencies:

@@ -80,6 +80,7 @@
 	},
 	"dependencies": {
 		"@builder.io/partytown": "^0.10.2",
+		"arctic": "^1.9.1",
 		"bits-ui": "^0.21.10",
 		"clsx": "^2.1.1",
 		"dotenv": "^16.4.5",

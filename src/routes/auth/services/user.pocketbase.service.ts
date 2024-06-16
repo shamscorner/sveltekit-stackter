@@ -1,4 +1,4 @@
-import Pocketbase, { ClientResponseError, type RecordAuthResponse } from 'pocketbase';
+import Pocketbase, { ClientResponseError } from 'pocketbase';
 import { AuthService } from '$lib/auth/services';
 import type { ApiResponse } from '$lib/types';
 import { UserRole, type User, type UserDto } from '$lib/auth/types';
@@ -19,6 +19,21 @@ export class UserService extends AuthService {
 			const user = await this.pb
 				.collection('users')
 				.getFirstListItem<User>(this.pb.filter('email ~ {:email}', { email }));
+
+			return {
+				code: 200,
+				data: user
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
+	}
+
+	async findExistingUserByGithubId(githubId: string): Promise<ApiResponse<User>> {
+		try {
+			const user = await this.pb
+				.collection('users')
+				.getFirstListItem<User>(this.pb.filter('githubId ~ {:githubId}', { githubId }));
 
 			return {
 				code: 200,
@@ -50,7 +65,9 @@ export class UserService extends AuthService {
 		landingPage,
 		isIncognitoMode,
 		referralSiteUrl,
-		userAgent
+		userAgent,
+		githubId,
+		username
 	}: UserDto): Promise<ApiResponse<User>> {
 		try {
 			const user = await this.pb.collection('users').create<User>({
@@ -64,7 +81,9 @@ export class UserService extends AuthService {
 				landingPage,
 				referralSiteUrl,
 				isIncognitoMode,
-				userAgent
+				userAgent,
+				githubId,
+				username
 			});
 
 			return {

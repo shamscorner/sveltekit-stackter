@@ -8,11 +8,13 @@ export type UserDto = {
 	name: string;
 	email: string;
 	password: string;
-	isIncognitoMode: boolean;
-	browserHash: string;
-	landingPage: string;
-	referralSiteUrl: string;
-	userAgent: string;
+	isIncognitoMode?: boolean;
+	browserHash?: string;
+	landingPage?: string;
+	referralSiteUrl?: string;
+	userAgent?: string;
+	githubId?: string;
+	username?: string;
 };
 
 export type User = {
