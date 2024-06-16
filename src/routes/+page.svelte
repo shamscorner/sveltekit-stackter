@@ -7,7 +7,7 @@
 	import { Icons } from '$lib/components/icons';
 	import LottieAnimation from '$lib/components/common/LottieAnimation.svelte';
 	import UserHiAnimationAsset from '$lib/assets/animations/user-hi.json';
-	import LoginButton from '$lib/auth/login-button.svelte';
+	import LoginButton from '$lib/auth/common/login-button.svelte';
 	import { Heading } from '$lib/components/ui/heading';
 </script>
 

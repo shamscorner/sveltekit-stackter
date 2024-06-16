@@ -1,4 +1,4 @@
-import { error, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import type { Handle } from '@sveltejs/kit';
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
 import { detectLocale } from '$lib/i18n/i18n-util.js';
@@ -6,6 +6,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import PocketBase from 'pocketbase';
 import { lucia } from '$lib/auth';
 import { POCKETBASE_URL } from '$env/static/private';
+import { PUBLIC_DEFAULT_LOGIN_ROUTE } from '$env/static/public';
 
 async function urlRewrite({ event, resolve }) {
 	if (event.url.pathname.match(/[A-Z]/)) {
@@ -87,7 +88,7 @@ async function protectRoutes({ event, resolve }) {
 	};
 
 	if (shouldProtectRoute(event.route.id) && !event.locals.user) {
-		throw redirect(302, '/auth/login');
+		throw redirect(302, PUBLIC_DEFAULT_LOGIN_ROUTE);
 	}
 
 	return resolve(event);

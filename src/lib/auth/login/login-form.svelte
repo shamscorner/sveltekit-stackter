@@ -14,7 +14,7 @@
 	import { deleteLastLoginEmail, getLastLoginEmail, saveLastLoginEmail } from './utils';
 	import { Label } from '$lib/components/ui/label';
 	import { Switch } from '$lib/components/ui/switch';
-	import CardWrapper from '../card-wrapper.svelte';
+	import CardWrapper from '../common/card-wrapper.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
