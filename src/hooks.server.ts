@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { Handle } from '@sveltejs/kit';
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
 import { detectLocale } from '$lib/i18n/i18n-util.js';
@@ -81,4 +81,22 @@ async function initLuciaAuth({ event, resolve }) {
 	return resolve(event);
 }
 
-export const handle = sequence(urlRewrite, i18n, initPocketbase, initLuciaAuth) satisfies Handle;
+async function protectRoutes({ event, resolve }) {
+	const shouldProtectRoute = (routeId: string) => {
+		return routeId && routeId.startsWith('/(protected)/');
+	};
+
+	if (shouldProtectRoute(event.route.id) && !event.locals.user) {
+		throw redirect(302, '/auth/login');
+	}
+
+	return resolve(event);
+}
+
+export const handle = sequence(
+	urlRewrite,
+	i18n,
+	initPocketbase,
+	initLuciaAuth,
+	protectRoutes
+) satisfies Handle;
