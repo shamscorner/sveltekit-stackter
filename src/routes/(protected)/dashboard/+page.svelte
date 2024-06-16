@@ -3,6 +3,14 @@
 	import { Button } from '$lib/components/ui/button';
 	import Seo from '$lib/components/common/SEO.svelte';
 	import { logoutRoute } from '$lib/auth/routes';
+	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
+
+	export let data: PageData;
+
+	onMount(() => {
+		console.log('data', data.user);
+	});
 </script>
 
 <Seo

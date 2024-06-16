@@ -29,6 +29,19 @@ export class UserService extends AuthService {
 		}
 	}
 
+	async getUserById(id: string): Promise<ApiResponse<User>> {
+		try {
+			const user = await this.pb.collection('users').getOne<User>(id);
+
+			return {
+				code: 200,
+				data: user
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
+	}
+
 	async createUser({
 		name,
 		email,

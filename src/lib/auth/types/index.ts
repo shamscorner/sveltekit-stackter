@@ -22,6 +22,7 @@ export type User = {
 	updated: string;
 	avatar: number;
 	email: string;
+	name: string;
 	username?: string;
 	emailVisibility: boolean;
 	role: keyof typeof UserRole;
@@ -31,4 +32,5 @@ export type User = {
 	landingPage?: string;
 	referralSiteUrl?: string;
 	userAgent?: string;
+	attributes?: Record<string, any>;
 };
