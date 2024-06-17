@@ -48,7 +48,10 @@ export async function GET(event: RequestEvent): Promise<Response> {
 				throw new Error('Failed to create user');
 			}
 
-			await userService.setSession(event, userId);
+			await userService.setSession(event, userId, {
+				githubId: githubUser.id,
+				username: githubUser.login
+			});
 		}
 
 		return new Response(null, {

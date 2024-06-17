@@ -21,26 +21,23 @@ export const lucia = new Lucia(adapter, {
 		attributes: {
 			secure: !dev // set to `true` when using HTTPS
 		}
+	},
+	getSessionAttributes: (attributes) => {
+		return {
+			githubId: attributes.githubId,
+			username: attributes.username
+		};
 	}
-	// TODO: fix here. Because the attributes param is returning null
-	// getUserAttributes: (attributes) => {
-	// 	console.log('attributes', attributes);
-	// 	return {
-	// 		// attributes has the type of DatabaseUserAttributes
-	// 		githubId: attributes.githubId,
-	// 		username: attributes.username
-	// 	};
-	// }
 });
 
 declare module 'lucia' {
 	interface Register {
 		Lucia: typeof lucia;
-		DatabaseUserAttributes: DatabaseUserAttributes;
+		DatabaseSessionAttributes: DatabaseSessionAttributes;
 	}
 }
 
-interface DatabaseUserAttributes {
+interface DatabaseSessionAttributes {
 	githubId: number;
 	username: string;
 }
