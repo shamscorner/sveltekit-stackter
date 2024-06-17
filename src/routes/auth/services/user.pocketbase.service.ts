@@ -16,9 +16,7 @@ export class UserService extends AuthService {
 
 	async findExistingUserByEmail(email: string): Promise<ApiResponse<User>> {
 		try {
-			const user = await this.pb
-				.collection('users')
-				.getFirstListItem<User>(this.pb.filter('email ~ {:email}', { email }));
+			const user = await this.pb.collection('users').getFirstListItem<User>(`email="${email}"`);
 
 			return {
 				code: 200,
@@ -33,7 +31,7 @@ export class UserService extends AuthService {
 		try {
 			const user = await this.pb
 				.collection('users')
-				.getFirstListItem<User>(this.pb.filter('githubId ~ {:githubId}', { githubId }));
+				.getFirstListItem<User>(`githubId="${githubId}"`);
 
 			return {
 				code: 200,

@@ -21,15 +21,15 @@ export const lucia = new Lucia(adapter, {
 		attributes: {
 			secure: !dev // set to `true` when using HTTPS
 		}
-	},
-	// TODO: fix here. Because the attributes param is returning null
-	getUserAttributes: (attributes) => {
-		return {
-			// attributes has the type of DatabaseUserAttributes
-			githubId: attributes.githubId,
-			username: attributes.username
-		};
 	}
+	// TODO: fix here. Because the attributes param is returning null
+	// getUserAttributes: (attributes) => {
+	// 	return {
+	// 		// attributes has the type of DatabaseUserAttributes
+	// 		githubId: attributes.githubId,
+	// 		username: attributes.username
+	// 	};
+	// }
 });
 
 declare module 'lucia' {
