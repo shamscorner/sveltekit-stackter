@@ -1,4 +1,5 @@
 import type { ApiResponse } from '$lib/types';
+import type { RequestEvent } from '@sveltejs/kit';
 import type { User, UserDto } from '../types';
 
 export abstract class AuthService {
@@ -17,4 +18,9 @@ export abstract class AuthService {
 		isIncognitoMode,
 		userAgent
 	}: Omit<UserDto, 'name'>): Promise<ApiResponse<{ user: User; token: string }>>;
+	abstract setSession<T>(
+		event: RequestEvent,
+		userId: string,
+		...args: Record<never, never>[]
+	): Promise<ApiResponse<T>>;
 }

@@ -5,6 +5,8 @@ import { UserRole, type User, type UserDto } from '$lib/auth/types';
 import { capitalizeFirstLetter } from '$lib/helpers';
 import { get } from 'svelte/store';
 import LL from '$lib/i18n/i18n-svelte';
+import { lucia } from '$lib/auth';
+import type { RequestEvent } from '@sveltejs/kit';
 
 export class UserService extends AuthService {
 	private pb: Pocketbase;
@@ -113,6 +115,27 @@ export class UserService extends AuthService {
 					user: record,
 					token
 				}
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
+	}
+
+	async setSession<T>(
+		event: RequestEvent,
+		userId: string,
+		...args: Record<never, never>[]
+	): Promise<ApiResponse<T>> {
+		try {
+			const session = await lucia.createSession(userId, args[0] || {}, args[1]);
+			const sessionCookie = lucia.createSessionCookie(session.id);
+			event.cookies.set(sessionCookie.name, sessionCookie.value, {
+				path: '.',
+				...sessionCookie.attributes
+			});
+			return {
+				code: 200,
+				data: session as T
 			};
 		} catch (error) {
 			return this.parseErrorFromErrorObject(error);

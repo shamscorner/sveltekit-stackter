@@ -24,6 +24,7 @@ export const lucia = new Lucia(adapter, {
 	}
 	// TODO: fix here. Because the attributes param is returning null
 	// getUserAttributes: (attributes) => {
+	// 	console.log('attributes', attributes);
 	// 	return {
 	// 		// attributes has the type of DatabaseUserAttributes
 	// 		githubId: attributes.githubId,

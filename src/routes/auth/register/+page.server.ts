@@ -5,7 +5,6 @@ import { fail } from '@sveltejs/kit';
 import { zod } from 'sveltekit-superforms/adapters';
 import { UserService } from '../services/user.pocketbase.service';
 import { PUBLIC_LANDING_PAGE } from '$env/static/public';
-import { lucia } from '$lib/auth';
 
 export const load: PageServerLoad = async () => {
 	const registerForm = await superValidate(zod(formSchema));
@@ -53,12 +52,7 @@ export const actions: Actions = {
 			});
 		}
 
-		const session = await lucia.createSession(userId, {});
-		const sessionCookie = lucia.createSessionCookie(session.id);
-		event.cookies.set(sessionCookie.name, sessionCookie.value, {
-			path: '.',
-			...sessionCookie.attributes
-		});
+		await userService.setSession(event, userId);
 
 		await userService.requestEmailVerification(email);
 

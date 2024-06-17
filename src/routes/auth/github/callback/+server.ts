@@ -1,4 +1,4 @@
-import { github, lucia } from '$lib/auth';
+import { github } from '$lib/auth';
 import { OAuth2RequestError } from 'arctic';
 
 import type { RequestEvent } from '@sveltejs/kit';
@@ -31,12 +31,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 		const existingUser = existingUserResponse.data;
 
 		if (existingUser) {
-			const session = await lucia.createSession(existingUser.id, {});
-			const sessionCookie = lucia.createSessionCookie(session.id);
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
-				path: '.',
-				...sessionCookie.attributes
-			});
+			await userService.setSession(event, existingUser.id);
 		} else {
 			// TODO: put avatar later
 			const createdUserResponse = await userService.createUser({
@@ -53,12 +48,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 				throw new Error('Failed to create user');
 			}
 
-			const session = await lucia.createSession(userId, {});
-			const sessionCookie = lucia.createSessionCookie(session.id);
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
-				path: '.',
-				...sessionCookie.attributes
-			});
+			await userService.setSession(event, userId);
 		}
 
 		return new Response(null, {
