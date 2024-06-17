@@ -3,12 +3,11 @@ import type { RequestEvent } from '@sveltejs/kit';
 import type { User, UserDto } from '../types';
 
 export abstract class AuthService {
+	abstract parseErrorFromErrorObject(error: unknown): ApiResponse<User>;
 	abstract findExistingUserByEmail(email: string): Promise<ApiResponse<User>>;
 	abstract findExistingUserByGithubId(githubId: string): Promise<ApiResponse<User>>;
 	abstract getUserById(id: string): Promise<ApiResponse<User>>;
 	abstract createUser({ name, email, password }: UserDto): Promise<ApiResponse<User>>;
-	abstract parseErrorFromErrorObject(error: unknown): ApiResponse<User>;
-	abstract requestEmailVerification(email: string): Promise<ApiResponse<boolean>>;
 	abstract authenticateUser({
 		email,
 		password,
@@ -23,4 +22,11 @@ export abstract class AuthService {
 		userId: string,
 		...args: Record<never, never>[]
 	): Promise<ApiResponse<T>>;
+	abstract requestEmailVerification(email: string): Promise<ApiResponse<boolean>>;
+	abstract requestPasswordReset(email: string): Promise<ApiResponse<boolean>>;
+	abstract confirmPasswordReset(
+		token: string,
+		password: string,
+		confirmPassword: string
+	): Promise<ApiResponse<boolean>>;
 }
