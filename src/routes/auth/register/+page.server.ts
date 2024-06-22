@@ -52,7 +52,15 @@ export const actions: Actions = {
 			});
 		}
 
-		await userService.setSession(event, userId);
+		const existingAccountProvider = await userService.getAccountByProvider('password', userId);
+
+		if (!existingAccountProvider.data) {
+			await userService.createAccount({
+				provider: 'password',
+				providerId: userId,
+				userId
+			});
+		}
 
 		await userService.requestEmailVerification(email);
 
