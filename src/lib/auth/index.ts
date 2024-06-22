@@ -2,15 +2,19 @@ import { Lucia } from 'lucia';
 import { PocketbaseAdapter } from '@shamscorner/lucia-pocketbase';
 import { dev } from '$app/environment';
 import PocketBase from 'pocketbase';
-import { GitHub } from 'arctic';
+import { GitHub, Google } from 'arctic';
 import {
 	GITHUB_CLIENT_ID,
 	GITHUB_CLIENT_SECRET,
+	GOOGLE_CLIENT_ID,
+	GOOGLE_CLIENT_SECRET,
 	POCKETBASE_PASSWORD,
+	POCKETBASE_URL,
 	POCKETBASE_USERNAME
 } from '$env/static/private';
+import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 
-const client = new PocketBase('http://127.0.0.1:8090');
+const client = new PocketBase(POCKETBASE_URL);
 const adapter = new PocketbaseAdapter(client, {
 	adminUsername: POCKETBASE_USERNAME,
 	adminPassword: POCKETBASE_PASSWORD
@@ -43,3 +47,9 @@ interface DatabaseSessionAttributes {
 }
 
 export const github = new GitHub(GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET);
+
+export const google = new Google(
+	GOOGLE_CLIENT_ID,
+	GOOGLE_CLIENT_SECRET,
+	`${PUBLIC_LANDING_PAGE}/auth/google/callback`
+);
