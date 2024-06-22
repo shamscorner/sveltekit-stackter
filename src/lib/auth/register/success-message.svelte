@@ -70,7 +70,7 @@
 				{$LL.registerPage.successfulRegistration.haveNotGetEmail()}
 			</p>
 			<Sheet.Footer class="mx-auto mt-16 max-w-lg">
-				<form method="POST" action="?/resendEmail" use:enhance class="mr-auto">
+				<form method="POST" action="?/resendEmail" use:enhance class="mt-4 sm:mr-auto sm:mt-0">
 					<input type="hidden" name="email" bind:value={$formData.email} />
 					<FormButton disabled={isLoadingFormSubmit} variant="secondary" class="w-full">
 						{#if isLoadingFormSubmit}
