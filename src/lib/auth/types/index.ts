@@ -1,7 +1,13 @@
 export enum UserRole {
-	super = 'super',
-	admin = 'admin',
-	user = 'user'
+	super,
+	admin,
+	user
+}
+
+export enum AccountProvider {
+	password,
+	google,
+	github
 }
 
 export type UserDto = {
@@ -13,8 +19,8 @@ export type UserDto = {
 	landingPage?: string;
 	referralSiteUrl?: string;
 	userAgent?: string;
-	githubId?: string;
 	username?: string;
+	role?: keyof typeof UserRole;
 };
 
 export type User = {
@@ -35,4 +41,20 @@ export type User = {
 	referralSiteUrl?: string;
 	userAgent?: string;
 	attributes?: Record<string, any>;
+};
+
+export type AccountDto = {
+	provider: keyof typeof AccountProvider;
+	providerId: string;
+	userId: string;
+};
+
+export type Account = {
+	[key: string]: any;
+	id: string;
+	created: string;
+	updated: string;
+	provider: keyof typeof AccountProvider;
+	providerId: string;
+	userId: string;
 };

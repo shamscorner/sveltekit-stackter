@@ -9,6 +9,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	const code = event.url.searchParams.get('code');
 	const state = event.url.searchParams.get('state');
 	const storedState = event.cookies.get('github_oauth_state') ?? null;
+
 	if (!code || !state || !storedState || state !== storedState) {
 		return new Response(null, {
 			status: 400
@@ -26,33 +27,48 @@ export async function GET(event: RequestEvent): Promise<Response> {
 
 		const userService = new UserService(event.locals.pb);
 
-		const existingUserResponse = await userService.findExistingUserByGithubId(githubUser.id);
+		// check if account already exists by provider id
+		const existingUserAccountResponse = await userService.getAccountByProviderId(githubUser.id);
 
-		const existingUser = existingUserResponse.data;
+		let { userId: existingUserId } = existingUserAccountResponse.data || {};
 
-		if (existingUser) {
-			await userService.setSession(event, existingUser.id);
-		} else {
+		// if not, create user
+		if (!existingUserId) {
 			// TODO: put avatar later
 			const createdUserResponse = await userService.createUser({
 				name: githubUser.name,
 				email: githubUser.email,
 				password: 'Github@123', // TODO: generate random password later
-				githubId: githubUser.id,
 				username: githubUser.login
 			});
 
-			const { id: userId } = createdUserResponse.data || {};
-
-			if (createdUserResponse.code !== 200 || !userId) {
+			if (!createdUserResponse || createdUserResponse.code !== 200 || !createdUserResponse.data) {
 				throw new Error('Failed to create user');
 			}
 
-			await userService.setSession(event, userId, {
-				githubId: githubUser.id,
-				username: githubUser.login
+			existingUserId = createdUserResponse.data.id;
+		}
+
+		// otherwise, check if account exists by provider & provider id
+		const existingAccountProvider = await userService.getAccountByProvider('github', githubUser.id);
+		console.log('existingAccountProvider', existingAccountProvider, {
+			provider: 'github',
+			providerId: githubUser.id
+		});
+
+		// if not, create account
+		if (!existingAccountProvider.data) {
+			await userService.createAccount({
+				provider: 'github',
+				providerId: githubUser.id,
+				userId: existingUserId
 			});
 		}
+
+		await userService.setSession(event, existingUserId, {
+			githubId: githubUser.id,
+			username: githubUser.login
+		});
 
 		return new Response(null, {
 			status: 302,
@@ -62,7 +78,6 @@ export async function GET(event: RequestEvent): Promise<Response> {
 		});
 	} catch (e) {
 		if (e instanceof OAuth2RequestError && e.message === 'bad_verification_code') {
-			// invalid code
 			return new Response(null, {
 				status: 400
 			});

@@ -1,11 +1,10 @@
 import type { ApiResponse } from '$lib/types';
 import type { RequestEvent } from '@sveltejs/kit';
-import type { User, UserDto } from '../types';
+import type { Account, AccountDto, AccountProvider, User, UserDto } from '../types';
 
 export abstract class AuthService {
 	abstract parseErrorFromErrorObject(error: unknown): ApiResponse<User>;
 	abstract findExistingUserByEmail(email: string): Promise<ApiResponse<User>>;
-	abstract findExistingUserByGithubId(githubId: string): Promise<ApiResponse<User>>;
 	abstract getUserById(id: string): Promise<ApiResponse<User>>;
 	abstract createUser({ name, email, password }: UserDto): Promise<ApiResponse<User>>;
 	abstract authenticateUser({
@@ -29,4 +28,11 @@ export abstract class AuthService {
 		password: string,
 		confirmPassword: string
 	): Promise<ApiResponse<boolean>>;
+	abstract getAccountByProvider(
+		provider: keyof typeof AccountProvider,
+		providerId: string
+	): Promise<ApiResponse<Account>>;
+	abstract getAccountByProviderId(providerId: string): Promise<ApiResponse<Account>>;
+	abstract getAccountByUserId(userId: string): Promise<ApiResponse<Account>>;
+	abstract createAccount(account: AccountDto): Promise<ApiResponse<Account>>;
 }
