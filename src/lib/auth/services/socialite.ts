@@ -1,5 +1,5 @@
 import { UserService } from '$routes/auth/services/user.service';
-import type { RequestEvent } from '@sveltejs/kit';
+import { error, type RequestEvent } from '@sveltejs/kit';
 import { appHomeRoute } from '../routes';
 import type { AccountProvider } from '../types';
 import { generatePassword } from '../helpers';
@@ -34,7 +34,9 @@ export async function socialiteCallbackHandler(
 		});
 
 		if (!createdUserResponse || createdUserResponse.code !== 200 || !createdUserResponse.data) {
-			throw new Error('Failed to create user');
+			error(400, {
+				message: 'Failed to create user'
+			});
 		}
 
 		existingUserId = createdUserResponse.data.id;

@@ -6,7 +6,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const { id } = locals.user || {};
 
 	if (!id) {
-		throw error(403, {
+		error(403, {
 			message: 'Forbidden'
 		});
 	}
@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const userResponse = await userService.getUserById(id);
 
 	if (userResponse.code !== 200 || !userResponse.data) {
-		throw error(404, 'User not found');
+		error(404, 'User not found');
 	}
 
 	return { user: userResponse.data };
