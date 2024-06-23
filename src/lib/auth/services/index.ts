@@ -30,6 +30,7 @@ export abstract class AuthService {
 		...args: Record<never, never>[]
 	): Promise<ApiResponse<T>>;
 	abstract requestEmailVerification(email: string): Promise<ApiResponse<boolean>>;
+	abstract confirmEmailVerification(token: string): Promise<ApiResponse<boolean>>;
 	abstract requestPasswordReset(email: string): Promise<ApiResponse<boolean>>;
 	abstract confirmPasswordReset(
 		token: string,

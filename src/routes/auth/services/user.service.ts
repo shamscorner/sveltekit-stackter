@@ -216,6 +216,20 @@ export class UserService extends AuthService {
 		}
 	}
 
+	async confirmEmailVerification(token: string): Promise<ApiResponse<boolean>> {
+		try {
+			await this.pb.collection('users').confirmVerification(token);
+			await this.pb.collection('users').authRefresh();
+
+			return {
+				code: 200,
+				data: true
+			};
+		} catch (error) {
+			return this.parseErrorFromErrorObject(error);
+		}
+	}
+
 	async requestPasswordReset(email: string): Promise<ApiResponse<boolean>> {
 		try {
 			await this.pb.collection('users').requestPasswordReset(email);
