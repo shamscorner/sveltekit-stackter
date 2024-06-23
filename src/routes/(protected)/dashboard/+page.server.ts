@@ -1,4 +1,4 @@
-import { UserService } from '$routes/auth/services/user.pocketbase.service';
+import { UserService } from '$routes/auth/services/user.service';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 

@@ -1,4 +1,4 @@
-import { UserService } from '$routes/auth/services/user.pocketbase.service';
+import { UserService } from '$routes/auth/services/user.service';
 import type { RequestEvent } from '@sveltejs/kit';
 import { appHomeRoute } from '../routes';
 import type { AccountProvider } from '../types';

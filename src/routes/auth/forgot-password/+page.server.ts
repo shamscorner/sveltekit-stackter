@@ -3,7 +3,7 @@ import { superValidate } from 'sveltekit-superforms/server';
 import { formSchema } from '$lib/auth/forgot-password/schema';
 import { fail } from '@sveltejs/kit';
 import { zod } from 'sveltekit-superforms/adapters';
-import { UserService } from '../services/user.pocketbase.service';
+import { UserService } from '../services/user.service';
 
 export const load: PageServerLoad = async () => {
 	return {
