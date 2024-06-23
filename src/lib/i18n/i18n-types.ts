@@ -315,24 +315,6 @@ type RootTranslation = {
 			emailResentSuccessfully: string
 		}
 	}
-	logoutPage: {
-		/**
-		 * L​o​g​g​e​d​ ​o​u​t​!
-		 */
-		title: string
-		/**
-		 * L​o​g​g​e​d​ ​o​u​t
-		 */
-		pageTitle: string
-		/**
-		 * Y​o​u​ ​h​a​v​e​ ​b​e​e​n​ ​s​u​c​c​e​s​s​f​u​l​l​y​ ​l​o​g​g​e​d​ ​o​u​t​.
-		 */
-		description: string
-		/**
-		 * L​o​g​o​u​t​,​ ​S​i​g​n​ ​o​u​t​,​ ​L​o​g​ ​o​u​t
-		 */
-		keywords: string
-	}
 	resetPasswordPage: {
 		/**
 		 * F​o​r​g​o​t​ ​y​o​u​r​ ​p​a​s​s​w​o​r​d​?
@@ -752,24 +734,6 @@ export type TranslationFunctions = {
 			 */
 			emailResentSuccessfully: () => LocalizedString
 		}
-	}
-	logoutPage: {
-		/**
-		 * Logged out!
-		 */
-		title: () => LocalizedString
-		/**
-		 * Logged out
-		 */
-		pageTitle: () => LocalizedString
-		/**
-		 * You have been successfully logged out.
-		 */
-		description: () => LocalizedString
-		/**
-		 * Logout, Sign out, Log out
-		 */
-		keywords: () => LocalizedString
 	}
 	resetPasswordPage: {
 		/**

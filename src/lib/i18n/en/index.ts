@@ -126,13 +126,6 @@ const en: BaseTranslation = {
 		}
 	},
 
-	logoutPage: {
-		title: 'Logged out!',
-		pageTitle: 'Logged out',
-		description: 'You have been successfully logged out.',
-		keywords: 'Logout, Sign out, Log out'
-	},
-
 	resetPasswordPage: {
 		title: 'Forgot your password?',
 		pageTitle: 'Reset Password',
