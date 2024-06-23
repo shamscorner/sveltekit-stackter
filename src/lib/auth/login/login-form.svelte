@@ -15,6 +15,7 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Switch } from '$lib/components/ui/switch';
 	import CardWrapper from '../common/card-wrapper.svelte';
+	import { Button } from '$lib/components/ui/button';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -116,6 +117,10 @@
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>
+
+			<Button href="/auth/reset-password" size="sm" variant="link" class="px-0 font-normal">
+				{$LL.loginPage.form.forgotPassword()}
+			</Button>
 
 			<div class="flex items-center space-x-4">
 				<Switch id="remember-me" bind:checked={rememberEmail} />

@@ -333,13 +333,13 @@ type RootTranslation = {
 		 */
 		keywords: string
 	}
-	forgotPasswordPage: {
+	resetPasswordPage: {
 		/**
-		 * F​o​r​g​o​t​ ​P​a​s​s​w​o​r​d​!
+		 * F​o​r​g​o​t​ ​y​o​u​r​ ​p​a​s​s​w​o​r​d​?
 		 */
 		title: string
 		/**
-		 * F​o​r​g​o​t​ ​P​a​s​s​w​o​r​d
+		 * R​e​s​e​t​ ​P​a​s​s​w​o​r​d
 		 */
 		pageTitle: string
 		/**
@@ -356,13 +356,9 @@ type RootTranslation = {
 			 */
 			email: string
 			/**
-			 * S​u​b​m​i​t
+			 * S​e​n​d​ ​r​e​s​e​t​ ​l​i​n​k
 			 */
 			submit: string
-			/**
-			 * D​o​n​'​t​ ​h​a​v​e​ ​a​n​ ​a​c​c​o​u​n​t​?
-			 */
-			dontHaveAccount: string
 			/**
 			 * A​l​r​e​a​d​y​ ​h​a​v​e​ ​a​n​ ​a​c​c​o​u​n​t​?
 			 */
@@ -775,13 +771,13 @@ export type TranslationFunctions = {
 		 */
 		keywords: () => LocalizedString
 	}
-	forgotPasswordPage: {
+	resetPasswordPage: {
 		/**
-		 * Forgot Password!
+		 * Forgot your password?
 		 */
 		title: () => LocalizedString
 		/**
-		 * Forgot Password
+		 * Reset Password
 		 */
 		pageTitle: () => LocalizedString
 		/**
@@ -798,13 +794,9 @@ export type TranslationFunctions = {
 			 */
 			email: () => LocalizedString
 			/**
-			 * Submit
+			 * Send reset link
 			 */
 			submit: () => LocalizedString
-			/**
-			 * Don't have an account?
-			 */
-			dontHaveAccount: () => LocalizedString
 			/**
 			 * Already have an account?
 			 */

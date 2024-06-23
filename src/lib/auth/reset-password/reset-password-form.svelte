@@ -1,12 +1,10 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form';
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import { Heading } from '$lib/components/ui/heading';
 	import { Input } from '$lib/components/ui/input';
 	import { formSchema, type FormSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { Button } from '$lib/components/ui/button';
 	import { Icons } from '$lib/components/icons';
 	import type { AnalyticsDto } from '$lib/types';
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
@@ -14,6 +12,7 @@
 	import { getSiteAnalytics } from '$lib/helpers/analytics';
 	import { performFormValidation } from '$lib/services/error.service';
 	import SuccessMessage from '$lib/auth/common/success-message.svelte';
+	import CardWrapper from '../common/card-wrapper.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -71,11 +70,12 @@
 	});
 </script>
 
-<div>
-	<Heading class="mx-auto text-center">
-		{$LL.forgotPasswordPage.title()}
-	</Heading>
-	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
+<CardWrapper
+	headerLabel={$LL.resetPasswordPage.title()}
+	backButtonLabel={$LL.resetPasswordPage.form.alreadyHaveAccount()}
+	backButtonHref="/auth/login"
+>
+	<div class="grid gap-6">
 		<form method="POST" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
 			<input type="hidden" name="landingPage" bind:value={$formData.landingPage} />
@@ -84,7 +84,7 @@
 
 			<Form.Field {form} name="email">
 				<Form.Control let:attrs>
-					<Form.Label>{$LL.forgotPasswordPage.form.email()}</Form.Label>
+					<Form.Label>{$LL.resetPasswordPage.form.email()}</Form.Label>
 					<Input {...attrs} bind:value={$formData.email} placeholder="john@example.com" />
 				</Form.Control>
 				<Form.FieldErrors />
@@ -98,23 +98,14 @@
 				{#if isLoadingFormSubmit}
 					<Icons.spinner class="mr-2 h-4 w-4 animate-spin" />
 				{/if}
-				{$LL.forgotPasswordPage.form.submit()}
+				{$LL.resetPasswordPage.form.submit()}
 			</Form.Button>
 		</form>
-
-		<div class="text-center">
-			<Button href="/auth/login" variant="link">
-				{$LL.forgotPasswordPage.form.alreadyHaveAccount()}
-			</Button>
-			<Button href="/auth/register" variant="link">
-				{$LL.forgotPasswordPage.form.dontHaveAccount()}
-			</Button>
-		</div>
 	</div>
 
 	<SuccessMessage
 		bind:open={isSuccessful}
-		title={$LL.forgotPasswordPage.successfulPasswordResetSent.title()}
-		description={$LL.forgotPasswordPage.successfulPasswordResetSent.description()}
+		title={$LL.resetPasswordPage.successfulPasswordResetSent.title()}
+		description={$LL.resetPasswordPage.successfulPasswordResetSent.description()}
 	/>
-</div>
+</CardWrapper>

@@ -13,8 +13,4 @@
 	keywords={$LL.confirmPasswordResetPage.keywords()}
 />
 
-<main class="relative min-h-screen p-5 py-6 sm:px-8">
-	<div class="mx-auto my-12 grid max-w-5xl place-items-center">
-		<ConfirmPasswordResetForm data={data.form} />
-	</div>
-</main>
+<ConfirmPasswordResetForm data={data.form} />

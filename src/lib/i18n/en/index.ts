@@ -133,17 +133,16 @@ const en: BaseTranslation = {
 		keywords: 'Logout, Sign out, Log out'
 	},
 
-	forgotPasswordPage: {
-		title: 'Forgot Password!',
-		pageTitle: 'Forgot Password',
+	resetPasswordPage: {
+		title: 'Forgot your password?',
+		pageTitle: 'Reset Password',
 		description:
 			'Forgot your password? No worries! Enter your email address and we will send you a link to reset your password.',
 		keywords: 'Forgot password, Reset password, Password recovery',
 
 		form: {
 			email: 'Email',
-			submit: 'Submit',
-			dontHaveAccount: "Don't have an account?",
+			submit: 'Send reset link',
 			alreadyHaveAccount: 'Already have an account?'
 		},
 

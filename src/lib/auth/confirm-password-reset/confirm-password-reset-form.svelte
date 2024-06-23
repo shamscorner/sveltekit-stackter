@@ -1,12 +1,10 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form';
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import { Heading } from '$lib/components/ui/heading';
 	import { Input } from '$lib/components/ui/input';
 	import { formSchema, type FormSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { Button } from '$lib/components/ui/button';
 	import { Icons } from '$lib/components/icons';
 	import type { AnalyticsDto } from '$lib/types';
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
@@ -15,6 +13,7 @@
 	import { performFormValidation } from '$lib/services/error.service';
 	import SuccessMessage from '$lib/auth/common/success-message.svelte';
 	import { goto } from '$app/navigation';
+	import CardWrapper from '../common/card-wrapper.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -72,11 +71,12 @@
 	});
 </script>
 
-<div>
-	<Heading class="mx-auto text-center">
-		{$LL.confirmPasswordResetPage.title()}
-	</Heading>
-	<div class="mt-4 grid min-w-[19rem] max-w-md gap-6">
+<CardWrapper
+	headerLabel={$LL.confirmPasswordResetPage.title()}
+	backButtonLabel={$LL.confirmPasswordResetPage.form.alreadyHaveAccount()}
+	backButtonHref="/auth/login"
+>
+	<div class="grid gap-6">
 		<form method="POST" use:enhance class="space-y-4">
 			<input type="hidden" name="browserHash" bind:value={$formData.browserHash} />
 			<input type="hidden" name="landingPage" bind:value={$formData.landingPage} />
@@ -120,15 +120,6 @@
 				{$LL.confirmPasswordResetPage.form.submit()}
 			</Form.Button>
 		</form>
-
-		<div class="text-center">
-			<Button href="/auth/login" variant="link">
-				{$LL.confirmPasswordResetPage.form.alreadyHaveAccount()}
-			</Button>
-			<Button href="/auth/register" variant="link">
-				{$LL.confirmPasswordResetPage.form.dontHaveAccount()}
-			</Button>
-		</div>
 	</div>
 
 	<SuccessMessage
@@ -137,4 +128,4 @@
 		description={$LL.confirmPasswordResetPage.successfulPasswordReset.description()}
 		on:close={() => goto('/auth/login')}
 	/>
-</div>
+</CardWrapper>
