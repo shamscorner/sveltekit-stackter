@@ -18,6 +18,8 @@ import type { RegisteredDatabaseSessionAttributes } from 'lucia';
 export class UserService extends AuthService {
 	private pb: Pocketbase;
 
+	public EXCEPTION_EMAIL_INVALID = 'validation_invalid_email';
+
 	constructor(pb: Pocketbase) {
 		super();
 		this.pb = pb;
@@ -246,20 +248,25 @@ export class UserService extends AuthService {
 	parseErrorFromErrorObject(error) {
 		const errorObj = error as ClientResponseError;
 
-		console.error('API service errorObj: ', errorObj);
+		console.log('API service errorObj: ', errorObj);
 
 		const { response } = errorObj || {};
 		const { code, message, data } = response || {};
 		let nestedMessage = message as string;
+		let type: string | undefined = undefined;
 
 		for (const key in data) {
 			if (Object.prototype.hasOwnProperty.call(data, key)) {
-				nestedMessage = capitalizeFirstLetter(`${key}: ${data[key].message}`);
+				const { message, code: errorType } = data[key];
+
+				nestedMessage = capitalizeFirstLetter(`${key}: ${message}`);
+				type = errorType;
 			}
 		}
 
 		return {
 			code: (code as number) || 500,
+			type,
 			error: {
 				message: nestedMessage || get(LL).errors.somethingWentWrong()
 			}

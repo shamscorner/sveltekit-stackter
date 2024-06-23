@@ -18,6 +18,7 @@ export type AnalyticsDto = {
 
 export type ApiResponse<D = null> = {
 	code: number;
+	type?: string;
 	message?: string;
 	data?: D;
 	error?:

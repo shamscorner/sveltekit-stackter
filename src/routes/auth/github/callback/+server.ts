@@ -1,7 +1,7 @@
 import { github } from '$lib/auth';
 import { OAuth2RequestError } from 'arctic';
 import type { RequestEvent } from '@sveltejs/kit';
-import { socialiteCallbackHandler } from '$lib/auth/services';
+import { socialiteCallbackHandler } from '$lib/auth/services/socialite';
 
 export async function GET(event: RequestEvent): Promise<Response> {
 	const code = event.url.searchParams.get('code');
@@ -23,12 +23,16 @@ export async function GET(event: RequestEvent): Promise<Response> {
 		});
 		const githubUser: GitHubUser = await githubUserResponse.json();
 
-		return await socialiteCallbackHandler(event, {
-			id: githubUser.id,
-			username: githubUser.login,
-			name: githubUser.name,
-			email: githubUser.email
-		});
+		return await socialiteCallbackHandler(
+			event,
+			{
+				id: githubUser.id,
+				username: githubUser.login,
+				name: githubUser.name,
+				email: githubUser.email
+			},
+			'github'
+		);
 	} catch (e) {
 		if (e instanceof OAuth2RequestError && e.message === 'bad_verification_code') {
 			return new Response(null, {

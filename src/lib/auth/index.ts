@@ -28,7 +28,8 @@ export const lucia = new Lucia(adapter, {
 	},
 	getSessionAttributes: (attributes) => {
 		return {
-			githubId: attributes.githubId,
+			provider: attributes.provider,
+			providerId: attributes.providerId,
 			username: attributes.username
 		};
 	}
@@ -42,7 +43,8 @@ declare module 'lucia' {
 }
 
 interface DatabaseSessionAttributes {
-	githubId: number;
+	providerId: string;
+	provider: string;
 	username: string;
 }
 
