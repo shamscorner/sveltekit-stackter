@@ -2,6 +2,7 @@ import { UserService } from '$routes/auth/services/user.service';
 import type { RequestEvent } from '@sveltejs/kit';
 import { appHomeRoute } from '../routes';
 import type { AccountProvider } from '../types';
+import { generatePassword } from '../helpers';
 
 export type SocialiteUserData = {
 	id: string;
@@ -28,7 +29,7 @@ export async function socialiteCallbackHandler(
 		const createdUserResponse = await userService.createUser({
 			name: userData.name,
 			email: userData.email,
-			password: 'Github@123', // TODO: generate random password later
+			password: generatePassword(8),
 			username: userData.username
 		});
 
