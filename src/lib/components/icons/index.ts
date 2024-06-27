@@ -1,22 +1,22 @@
 import type { Icon as LucideIcon } from 'lucide-svelte';
 import {
-	Loader2,
-	Instagram,
-	Link,
-	X,
-	ChevronsUpDown,
-	LayoutDashboard,
-	ScrollText,
-	Users2,
-	CircleDollarSign,
-	Settings,
-	Menu,
 	ArrowRight,
-	Twitter,
+	ChevronsUpDown,
+	CircleDollarSign,
 	Github,
-	Linkedin,
 	Home,
-	TriangleAlert
+	Instagram,
+	LayoutDashboard,
+	Link,
+	Linkedin,
+	Loader2,
+	Menu,
+	ScrollText,
+	Settings,
+	TriangleAlert,
+	Twitter,
+	Users2,
+	X
 } from 'lucide-svelte';
 
 import Google from './google.svelte';

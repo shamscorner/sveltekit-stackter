@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button';
+	import { cn } from '$lib/utils';
 
 	export let label: string;
 	export let href: string;

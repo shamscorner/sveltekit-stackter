@@ -1,4 +1,5 @@
 import { redirect } from '@sveltejs/kit';
+
 import { appHomeRoute, authRoutes, loginRoute } from './routes';
 import { lucia } from '.';
 

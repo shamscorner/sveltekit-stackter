@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { LL } from '$lib/i18n/i18n-svelte';
 	import { Icons } from '$lib/components/icons';
 	import { Button } from '$lib/components/ui/button';
+	import { LL } from '$lib/i18n/i18n-svelte';
 	import { cn } from '$lib/utils';
 
 	export let isLoadingGoogleAuth = false;

@@ -1,5 +1,7 @@
-import { UserService } from '$routes/auth/services/user.service';
 import { error } from '@sveltejs/kit';
+
+import { UserService } from '$routes/auth/services/user.service';
+
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {

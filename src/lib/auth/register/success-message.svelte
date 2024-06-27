@@ -1,17 +1,21 @@
 <script lang="ts">
-	import * as Sheet from '$lib/components/ui/sheet/index.js';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import { LL } from '$lib/i18n/i18n-svelte';
-	import { goto } from '$app/navigation';
-	import { superForm, type SuperValidated } from 'sveltekit-superforms';
-	import { zodClient, type Infer } from 'sveltekit-superforms/adapters';
-	import { resendEmailFormSchema, type ResendEmailFormSchema } from './schema';
-	import { performFormValidation } from '$lib/services/error.service';
-	import { Icons } from '$lib/components/icons';
-	import { FormButton } from '$lib/components/ui/form';
-	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
+	import { toast } from 'svelte-sonner';
+
+	import { superForm, type SuperValidated } from 'sveltekit-superforms';
+	import { type Infer, zodClient } from 'sveltekit-superforms/adapters';
+
+	import { goto } from '$app/navigation';
+	import { Icons } from '$lib/components/icons';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { FormButton } from '$lib/components/ui/form';
+	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import { LL } from '$lib/i18n/i18n-svelte';
+	import { performFormValidation } from '$lib/services/error.service';
+
 	import { REGISTER_EMAIL_KEY } from '../constants';
+
+	import { type ResendEmailFormSchema, resendEmailFormSchema } from './schema';
 
 	export let data: SuperValidated<Infer<ResendEmailFormSchema>>;
 	export let open = false;

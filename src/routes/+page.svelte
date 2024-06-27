@@ -1,14 +1,15 @@
 <script lang="ts">
-	import { LL } from '$lib/i18n/i18n-svelte';
-	import Seo from '$lib/components/common/SEO.svelte';
 	import Image from '@zerodevx/svelte-img';
-	import LandingImage from '$lib/assets/images/landing-page.png?as=run:0';
-	import { Button } from '$lib/components/ui/button';
-	import { Icons } from '$lib/components/icons';
-	import LottieAnimation from '$lib/components/common/LottieAnimation.svelte';
+
 	import UserHiAnimationAsset from '$lib/assets/animations/user-hi.json';
+	import LandingImage from '$lib/assets/images/landing-page.png?as=run:0';
 	import LoginButton from '$lib/auth/common/login-button.svelte';
+	import LottieAnimation from '$lib/components/common/LottieAnimation.svelte';
+	import Seo from '$lib/components/common/SEO.svelte';
+	import { Icons } from '$lib/components/icons';
+	import { Button } from '$lib/components/ui/button';
 	import { Heading } from '$lib/components/ui/heading';
+	import { LL } from '$lib/i18n/i18n-svelte';
 </script>
 
 <Seo title={$LL.title()} description={$LL.description()} keywords={$LL.keywords()} />

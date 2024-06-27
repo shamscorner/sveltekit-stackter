@@ -24,5 +24,24 @@
 		"tests/**",
 		"src/lib/i18n/**"
 	],
-	"cSpell.words": ["localstorage", "Pocketbase", "Prefs", "sonner"]
+	"cSpell.words": [
+		"clsx",
+		"csstools",
+		"fingerprintjs",
+		"fontaine",
+		"formsnap",
+		"gtag",
+		"localstorage",
+		"lucide",
+		"minmax",
+		"partytown",
+		"Pocketbase",
+		"Prefs",
+		"sonner",
+		"stackter",
+		"superforms",
+		"taze",
+		"typesafe",
+		"zerodevx"
+	]
 }

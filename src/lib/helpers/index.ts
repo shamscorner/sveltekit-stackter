@@ -1,5 +1,6 @@
-import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 import type { RequestEvent } from '@sveltejs/kit';
+
+import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 
 export function getRandomItemFromArray(array) {
 	const randomIndex = Math.floor(Math.random() * array.length);

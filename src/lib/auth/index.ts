@@ -1,8 +1,9 @@
-import { Lucia } from 'lucia';
 import { PocketbaseAdapter } from '@shamscorner/lucia-pocketbase';
-import { dev } from '$app/environment';
-import PocketBase from 'pocketbase';
 import { GitHub, Google } from 'arctic';
+import { Lucia } from 'lucia';
+import PocketBase from 'pocketbase';
+
+import { dev } from '$app/environment';
 import {
 	GITHUB_CLIENT_ID,
 	GITHUB_CLIENT_SECRET,

@@ -1,9 +1,13 @@
-import type { Actions, PageServerLoad } from './$types';
-import { superValidate } from 'sveltekit-superforms/server';
-import { formSchema } from '$lib/auth/reset-password/schema';
 import { fail } from '@sveltejs/kit';
+
 import { zod } from 'sveltekit-superforms/adapters';
+import { superValidate } from 'sveltekit-superforms/server';
+
+import { formSchema } from '$lib/auth/reset-password/schema';
+
 import { UserService } from '../services/user.service';
+
+import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
 	return {

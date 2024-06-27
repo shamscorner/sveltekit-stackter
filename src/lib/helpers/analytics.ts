@@ -1,6 +1,7 @@
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
+
 import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 import type { FpType } from '$lib/types';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import type { AnalyticsDto } from '$lib/types';
 
 export async function getBrowserHash() {

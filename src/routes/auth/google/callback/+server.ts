@@ -1,7 +1,7 @@
-import { google } from '$lib/auth';
+import type { RequestEvent } from '@sveltejs/kit';
 import { OAuth2RequestError } from 'arctic';
 
-import type { RequestEvent } from '@sveltejs/kit';
+import { google } from '$lib/auth';
 import { socialiteCallbackHandler } from '$lib/auth/services/socialite';
 
 export async function GET(event: RequestEvent): Promise<Response> {

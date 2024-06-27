@@ -1,7 +1,8 @@
+import { get } from 'svelte/store';
+import type { ActionResult } from '@sveltejs/kit';
+
 import { capitalizeFirstLetter } from '$lib/helpers';
 import LL from '$lib/i18n/i18n-svelte';
-import type { ActionResult } from '@sveltejs/kit';
-import { get } from 'svelte/store';
 
 export function getEmptyErrorResponse(errorMessage: string) {
 	return {

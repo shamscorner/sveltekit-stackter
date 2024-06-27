@@ -1,5 +1,7 @@
-import type { ApiResponse } from '$lib/types';
 import type { RequestEvent } from '@sveltejs/kit';
+
+import type { ApiResponse } from '$lib/types';
+
 import type { Account, AccountDto, AccountProvider, User, UserDto } from '../types';
 
 export abstract class AuthService {

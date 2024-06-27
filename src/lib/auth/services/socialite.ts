@@ -1,8 +1,10 @@
-import { UserService } from '$routes/auth/services/user.service';
 import { error, type RequestEvent } from '@sveltejs/kit';
+
+import { UserService } from '$routes/auth/services/user.service';
+
+import { generatePassword } from '../helpers';
 import { appHomeRoute } from '../routes';
 import type { AccountProvider } from '../types';
-import { generatePassword } from '../helpers';
 
 export type SocialiteUserData = {
 	id: string;

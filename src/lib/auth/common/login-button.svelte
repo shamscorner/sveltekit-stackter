@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { LL } from '$lib/i18n/i18n-svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { LL } from '$lib/i18n/i18n-svelte';
 
 	export let mode: 'modal' | 'redirect' = 'redirect';
 	// export let asChild = false;

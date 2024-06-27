@@ -1,8 +1,8 @@
-import { google } from '$lib/auth';
-import { generateState, generateCodeVerifier } from 'arctic';
-import { redirect } from '@sveltejs/kit';
-
 import type { RequestEvent } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
+import { generateCodeVerifier, generateState } from 'arctic';
+
+import { google } from '$lib/auth';
 
 export async function GET(event: RequestEvent): Promise<Response> {
 	const state = generateState();

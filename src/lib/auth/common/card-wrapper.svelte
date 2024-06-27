@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Card, CardContent, CardFooter, CardHeader } from '$lib/components/ui/card';
+
 	import BackButton from './back-button.svelte';
 	import CardHeaderWrapper from './card-header-wrapper.svelte';
 	import SocialOptions from './social-options.svelte';

@@ -1,6 +1,7 @@
+import { type RequestEvent } from '@sveltejs/kit';
+
 import { lucia } from '$lib/auth';
 import { loginRoute } from '$lib/auth/routes';
-import { type RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
 	if (event.locals.session) {

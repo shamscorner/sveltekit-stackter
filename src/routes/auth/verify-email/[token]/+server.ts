@@ -1,6 +1,7 @@
+import { error, type RequestEvent } from '@sveltejs/kit';
+
 import { appHomeRoute } from '$lib/auth/routes';
 import { UserService } from '$routes/auth/services/user.service';
-import { error, type RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
 	const { token } = event.params;

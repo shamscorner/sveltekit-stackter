@@ -1,7 +1,8 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
 	import { Icons } from '$lib/components/icons';
 	import { cn } from '$lib/utils';
-	import type { HTMLAttributes } from 'svelte/elements';
 
 	type MessageType = 'success' | 'error' | 'warning' | 'info';
 

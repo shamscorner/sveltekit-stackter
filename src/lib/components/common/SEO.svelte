@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { LL } from '$lib/i18n/i18n-svelte';
 	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
+	import { LL } from '$lib/i18n/i18n-svelte';
 
 	export let title: string;
 	export let description: string;

@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { LL } from '$lib/i18n/i18n-svelte';
-	import { Button } from '$lib/components/ui/button';
-	import Seo from '$lib/components/common/SEO.svelte';
-	import { logoutRoute } from '$lib/auth/routes';
-	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
+
+	import { logoutRoute } from '$lib/auth/routes';
+	import Seo from '$lib/components/common/SEO.svelte';
+	import { Button } from '$lib/components/ui/button';
+	import { LL } from '$lib/i18n/i18n-svelte';
+
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 

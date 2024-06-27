@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
 	import { Icons } from '$lib/components/icons';
 	import { Button } from '$lib/components/ui/button';
+	import { cn } from '$lib/utils';
+
 	import { githubAuthRoute, googleAuthRoute } from '../routes';
 </script>
 

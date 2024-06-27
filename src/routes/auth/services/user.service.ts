@@ -1,19 +1,20 @@
+import { get } from 'svelte/store';
+import type { RequestEvent } from '@sveltejs/kit';
+import type { RegisteredDatabaseSessionAttributes } from 'lucia';
 import Pocketbase, { ClientResponseError } from 'pocketbase';
+
+import { lucia } from '$lib/auth';
 import { AuthService } from '$lib/auth/services';
-import type { ApiResponse } from '$lib/types';
 import {
-	AccountProvider,
 	type Account,
 	type AccountDto,
+	AccountProvider,
 	type User,
 	type UserDto
 } from '$lib/auth/types';
 import { capitalizeFirstLetter } from '$lib/helpers';
-import { get } from 'svelte/store';
 import LL from '$lib/i18n/i18n-svelte';
-import { lucia } from '$lib/auth';
-import type { RequestEvent } from '@sveltejs/kit';
-import type { RegisteredDatabaseSessionAttributes } from 'lucia';
+import type { ApiResponse } from '$lib/types';
 
 export class UserService extends AuthService {
 	private pb: Pocketbase;

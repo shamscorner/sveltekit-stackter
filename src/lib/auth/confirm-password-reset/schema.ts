@@ -1,5 +1,6 @@
-import { authSchema } from '$lib/auth/schema';
 import { z } from 'zod';
+
+import { authSchema } from '$lib/auth/schema';
 
 export const formSchema = authSchema
 	.omit({

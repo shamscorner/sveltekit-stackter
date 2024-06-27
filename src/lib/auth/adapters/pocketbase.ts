@@ -1,5 +1,6 @@
 import type { Adapter, AdapterAccount, AdapterSession, AdapterUser } from '@auth/core/adapters';
 import type PocketBase from 'pocketbase';
+
 import { type User as PBRecord } from '../types/';
 
 export interface PocketBaseAdapterOptions {

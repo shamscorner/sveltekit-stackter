@@ -1,21 +1,25 @@
 <script lang="ts">
-	import * as Form from '$lib/components/ui/form';
-	import { LL } from '$lib/i18n/i18n-svelte';
-	import { Input } from '$lib/components/ui/input';
-	import { formSchema, type FormSchema } from './schema';
-	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { Icons } from '$lib/components/icons';
-	import { performFormValidation } from '$lib/services/error.service';
-	import type { AnalyticsDto } from '$lib/types';
-	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { onMount } from 'svelte';
-	import { getSiteAnalytics } from '$lib/helpers/analytics';
-	import { deleteLastLoginEmail, getLastLoginEmail, saveLastLoginEmail } from './utils';
+
+	import { type Infer, superForm, type SuperValidated } from 'sveltekit-superforms';
+	import { zodClient } from 'sveltekit-superforms/adapters';
+
+	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
+	import { Icons } from '$lib/components/icons';
+	import { Button } from '$lib/components/ui/button';
+	import * as Form from '$lib/components/ui/form';
+	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Switch } from '$lib/components/ui/switch';
+	import { getSiteAnalytics } from '$lib/helpers/analytics';
+	import { LL } from '$lib/i18n/i18n-svelte';
+	import { performFormValidation } from '$lib/services/error.service';
+	import type { AnalyticsDto } from '$lib/types';
+
 	import CardWrapper from '../common/card-wrapper.svelte';
-	import { Button } from '$lib/components/ui/button';
+
+	import { type FormSchema, formSchema } from './schema';
+	import { deleteLastLoginEmail, getLastLoginEmail, saveLastLoginEmail } from './utils';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 

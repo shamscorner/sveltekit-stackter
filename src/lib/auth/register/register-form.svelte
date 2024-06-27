@@ -1,19 +1,23 @@
 <script lang="ts">
-	import * as Form from '$lib/components/ui/form';
-	import { LL } from '$lib/i18n/i18n-svelte';
-	import { Input } from '$lib/components/ui/input';
-	import { formSchema, type FormSchema, type ResendEmailFormSchema } from './schema';
-	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { Icons } from '$lib/components/icons';
-	import type { AnalyticsDto } from '$lib/types';
-	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { onMount } from 'svelte';
-	import { getSiteAnalytics } from '$lib/helpers/analytics';
-	import { performFormValidation } from '$lib/services/error.service';
-	import SuccessMessage from './success-message.svelte';
+
+	import { type Infer, superForm, type SuperValidated } from 'sveltekit-superforms';
+	import { zodClient } from 'sveltekit-superforms/adapters';
+
+	import { PUBLIC_LANDING_PAGE } from '$env/static/public';
 	import { REGISTER_EMAIL_KEY } from '$lib/auth/constants';
+	import { Icons } from '$lib/components/icons';
+	import * as Form from '$lib/components/ui/form';
+	import { Input } from '$lib/components/ui/input';
+	import { getSiteAnalytics } from '$lib/helpers/analytics';
+	import { LL } from '$lib/i18n/i18n-svelte';
+	import { performFormValidation } from '$lib/services/error.service';
+	import type { AnalyticsDto } from '$lib/types';
+
 	import CardWrapper from '../common/card-wrapper.svelte';
+
+	import { type FormSchema, formSchema, type ResendEmailFormSchema } from './schema';
+	import SuccessMessage from './success-message.svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 	export let resendEmailData: SuperValidated<Infer<ResendEmailFormSchema>>;
