@@ -24,7 +24,7 @@
 			'bg-amber-600/15 text-amber-600': type === 'warning',
 			'bg-blue-600/15 text-blue-600': type === 'info'
 		},
-		{ invisible: !show },
+		{ hidden: !show },
 		className
 	)}
 	{...$$restProps}

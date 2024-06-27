@@ -118,11 +118,16 @@
 				<Form.FieldErrors />
 			</Form.Field>
 
-			<Button href="/auth/reset-password" size="sm" variant="link" class="px-0 font-normal">
+			<Button
+				href="/auth/reset-password"
+				size="sm"
+				variant="link"
+				class="-translate-y-2 px-0 font-normal"
+			>
 				{$LL.loginPage.form.forgotPassword()}
 			</Button>
 
-			<div class="flex items-center space-x-4">
+			<div class="flex -translate-y-2 items-center space-x-4">
 				<Switch id="remember-me" bind:checked={rememberEmail} />
 				<Label for="remember-me">{$LL.loginPage.form.rememberMe()}</Label>
 			</div>
