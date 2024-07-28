@@ -185,10 +185,6 @@ type RootTranslation = {
 		 */
 		goToLogin: string
 		/**
-		 * E​m​o​j​i​ ​p​i​c​k​e​r
-		 */
-		emojiPicker: string
-		/**
 		 * C​h​e​c​k​ ​G​i​t​h​u​b​ ​R​e​p​o
 		 */
 		checkGithub: string
@@ -424,10 +420,6 @@ export type TranslationFunctions = {
 		 * Go to login page
 		 */
 		goToLogin: () => LocalizedString
-		/**
-		 * Emoji picker
-		 */
-		emojiPicker: () => LocalizedString
 		/**
 		 * Check Github Repo
 		 */

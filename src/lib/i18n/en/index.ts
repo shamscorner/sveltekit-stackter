@@ -74,8 +74,6 @@ const en: BaseTranslation = {
 		checkFormSubmission: 'Check form submission demo',
 		goToLogin: 'Go to login page',
 
-		emojiPicker: 'Emoji picker',
-
 		checkGithub: 'Check Github Repo'
 	},
 

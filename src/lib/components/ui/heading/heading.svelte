@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
 	import type { SvelteHTMLElements } from 'svelte/elements';
+
+	import { cn } from '$lib/utils';
+
 	import { headingVariants, type Props } from '.';
 
 	export let element: $$Props['element'] = 'h1';

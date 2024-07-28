@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { LL } from '$lib/i18n/i18n-svelte';
-	import Seo from '$lib/components/common/SEO.svelte';
 	import { page } from '$app/stores';
+	import Seo from '$lib/components/common/SEO.svelte';
+	import { LL } from '$lib/i18n/i18n-svelte';
 </script>
 
 <Seo
