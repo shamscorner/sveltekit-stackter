@@ -1,5 +1,6 @@
-import Root from './heading.svelte';
 import { tv, type VariantProps } from 'tailwind-variants';
+
+import Root from './heading.svelte';
 
 const headingVariants = tv({
 	base: 'max-w-lg font-extrabold',
@@ -22,10 +23,10 @@ type Props = {
 };
 
 export {
-	Root,
-	type Props,
 	//
 	Root as Heading,
 	type Props as HeadingProps,
-	headingVariants
+	headingVariants,
+	type Props,
+	Root
 };

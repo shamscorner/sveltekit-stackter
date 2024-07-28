@@ -1,9 +1,9 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
-import { resolve } from 'path';
+import { imagetools } from '@zerodevx/svelte-img/vite';
 // import { join, resolve } from 'path';
 import { FontaineTransform } from 'fontaine';
-import { imagetools } from '@zerodevx/svelte-img/vite';
+import { resolve } from 'path';
+import { defineConfig } from 'vitest/config';
 // import { partytownVite } from '@builder.io/partytown/utils';
 
 export default defineConfig({

@@ -1,19 +1,22 @@
 <script lang="ts">
-	import { setLocale } from '$lib/i18n/i18n-svelte';
-	import '../app.postcss';
-	import type { LayoutData } from './$types';
 	import { onMount } from 'svelte';
+	import { ModeWatcher } from 'mode-watcher';
+
 	import { page } from '$app/stores';
+	import Analytics from '$lib/components/common/Analytics.svelte';
+	import AppBackground from '$lib/components/common/AppBackground.svelte';
 	import {
 		getFromLocalStorageWithExpiry,
 		saveToLocalStorageWithExpiry
 	} from '$lib/helpers/localstorage';
+	import { setLocale } from '$lib/i18n/i18n-svelte';
 	import type { FpType } from '$lib/types';
-	import Analytics from '$lib/components/common/Analytics.svelte';
-	import Navbar from './components/navbar/Navbar.svelte';
+
 	import Footer from './components/footer/Footer.svelte';
-	import AppBackground from '$lib/components/common/AppBackground.svelte';
-	import { ModeWatcher } from 'mode-watcher';
+	import Navbar from './components/navbar/Navbar.svelte';
+	import type { LayoutData } from './$types';
+
+	import '../app.postcss';
 
 	export let data: LayoutData;
 

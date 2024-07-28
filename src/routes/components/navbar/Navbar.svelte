@@ -1,7 +1,6 @@
 <script lang="ts">
 	import ThemeToggle from '$lib/components/common/ThemeToggle.svelte';
 	import { Icons } from '$lib/components/icons';
-
 	import { Button } from '$lib/components/ui/button';
 </script>
 
