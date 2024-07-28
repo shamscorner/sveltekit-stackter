@@ -35,7 +35,7 @@
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@tailwindcss/forms": "^0.5.7",
 		"@tailwindcss/typography": "^0.5.13",
-		"@types/eslint": "^8.56.11",
+		"@types/eslint": "^9.6.0",
 		"@types/gtag.js": "^0.0.20",
 		"@typescript-eslint/eslint-plugin": "^7.17.0",
 		"@typescript-eslint/parser": "^7.17.0",
